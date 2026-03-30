@@ -1,0 +1,196 @@
+/**
+ * 初診の方へページ
+ * 持ち物・来院の流れ・予約について
+ */
+
+import type { Metadata } from "next";
+import PageHero from "@/components/common/PageHero";
+import CallButton from "@/components/common/CallButton";
+import FaqSection from "@/components/common/FaqSection";
+import { SITE, HOURS_TABLE } from "@/lib/site";
+import { FIRST_VISIT_FAQ } from "@/lib/faq-data";
+
+export const metadata: Metadata = {
+  title: "初診の方へ",
+  description: "初めて受診される方へのご案内です。予約なしでも受診可能です。気になる症状があればまずはお気軽にご相談ください。",
+  alternates: { canonical: "/first" },
+};
+
+export default function FirstVisitPage() {
+  return (
+    <>
+      <PageHero
+        title="初診の方へ"
+        breadcrumbs={[
+          { label: "HOME", href: "/" },
+          { label: "初診の方へ" },
+        ]}
+      />
+
+      <section className="py-14 md:py-16">
+        <div className="max-w-3xl mx-auto px-4 space-y-12">
+          {/* 予約について */}
+          <div className="bg-[#FFFEF5] border border-[#F3E33A]/30 rounded-xl p-6">
+            <h2 className="text-lg font-bold text-[#2F9FD3] mb-3">
+              ご予約について
+            </h2>
+            <p className="text-base md:text-lg text-[#333333] leading-relaxed mb-4">
+              当院は予約なしでも受診いただけます。
+              ただし、事前にお電話いただくと待ち時間が少なくなる場合があります。
+              初めての方も、まずはお気軽にお電話ください。
+            </p>
+            <CallButton variant="accent" />
+          </div>
+
+          {/* 来院の流れ */}
+          <div>
+            <h2 className="text-lg font-bold text-[#2F9FD3] mb-6">
+              来院の流れ
+            </h2>
+            <div className="space-y-6">
+              {[
+                {
+                  step: 1,
+                  title: "受付",
+                  desc: "保険証（またはマイナンバーカード）をお持ちのうえ、受付窓口にお越しください。初診の方は問診票のご記入をお願いします。",
+                },
+                {
+                  step: 2,
+                  title: "問診・診察",
+                  desc: "症状やお悩みについて、医師が丁寧にお話を伺います。気になることは何でもお気軽にお伝えください。",
+                },
+                {
+                  step: 3,
+                  title: "お会計",
+                  desc: "診察が終わりましたら、受付にてお会計をお済ませください。お薬がある場合は処方せんをお渡しします。",
+                },
+              ].map((item) => (
+                <div key={item.step} className="flex gap-4">
+                  <div className="w-10 h-10 rounded-full bg-[#F3E33A] text-[#333333] flex items-center justify-center text-lg font-bold shrink-0">
+                    {item.step}
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-[#2F9FD3] mb-1">
+                      {item.title}
+                    </h3>
+                    <p className="text-base text-[#333333] leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 持ち物 */}
+          <div>
+            <h2 className="text-lg font-bold text-[#2F9FD3] mb-4">
+              お持ちいただくもの
+            </h2>
+            <div className="bg-[#EDF7FC] rounded-xl p-6">
+              <ul className="space-y-3 text-base md:text-lg text-[#333333]">
+                {[
+                  {
+                    item: "健康保険証（またはマイナンバーカード）",
+                    note: "必ずお持ちください",
+                    required: true,
+                  },
+                  {
+                    item: "お薬手帳",
+                    note: "現在お薬を服用中の方",
+                    required: false,
+                  },
+                  {
+                    item: "健康診断の結果",
+                    note: "健診で指摘を受けた方",
+                    required: false,
+                  },
+                  {
+                    item: "紹介状",
+                    note: "他院からの紹介がある方",
+                    required: false,
+                  },
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span
+                      className={`text-sm font-bold px-2 py-0.5 rounded shrink-0 ${
+                        item.required
+                          ? "bg-[#F3E33A] text-white"
+                          : "bg-white text-[#2F9FD3] border border-[#DCEAF2]"
+                      }`}
+                    >
+                      {item.required ? "必須" : "任意"}
+                    </span>
+                    <div>
+                      <span className="font-medium">{item.item}</span>
+                      <span className="text-[#4B5563] text-base ml-2">
+                        ─ {item.note}
+                      </span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* 診療時間 */}
+          <div>
+            <h2 className="text-lg font-bold text-[#2F9FD3] mb-4">
+              診療時間
+            </h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-base border-collapse border border-[#DCEAF2]">
+                <thead>
+                  <tr className="bg-[#46B7E8] text-white">
+                    {HOURS_TABLE.header.map((h, i) => (
+                      <th key={i} className="px-3 py-2 text-center font-medium">
+                        {h}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {HOURS_TABLE.rows.map((row, i) => (
+                    <tr key={i} className="border-b border-[#DCEAF2]">
+                      <td className="px-3 py-3 font-medium whitespace-nowrap">
+                        {row.label}
+                      </td>
+                      {row.cells.map((cell, j) => (
+                        <td
+                          key={j}
+                          className={`text-center py-3 font-medium ${
+                            cell === "○"
+                              ? "text-[#2F9FD3]"
+                              : cell === "×"
+                                ? "text-gray-400"
+                                : "text-[#F3E33A]"
+                          }`}
+                        >
+                          {cell}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="mt-2 space-y-1">
+              {HOURS_TABLE.notes.map((note, i) => (
+                <p key={i} className="text-base text-[#4B5563]">
+                  {note}
+                </p>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* よくあるご質問 */}
+      <FaqSection
+        items={FIRST_VISIT_FAQ}
+        japanese="初めての方からのよくあるご質問"
+      />
+    </>
+  );
+}

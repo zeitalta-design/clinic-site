@@ -1,0 +1,72 @@
+/**
+ * お知らせセクション（改善版）
+ * 余白とカテゴリバッジを洗練
+ */
+
+import { getPublishedNews, type NewsItem } from "@/lib/news-store";
+import { formatDate } from "@/lib/utils";
+import SectionTitle from "@/components/common/SectionTitle";
+
+export default function NewsSection() {
+  let news: NewsItem[] = [];
+  try {
+    news = getPublishedNews().slice(0, 5);
+  } catch {
+    news = [];
+  }
+
+  return (
+    <section className="py-14 md:py-16 bg-[#F8FCFE]" aria-label="お知らせ">
+      <div className="max-w-4xl mx-auto px-4">
+        <SectionTitle english="News" japanese="お知らせ" id="news" />
+
+        {news.length > 0 ? (
+          <ul className="divide-y divide-[#DCEAF2] border-t border-b border-[#DCEAF2]">
+            {news.map((item) => (
+              <li
+                key={item.id}
+                className="py-4 md:py-5 flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4"
+              >
+                <div className="flex items-center gap-2 shrink-0">
+                  <time
+                    dateTime={item.date}
+                    className="text-sm text-[#666666] tabular-nums font-medium"
+                  >
+                    {formatDate(item.date)}
+                  </time>
+                  {item.category && (
+                    <span
+                      className={`text-xs px-2.5 py-0.5 rounded-full font-medium ${
+                        item.category === "重要"
+                          ? "bg-red-50 text-red-600 border border-red-200"
+                          : item.category === "休診"
+                            ? "bg-amber-50 text-amber-600 border border-amber-200"
+                            : "bg-[#EDF7FC] text-[#2F9FD3] border border-[#d0e8f0]"
+                      }`}
+                    >
+                      {item.category}
+                    </span>
+                  )}
+                </div>
+                <div>
+                  <p className="text-[#333333] text-base md:text-lg">
+                    {item.title}
+                  </p>
+                  {item.body && (
+                    <p className="text-[#666666] text-base mt-1 leading-relaxed">
+                      {item.body}
+                    </p>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-center text-[#666666] py-10 text-base">
+            現在お知らせはありません
+          </p>
+        )}
+      </div>
+    </section>
+  );
+}
