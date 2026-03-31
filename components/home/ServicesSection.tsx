@@ -7,18 +7,34 @@ import Link from "next/link";
 import SectionTitle from "@/components/common/SectionTitle";
 import { SERVICES } from "@/lib/services-data";
 
+/** トップページに表示する8項目（診療内容ページと同じ） */
+const TOP_SLUGS = [
+  "diabetes",
+  "endocrine",
+  "obesity",
+  "internal-medicine",
+  "lifestyle-disease",
+  "cardiology",
+  "respiratory",
+  "smoking-cessation",
+] as const;
+
 export default function ServicesSection() {
+  const topServices = TOP_SLUGS.map((slug) =>
+    SERVICES.find((s) => s.slug === slug)
+  ).filter(Boolean);
+
   return (
     <section className="py-16 md:py-20 bg-white" aria-label="診療内容">
       <div className="max-w-5xl mx-auto px-4">
         <SectionTitle english="Services" japanese="診療内容" />
 
         <p className="text-center text-base md:text-lg text-[#4B5563] mb-8 -mt-4">
-          各項目をクリックすると、詳しいご案内をご覧いただけます
+          糖尿病や内分泌疾患の専門診療から、風邪・高血圧・生活習慣病など内科全般までご相談いただけます。
         </p>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5 mb-10">
-          {SERVICES.map((service) => (
+          {topServices.map((service) => (
             <Link
               key={service.slug}
               href={`/services/${service.slug}`}

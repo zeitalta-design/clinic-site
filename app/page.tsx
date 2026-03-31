@@ -12,6 +12,7 @@ import SymptomsSection from "@/components/home/SymptomsSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import FirstVisitSection from "@/components/home/FirstVisitSection";
 import AccessSection from "@/components/home/AccessSection";
+import DoctorSchedule from "@/components/home/DoctorSchedule";
 import FaqSection from "@/components/common/FaqSection";
 import { TOP_FAQ } from "@/lib/faq-data";
 
@@ -26,6 +27,9 @@ export default function HomePage() {
 
       {/* 3. 診療時間表 + 地図 */}
       <HoursAndMap />
+
+      {/* 3.5. 担当医表 */}
+      <DoctorSchedule />
 
       {/* 4. お知らせ */}
       <NewsSection />

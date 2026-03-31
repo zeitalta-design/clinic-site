@@ -16,7 +16,7 @@ export default function ClinicIntro() {
         </h2>
         <p className="text-base md:text-lg text-[#333333] leading-relaxed mb-6 max-w-xl mx-auto">
           {SITE.name}
-          は、函館市美原にある内科・糖尿病内科のクリニックです。
+          は、函館市美原にある内科・糖尿病・代謝内科・内分泌内科のクリニックです。
           気になる症状があれば、まずは気軽にご相談いただける場所でありたいと考えています。
         </p>
         <a

@@ -19,8 +19,8 @@ export default function AccessSection() {
           {/* 外観写真（bg-colorがフォールバック：画像なくてもレイアウト維持） */}
           <div className="relative rounded-xl overflow-hidden h-56 md:h-auto min-h-[14rem] bg-[#EDF7FC]">
             <Image
-              src="/images/clinic/exterior.jpg"
-              alt="クリニック外観"
+              src="/images/clinic/building.jpg"
+              alt="高橋清仁クリニック 外観"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"

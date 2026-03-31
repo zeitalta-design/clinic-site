@@ -9,7 +9,7 @@ import { SITE, HOURS_TABLE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "アクセス",
-  description: "高橋清仁クリニックへのアクセス情報です。北海道函館市美原1丁目14番12号、函館バス「亀田支所前」徒歩7分、無料駐車場15台。",
+  description: "高橋清仁クリニックへのアクセス情報です。北海道函館市美原1丁目14番12号、函館バス「亀田支所前」徒歩7分、駐車場29台完備。",
   alternates: { canonical: "/access" },
 };
 

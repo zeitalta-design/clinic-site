@@ -17,8 +17,8 @@ interface GalleryItem {
 
 const GALLERY_ITEMS: GalleryItem[] = [
   {
-    src: "/images/clinic/exterior.jpg",
-    alt: "クリニック外観",
+    src: "/images/clinic/building.jpg",
+    alt: "高橋清仁クリニック 外観",
     title: "外観",
     description: "初めての方でも迷わず来院いただけます",
   },

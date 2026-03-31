@@ -9,6 +9,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { SITE, NAV_LINKS } from "@/lib/site";
 
 export default function SiteHeader() {
@@ -46,13 +47,23 @@ export default function SiteHeader() {
 
       {/* メインヘッダー */}
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between h-16 md:h-20">
-        {/* クリニック名 */}
-        <Link href="/" className="flex flex-col">
-          <span className="text-lg md:text-xl font-bold text-[#2F9FD3] leading-tight">
-            {SITE.name}
-          </span>
-          <span className="text-[10px] md:text-xs text-[#666666]">
-            {SITE.departments.join(" / ")}
+        {/* ロゴ + クリニック名 */}
+        <Link href="/" className="flex items-center gap-2 md:gap-3">
+          <Image
+            src="/logo.png"
+            alt={SITE.name}
+            width={935}
+            height={618}
+            className="w-10 h-auto md:w-14"
+            priority
+          />
+          <span className="flex flex-col">
+            <span className="text-lg md:text-xl font-bold text-[#2F9FD3] leading-tight">
+              {SITE.name}
+            </span>
+            <span className="text-[10px] md:text-xs text-[#666666]">
+              {SITE.departments.join(" / ")}
+            </span>
           </span>
         </Link>
 
