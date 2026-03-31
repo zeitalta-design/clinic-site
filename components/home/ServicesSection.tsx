@@ -22,7 +22,7 @@ const TOP_SLUGS = [
 export default function ServicesSection() {
   const topServices = TOP_SLUGS.map((slug) =>
     SERVICES.find((s) => s.slug === slug)
-  ).filter(Boolean);
+  ).filter((service): service is NonNullable<typeof service> => Boolean(service));
 
   return (
     <section className="py-16 md:py-20 bg-white" aria-label="診療内容">
