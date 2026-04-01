@@ -26,10 +26,7 @@ export default function DirectorPage() {
 
       <section className="py-14 md:py-20">
         <div className="max-w-3xl mx-auto px-4">
-          {/* 説明文 */}
-          <p className="text-base md:text-lg text-[#333333] leading-relaxed mb-14 md:mb-16">
-            1994年の開院以来、地域の皆さまに支えられながら診療を続けてまいりました。糖尿病や甲状腺疾患、副腎・下垂体疾患などの内分泌疾患は長期的な管理が重要となることが多く、患者さま一人ひとりの生活背景や価値観に寄り添った医療を大切にしております。専門性を活かしながら、わかりやすく丁寧な説明を心がけ、安心して通っていただけるクリニックを目指しております。どんな些細なことでもお気軽にご相談ください。
-          </p>
+          {/* 共通説明文（削除：各医師コメントに移動） */}
 
           <div className="space-y-16 md:space-y-20">
             {/* 院長 */}
@@ -37,8 +34,11 @@ export default function DirectorPage() {
               <h2 className="text-xl md:text-2xl font-bold text-[#2F9FD3] border-b-2 border-[#46B7E8] pb-3 mb-4">
                 院長　高橋 清仁
               </h2>
-              <p className="text-sm md:text-base text-[#666666] mb-8">
-                地域に根ざした丁寧な診療を大切にしています。
+              <p className="text-sm md:text-base text-[#333333] leading-relaxed mb-8">
+                1994年の開院以来、地域の皆さまの健康を支える「かかりつけ医」として診療を続けてまいりました。
+                医療を取り巻く環境は時代とともに変化しておりますが、「安心して相談できる身近な医療」を大切にし、日々の診療に取り組んでおります。
+                長年通院されている方はもちろん、初めて受診される方にも不安なくお越しいただけるよう、丁寧でわかりやすい説明と、落ち着いた医療環境づくりを心がけております。
+                これからも地域に根ざした医療機関として、皆さまに信頼される存在であり続けられるよう努めてまいります。どうぞよろしくお願いいたします。
               </p>
 
               <div className="space-y-8">
@@ -70,8 +70,12 @@ export default function DirectorPage() {
               <h2 className="text-xl md:text-2xl font-bold text-[#2F9FD3] border-b-2 border-[#46B7E8] pb-3 mb-4">
                 副院長　高橋 清彦
               </h2>
-              <p className="text-sm md:text-base text-[#666666] mb-8">
-                内科・糖尿病・内分泌代謝分野を中心に幅広い診療経験を有しています。
+              <p className="text-sm md:text-base text-[#333333] leading-relaxed mb-8">
+                函館出身として、地域の皆さまの健康に貢献したいという思いから、この地で診療に携わっております。
+                これまで内科・糖尿病・内分泌代謝領域を中心に幅広い診療経験を重ねてまいりました。
+                糖尿病や甲状腺疾患、副腎・下垂体疾患などの内分泌疾患は、長期的な管理が必要となることが多く、患者さま一人ひとりの生活背景に寄り添った医療が重要であると考えております。
+                専門性を活かしながらも、わかりやすく丁寧な説明を心がけ、安心して通っていただけるクリニックを目指しております。
+                また、風邪や生活習慣病など内科全般の診療にも対応しておりますので、どんな些細なことでもお気軽にご相談ください。
               </p>
 
               <div className="space-y-8">

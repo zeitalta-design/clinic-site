@@ -127,26 +127,25 @@ export default function ClinicGallery() {
         ))}
       </div>
 
-      {/* 医療機器セクション（拡大表示） */}
+      {/* 医療機器セクション */}
       <div className="bg-white rounded-xl shadow-md overflow-hidden border border-[#DCEAF2] hover:shadow-lg transition-shadow">
-        <div className="flex flex-col md:flex-row">
-          {/* 画像エリア（他カードと同程度のサイズに固定） */}
-          <div className="relative aspect-video md:aspect-auto md:w-[320px] md:shrink-0 bg-[#EDF7FC]">
-            {equipError ? (
-              <Placeholder title="医療機器" />
-            ) : (
-              <Image
-                src="/images/clinic/equipment.jpg"
-                alt="医療機器"
-                fill
-                sizes="(max-width: 768px) 100vw, 320px"
-                className="object-cover"
-                onError={() => setEquipError(true)}
-              />
-            )}
-          </div>
-          {/* テキストエリア（広めに使う） */}
-          <div className="p-6 md:p-8 flex-1">
+        {/* 画像エリア（他カードと同じ aspect-video で固定、引き伸ばさない） */}
+        <div className="relative aspect-video bg-[#EDF7FC]">
+          {equipError ? (
+            <Placeholder title="医療機器" />
+          ) : (
+            <Image
+              src="/images/clinic/equipment.jpg"
+              alt="医療機器"
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover"
+              onError={() => setEquipError(true)}
+            />
+          )}
+        </div>
+        {/* テキストエリア（情報量多めを文章側で吸収） */}
+        <div className="p-5 md:p-6">
             <h3 className="font-bold text-[#2F9FD3] text-lg mb-3">
               医療機器
             </h3>
@@ -165,7 +164,6 @@ export default function ClinicGallery() {
               糖尿病や動脈硬化、神経障害の早期発見・評価に対応し、先進的な医療機器を活用した診療を行っております。
             </p>
           </div>
-        </div>
       </div>
     </div>
   );
