@@ -60,10 +60,21 @@ export default function HoursAndMap() {
                               ? "text-[#2F9FD3]"
                               : cell === "×"
                                 ? "text-gray-300"
-                                : "text-[#F3E33A]"
+                                : cell === "●"
+                                  ? "text-[#2F9FD3]"
+                                  : "text-[#F3E33A]"
                           }`}
                         >
-                          {cell}
+                          {cell === "●" ? (
+                            <span
+                              className="inline-block text-sm md:text-base leading-none text-[#2F9FD3]"
+                              aria-label="火曜午後は19時まで受付"
+                            >
+                              ●
+                            </span>
+                          ) : (
+                            cell
+                          )}
                         </td>
                       ))}
                     </tr>
@@ -75,7 +86,16 @@ export default function HoursAndMap() {
             <div className="mt-3 space-y-1">
               {HOURS_TABLE.notes.map((note, i) => (
                 <p key={i} className="text-xs text-[#666666]">
-                  {note}
+                  {note.startsWith("●") ? (
+                    <>
+                      <span className="inline-block mr-1 text-xs leading-none font-bold text-[#2F9FD3] align-middle">
+                        ●
+                      </span>
+                      {note.slice(2)}
+                    </>
+                  ) : (
+                    note
+                  )}
                 </p>
               ))}
             </div>
