@@ -11,7 +11,7 @@ import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "クリニック紹介",
-  description: "内科 高橋清仁クリニックの院内やアクセス情報、通いやすさについてご案内します。函館市美原、駐車場29台完備。",
+  description: "内科高橋清仁クリニックの院内やアクセス情報、通いやすさについてご案内します。函館市美原、駐車場29台完備。",
   alternates: { canonical: "/clinic" },
 };
 

@@ -9,7 +9,7 @@ import PageHero from "@/components/common/PageHero";
 export const metadata: Metadata = {
   title: "院長・副院長紹介",
   description:
-    "内科 高橋清仁クリニックの院長・副院長紹介ページです。地域の皆さまが安心して相談できるクリニックを目指しています。",
+    "内科高橋清仁クリニックの院長・副院長紹介ページです。地域の皆さまが安心して相談できるクリニックを目指しています。",
   alternates: { canonical: "/director" },
 };
 

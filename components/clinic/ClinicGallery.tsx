@@ -18,7 +18,7 @@ interface GalleryItem {
 const GALLERY_ITEMS: GalleryItem[] = [
   {
     src: "/images/clinic/building.jpg",
-    alt: "内科 高橋清仁クリニック 外観",
+    alt: "内科高橋清仁クリニック 外観",
     title: "外観",
     description:
       "初めての方でも迷わずご来院いただけるよう、わかりやすい外観と立地となっております。どなたでも安心してお越しいただける環境づくりを大切にしております。",

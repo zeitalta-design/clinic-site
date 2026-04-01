@@ -12,13 +12,13 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: "函館市美原の内科 , 糖尿病・代謝内科 , 内分泌内科｜内科 高橋清仁クリニック",
-    template: "%s｜内科 高橋清仁クリニック",
+    default: "函館市美原の内科 , 糖尿病・代謝内科 , 内分泌内科｜内科高橋清仁クリニック",
+    template: "%s｜内科高橋清仁クリニック",
   },
   description:
-    "函館市美原の内科 高橋清仁クリニック。内科 , 糖尿病・代謝内科 , 内分泌内科に対応し、健診結果が気になる方や体調の変化が気になる方のご相談を受け付けています。函館バス「亀田支所前」徒歩7分、駐車場29台完備。",
+    "函館市美原の内科高橋清仁クリニック。内科 , 糖尿病・代謝内科 , 内分泌内科に対応し、健診結果が気になる方や体調の変化が気になる方のご相談を受け付けています。函館バス「亀田支所前」徒歩7分、駐車場29台完備。",
   keywords: [
-    "内科 高橋清仁クリニック",
+    "内科高橋清仁クリニック",
     "函館市",
     "美原",
     "内科",
@@ -32,9 +32,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "函館市美原の内科 , 糖尿病・代謝内科 , 内分泌内科｜内科 高橋清仁クリニック",
+    title: "函館市美原の内科 , 糖尿病・代謝内科 , 内分泌内科｜内科高橋清仁クリニック",
     description:
-      "函館市美原の内科 高橋清仁クリニック。内科 , 糖尿病・代謝内科 , 内分泌内科に対応。函館バス「亀田支所前」徒歩7分、駐車場29台完備。",
+      "函館市美原の内科高橋清仁クリニック。内科 , 糖尿病・代謝内科 , 内分泌内科に対応。函館バス「亀田支所前」徒歩7分、駐車場29台完備。",
     url: SITE.url,
     siteName: SITE.name,
     locale: "ja_JP",
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "函館市美原の内科 , 糖尿病・代謝内科 , 内分泌内科｜内科 高橋清仁クリニック",
+    title: "函館市美原の内科 , 糖尿病・代謝内科 , 内分泌内科｜内科高橋清仁クリニック",
     description:
-      "函館市美原の内科 高橋清仁クリニック。内科 , 糖尿病・代謝内科 , 内分泌内科に対応。函館バス「亀田支所前」徒歩7分、駐車場29台完備。",
+      "函館市美原の内科高橋清仁クリニック。内科 , 糖尿病・代謝内科 , 内分泌内科に対応。函館バス「亀田支所前」徒歩7分、駐車場29台完備。",
   },
   robots: {
     index: true,
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "MedicalClinic",
-  name: "内科 高橋清仁クリニック",
+  name: "内科高橋清仁クリニック",
   description: SITE.description,
   url: SITE.url,
   telephone: SITE.phone,

@@ -10,7 +10,7 @@ import PageHero from "@/components/common/PageHero";
 export const metadata: Metadata = {
   title: "診療内容",
   description:
-    "内科 高橋清仁クリニックの診療内容です。糖尿病・内分泌疾患・肥満症・生活習慣病・内科全般まで幅広く診療しております。",
+    "内科高橋清仁クリニックの診療内容です。糖尿病・内分泌疾患・肥満症・生活習慣病・内科全般まで幅広く診療しております。",
   alternates: { canonical: "/services" },
 };
 

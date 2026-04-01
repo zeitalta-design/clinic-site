@@ -38,7 +38,7 @@ export async function generateMetadata({
     description: service.metaDescription,
     alternates: { canonical: `/services/${slug}` },
     openGraph: {
-      title: `${service.seoTitle}｜内科 高橋清仁クリニック`,
+      title: `${service.seoTitle}｜内科高橋清仁クリニック`,
       description: service.metaDescription,
     },
   };
