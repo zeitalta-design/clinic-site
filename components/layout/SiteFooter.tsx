@@ -91,12 +91,21 @@ export default function SiteFooter() {
                           className={`text-center py-1.5 text-sm font-medium ${
                             cell === "×"
                               ? "text-gray-400"
-                              : cell === "※"
+                              : cell === "●"
                                 ? "text-[#2F9FD3]"
                                 : "text-[#333333]"
                           }`}
                         >
-                          {cell}
+                          {cell === "●" ? (
+                            <span
+                              className="inline-block text-xs leading-none text-[#2F9FD3]"
+                              aria-label="火曜午後は19時まで受付"
+                            >
+                              ●
+                            </span>
+                          ) : (
+                            cell
+                          )}
                         </td>
                       ))}
                     </tr>
@@ -105,7 +114,18 @@ export default function SiteFooter() {
               </table>
               <div className="mt-2 text-sm text-[#4B5563] space-y-0.5">
                 {HOURS_TABLE.notes.map((note, i) => (
-                  <p key={i}>{note}</p>
+                  <p key={i}>
+                    {note.startsWith("●") ? (
+                      <>
+                        <span className="inline-block mr-1 text-xs leading-none font-bold text-[#2F9FD3] align-middle">
+                          ●
+                        </span>
+                        {note.slice(2)}
+                      </>
+                    ) : (
+                      note
+                    )}
+                  </p>
                 ))}
               </div>
             </div>
