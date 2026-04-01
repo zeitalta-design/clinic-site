@@ -25,10 +25,10 @@ const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     src: "/images/clinic/reception.jpg",
-    alt: "受付の様子",
-    title: "受付",
+    alt: "栄養相談の様子",
+    title: "栄養相談",
     description:
-      "患者さまに安心してご来院いただけるよう、スタッフが丁寧にご案内いたします。初めての方にもわかりやすく対応し、スムーズな受付を心がけております。",
+      "糖尿病や肥満症の改善に向けて、患者さま一人ひとりの生活習慣に合わせた栄養指導を行っております。無理のない継続できる食事療法をサポートいたします。",
   },
   {
     src: "/images/clinic/waiting.jpg",

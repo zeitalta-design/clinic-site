@@ -88,43 +88,32 @@ export default function FirstVisitPage() {
               お持ちいただくもの
             </h2>
             <div className="bg-[#EDF7FC] rounded-xl p-6">
-              <ul className="space-y-3 text-base md:text-lg text-[#333333]">
+              <ul className="space-y-4 text-base md:text-lg text-[#333333]">
                 {[
                   {
                     item: "健康保険証（またはマイナンバーカード）",
-                    note: "必ずお持ちください",
-                    required: true,
+                    note: "ご来院の際は必ずお持ちください",
                   },
                   {
                     item: "お薬手帳",
-                    note: "現在お薬を服用中の方",
-                    required: false,
+                    note: "現在お薬を服用中の方はお持ちください",
                   },
                   {
                     item: "健康診断の結果",
-                    note: "健診で指摘を受けた方",
-                    required: false,
+                    note: "健診で指摘を受けた方はお持ちください",
                   },
                   {
                     item: "紹介状",
-                    note: "他院からの紹介がある方",
-                    required: false,
+                    note: "他院からの紹介がある方はお持ちください",
                   },
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span
-                      className={`text-sm font-bold px-2 py-0.5 rounded shrink-0 ${
-                        item.required
-                          ? "bg-[#F3E33A] text-white"
-                          : "bg-white text-[#2F9FD3] border border-[#DCEAF2]"
-                      }`}
-                    >
-                      {item.required ? "必須" : "任意"}
-                    </span>
+                  <li key={i} className="flex items-start gap-2.5">
+                    <span className="mt-2 w-2.5 h-2.5 rounded-full bg-[#46B7E8] shrink-0" />
                     <div>
                       <span className="font-medium">{item.item}</span>
-                      <span className="text-[#4B5563] text-base ml-2">
-                        ─ {item.note}
+                      <br />
+                      <span className="text-[#4B5563] text-sm">
+                        {item.note}
                       </span>
                     </div>
                   </li>
