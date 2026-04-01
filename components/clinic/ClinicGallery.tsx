@@ -129,9 +129,9 @@ export default function ClinicGallery() {
 
       {/* 医療機器セクション（拡大表示） */}
       <div className="bg-white rounded-xl shadow-md overflow-hidden border border-[#DCEAF2] hover:shadow-lg transition-shadow">
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          {/* 画像エリア */}
-          <div className="relative aspect-video md:aspect-auto md:min-h-[320px] bg-[#EDF7FC]">
+        <div className="flex flex-col md:flex-row">
+          {/* 画像エリア（他カードと同程度のサイズに固定） */}
+          <div className="relative aspect-video md:aspect-auto md:w-[320px] md:shrink-0 bg-[#EDF7FC]">
             {equipError ? (
               <Placeholder title="医療機器" />
             ) : (
@@ -139,14 +139,14 @@ export default function ClinicGallery() {
                 src="/images/clinic/equipment.jpg"
                 alt="医療機器"
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, 320px"
                 className="object-cover"
                 onError={() => setEquipError(true)}
               />
             )}
           </div>
-          {/* テキストエリア */}
-          <div className="p-6 md:p-8">
+          {/* テキストエリア（広めに使う） */}
+          <div className="p-6 md:p-8 flex-1">
             <h3 className="font-bold text-[#2F9FD3] text-lg mb-3">
               医療機器
             </h3>

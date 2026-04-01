@@ -15,7 +15,7 @@ const SLIDES = [
   },
   {
     bg: "bg-gradient-to-br from-[#6cc8f0] to-[#46B7E8]",
-    imagePath: "/images/hero/hero-2.jpg",
+    imagePath: "/images/hero/hero-2.jpg?v=2",
   },
   {
     bg: "bg-gradient-to-br from-[#3AABDC] to-[#46B7E8]",

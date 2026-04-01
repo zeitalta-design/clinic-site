@@ -68,13 +68,13 @@ export default function ServicesPage() {
             気になる症状がございましたら、お気軽にご相談ください。
           </p>
 
-          {/* カードグリッド */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+          {/* カードグリッド（5項目：上段3枚 + 下段2枚中央寄せ） */}
+          <div className="flex flex-wrap justify-center gap-4 md:gap-5 max-w-3xl mx-auto">
             {SERVICE_CARDS.map((card) => (
               <Link
                 key={card.slug}
                 href={`/services/${card.slug}`}
-                className="group block bg-[#F8FCFE] rounded-xl border border-[#DCEAF2] border-t-[3px] border-t-[#F3E33A] p-5 md:p-6 text-center hover:shadow-lg hover:border-[#46B7E8]/30 hover:-translate-y-0.5 transition-all duration-200"
+                className="group block w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.875rem)] bg-[#F8FCFE] rounded-xl border border-[#DCEAF2] border-t-[3px] border-t-[#F3E33A] p-5 md:p-6 text-center hover:shadow-lg hover:border-[#46B7E8]/30 hover:-translate-y-0.5 transition-all duration-200"
               >
                 <div className="w-14 h-14 mx-auto mb-3 rounded-full bg-[#FFFBEB] flex items-center justify-center group-hover:bg-[#46B7E8] transition-colors duration-200">
                   <svg

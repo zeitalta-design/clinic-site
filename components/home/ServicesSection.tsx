@@ -30,12 +30,13 @@ export default function ServicesSection() {
           糖尿病や内分泌疾患の専門診療から、風邪・高血圧・生活習慣病など内科全般までご相談いただけます。
         </p>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5 mb-10">
+        {/* 上段3枚 + 下段2枚中央寄せ（flexbox） */}
+        <div className="flex flex-wrap justify-center gap-4 md:gap-5 mb-10 max-w-3xl mx-auto">
           {topServices.map((service) => (
             <Link
               key={service.slug}
               href={`/services/${service.slug}`}
-              className="group block bg-[#F8FCFE] rounded-xl border border-[#DCEAF2] border-t-[3px] border-t-[#F3E33A] p-5 md:p-6 text-center hover:shadow-lg hover:border-[#46B7E8]/30 hover:-translate-y-0.5 transition-all duration-200"
+              className="group block w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.875rem)] bg-[#F8FCFE] rounded-xl border border-[#DCEAF2] border-t-[3px] border-t-[#F3E33A] p-5 md:p-6 text-center hover:shadow-lg hover:border-[#46B7E8]/30 hover:-translate-y-0.5 transition-all duration-200"
             >
               <div className="w-14 h-14 mx-auto mb-3 rounded-full bg-[#FFFBEB] flex items-center justify-center group-hover:bg-[#46B7E8] transition-colors duration-200">
                 <svg

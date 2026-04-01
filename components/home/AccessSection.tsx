@@ -71,7 +71,7 @@ export default function AccessSection() {
                     診療科目
                   </th>
                   <td className="py-3 text-[#333333]">
-                    {SITE.departments.join("・")}
+                    {SITE.departments.join("、")}
                   </td>
                 </tr>
               </tbody>
