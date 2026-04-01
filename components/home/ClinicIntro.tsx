@@ -9,14 +9,14 @@ export default function ClinicIntro() {
     <section className="py-10 md:py-14 bg-gradient-to-b from-[#EDF7FC] to-[#f2f9fb]" aria-label="ごあいさつ">
       <div className="max-w-3xl mx-auto px-4 text-center">
         <p className="text-base md:text-lg tracking-[0.1em] text-[#D4A017] font-semibold mb-3">
-          {SITE.departments.join(",")}
+          {SITE.departments.join(" , ")}
         </p>
         <h2 className="text-xl md:text-3xl font-bold text-[#2F9FD3] mb-5 leading-snug">
           通いやすく、相談しやすいクリニックを目指しています
         </h2>
         <p className="text-base md:text-lg text-[#333333] leading-relaxed mb-6 max-w-xl mx-auto">
           {SITE.name}
-          は、函館市美原にある内科,糖尿病・代謝内科,内分泌内科のクリニックです。
+          は、函館市美原にある内科 , 糖尿病・代謝内科 , 内分泌内科のクリニックです。
           気になる症状があれば、まずは気軽にご相談いただける場所でありたいと考えています。
         </p>
         <a

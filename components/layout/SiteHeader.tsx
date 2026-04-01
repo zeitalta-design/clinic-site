@@ -20,7 +20,7 @@ export default function SiteHeader() {
       {/* 上部バー: 電話番号 + 診療科目（PC のみ） */}
       <div className="hidden md:block bg-[#46B7E8] text-white">
         <div className="max-w-6xl mx-auto px-4 py-2 flex justify-between items-center text-base">
-          <p>{SITE.departments.join(",")}</p>
+          <p>{SITE.departments.join(" , ")}</p>
           <a
             href={SITE.phoneHref}
             className="flex items-center gap-1.5 font-semibold hover:opacity-90"
@@ -62,7 +62,7 @@ export default function SiteHeader() {
               {SITE.name}
             </span>
             <span className="text-[10px] md:text-xs text-[#666666]">
-              {SITE.departments.join(",")}
+              {SITE.departments.join(" , ")}
             </span>
           </span>
         </Link>
