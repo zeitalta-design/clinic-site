@@ -3,7 +3,7 @@
  *
  * CTA方針（B案採用）:
  * - ページ下部に1回だけ電話CTAを配置
- * - 「初めての方へ」セクションはCTAなしの案内テキストのみ
+ * - 「診察について」セクションはCTAなしの案内テキストのみ
  * - アクセス情報内の電話番号は情報表示として残す
  * - フッターCTAは共通で存在する
  */
@@ -143,15 +143,15 @@ export default async function ServiceDetailPage({
             </p>
           </section>
 
-          {/* --- 初めての方へ（案内テキストのみ、CTAなし） --- */}
+          {/* --- 診察について（案内テキストのみ、CTAなし） --- */}
           <section className="bg-white border border-[#DCEAF2] rounded-xl p-6 md:p-8">
             <h3 className="text-xl font-bold text-[#2F9FD3] mb-3">
-              初めての方へ
+              診察について
             </h3>
             <p className="text-base md:text-lg text-[#333333] leading-relaxed">
-              当院は予約なしでも受診いただけます。事前にお電話いただくと、
-              待ち時間が少なくなる場合がございます。
-              保険証（またはマイナンバーカード）をお持ちのうえ、お気軽にお越しください。
+              当院は予約制ではなく、直接ご来院いただけます。
+              受付順でのご案内となりますので、初めての方も安心してお越しください。
+              混雑時にはお待ちいただく場合がありますので、あらかじめご了承ください。
             </p>
           </section>
 
