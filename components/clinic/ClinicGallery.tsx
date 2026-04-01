@@ -24,13 +24,6 @@ const GALLERY_ITEMS: GalleryItem[] = [
       "初めての方でも迷わずご来院いただけるよう、わかりやすい外観と立地となっております。どなたでも安心してお越しいただける環境づくりを大切にしております。",
   },
   {
-    src: "/images/clinic/counseling.jpg",
-    alt: "栄養相談の様子",
-    title: "栄養相談",
-    description:
-      "糖尿病や肥満症の改善に向けて、患者さま一人ひとりの生活習慣に合わせた栄養指導を行っております。無理のない継続できる食事療法をサポートいたします。",
-  },
-  {
     src: "/images/clinic/waiting.jpg",
     alt: "待合室",
     title: "待合室",
@@ -50,6 +43,13 @@ const GALLERY_ITEMS: GalleryItem[] = [
     title: "医療機器",
     description:
       "心電図・レントゲン・超音波検査・ABI検査・神経伝導検査・血糖測定機器・持続血糖測定器（FreeStyle Libre／Dexcom G7）・SAP（MiniMed 780G など）を備え、糖尿病や動脈硬化、神経障害の早期発見・評価に対応しております。",
+  },
+  {
+    src: "/images/clinic/counseling.jpg",
+    alt: "栄養相談の様子",
+    title: "栄養相談",
+    description:
+      "糖尿病や肥満症の改善に向けて、患者さま一人ひとりの生活習慣に合わせた栄養指導を行っております。無理のない継続できる食事療法をサポートいたします。",
   },
 ];
 
