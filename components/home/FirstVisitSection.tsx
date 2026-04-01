@@ -51,16 +51,32 @@ export default function FirstVisitSection() {
             <h3 className="font-bold text-[#2F9FD3] text-base md:text-lg mb-3">
               お持ちいただくもの
             </h3>
-            <ul className="text-base text-[#333333] space-y-2">
+            <ul className="text-base text-[#333333] space-y-4">
               {[
-                "健康保険証（またはマイナンバーカード）",
-                "お薬手帳（お持ちの方）",
-                "健康診断の結果（お持ちの方）",
-                "紹介状（お持ちの方）",
-              ].map((item, i) => (
+                {
+                  item: "健康保険証（またはマイナンバーカード）",
+                  note: "ご来院の際は必ずお持ちください",
+                },
+                {
+                  item: "お薬手帳",
+                  note: "現在お薬を服用中の方はお持ちください",
+                },
+                {
+                  item: "健康診断の結果",
+                  note: "健診で指摘を受けた方はお持ちください",
+                },
+                {
+                  item: "紹介状",
+                  note: "他院からの紹介がある方はお持ちください",
+                },
+              ].map((entry, i) => (
                 <li key={i} className="flex items-start gap-2.5">
                   <span className="mt-2 w-2.5 h-2.5 rounded-full bg-[#E5C71D] shrink-0" />
-                  {item}
+                  <div>
+                    <span className="font-medium">{entry.item}</span>
+                    <br />
+                    <span className="text-[#4B5563] text-sm">{entry.note}</span>
+                  </div>
                 </li>
               ))}
             </ul>

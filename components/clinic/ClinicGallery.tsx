@@ -24,7 +24,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
       "初めての方でも迷わずご来院いただけるよう、わかりやすい外観と立地となっております。どなたでも安心してお越しいただける環境づくりを大切にしております。",
   },
   {
-    src: "/images/clinic/reception.jpg",
+    src: "/images/clinic/counseling.jpg",
     alt: "栄養相談の様子",
     title: "栄養相談",
     description:
@@ -45,7 +45,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
       "患者さまに安心してご相談いただけるよう、落ち着いた雰囲気の診察室を整えております。どんな些細なことでも遠慮なくご相談いただけるよう、安心して受診していただける環境づくりを大切にしております。",
   },
   {
-    src: "/images/clinic/equipment.jpg",
+    src: "/images/clinic/device.jpg",
     alt: "医療機器",
     title: "医療機器",
     description:

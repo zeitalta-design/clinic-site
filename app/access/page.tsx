@@ -70,7 +70,7 @@ export default function AccessPage() {
                       診療科目
                     </th>
                     <td className="py-3 text-[#333333]">
-                      {SITE.departments.join("、")}
+                      {SITE.departments.join(",")}
                     </td>
                   </tr>
                   <tr className="border-b border-[#DCEAF2]">
