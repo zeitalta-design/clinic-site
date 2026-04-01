@@ -31,14 +31,14 @@ const GALLERY_ITEMS: GalleryItem[] = [
       "患者さまに安心してご来院いただけるよう、スタッフが丁寧にご案内いたします。初めての方にもわかりやすく対応し、スムーズな受付を心がけております。",
   },
   {
-    src: "/images/clinic/waiting-room.jpg",
+    src: "/images/clinic/waiting.jpg",
     alt: "待合室",
     title: "待合室",
     description:
       "患者さまに落ち着いてお待ちいただけるよう、明るく清潔感のある空間づくりを心がけております。混雑時にもできる限り快適にお過ごしいただけるよう配慮しております。",
   },
   {
-    src: "/images/clinic/examination-room.jpg",
+    src: "/images/clinic/examination.jpg",
     alt: "診察室",
     title: "診察室",
     description:
