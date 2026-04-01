@@ -9,7 +9,7 @@ import PageHero from "@/components/common/PageHero";
 export const metadata: Metadata = {
   title: "院長・副院長紹介",
   description:
-    "高橋清仁クリニックの院長・副院長紹介ページです。地域の皆さまが安心して相談できるクリニックを目指しています。",
+    "内科 高橋清仁クリニックの院長・副院長紹介ページです。地域の皆さまが安心して相談できるクリニックを目指しています。",
   alternates: { canonical: "/director" },
 };
 
@@ -28,7 +28,7 @@ export default function DirectorPage() {
         <div className="max-w-3xl mx-auto px-4">
           {/* 説明文 */}
           <p className="text-base md:text-lg text-[#333333] leading-relaxed mb-14 md:mb-16">
-            当院では、専門性と経験を活かし、地域の皆さまに安心してご相談いただける診療を大切にしています。
+            1994年の開院以来、地域の皆さまに支えられながら診療を続けてまいりました。糖尿病や甲状腺疾患、副腎・下垂体疾患などの内分泌疾患は長期的な管理が重要となることが多く、患者さま一人ひとりの生活背景や価値観に寄り添った医療を大切にしております。専門性を活かしながら、わかりやすく丁寧な説明を心がけ、安心して通っていただけるクリニックを目指しております。どんな些細なことでもお気軽にご相談ください。
           </p>
 
           <div className="space-y-16 md:space-y-20">

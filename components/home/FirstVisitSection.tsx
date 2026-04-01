@@ -18,8 +18,8 @@ export default function FirstVisitSection() {
             {[
               {
                 step: 1,
-                title: "まずはお電話",
-                desc: "予約なしでも受診できますが、お電話いただくとスムーズです。",
+                title: "直接ご来院ください",
+                desc: "予約は不要です。受付順でのご案内となります。",
               },
               {
                 step: 2,

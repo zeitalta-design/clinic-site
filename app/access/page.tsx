@@ -9,7 +9,7 @@ import { SITE, HOURS_TABLE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "アクセス",
-  description: "高橋清仁クリニックへのアクセス情報です。北海道函館市美原1丁目14番12号、函館バス「亀田支所前」徒歩7分、駐車場29台完備。",
+  description: "内科 高橋清仁クリニックへのアクセス情報です。北海道函館市美原1丁目14番12号、函館バス「亀田支所前」徒歩7分、駐車場29台完備。",
   alternates: { canonical: "/access" },
 };
 
@@ -89,10 +89,10 @@ export default function AccessPage() {
               </table>
             </div>
 
-            {/* 診療時間 */}
+            {/* 受付時間 */}
             <div>
               <h2 className="text-lg font-bold text-[#2F9FD3] mb-4">
-                診療時間
+                受付時間
               </h2>
               <div className="overflow-x-auto">
                 <table className="w-full text-base border-collapse border border-[#DCEAF2]">

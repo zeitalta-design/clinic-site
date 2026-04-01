@@ -12,7 +12,7 @@ import { FIRST_VISIT_FAQ } from "@/lib/faq-data";
 
 export const metadata: Metadata = {
   title: "初診の方へ",
-  description: "初めて受診される方へのご案内です。予約なしでも受診可能です。気になる症状があればまずはお気軽にご相談ください。",
+  description: "初めて受診される方へのご案内です。予約制ではなく直接ご来院いただけます。気になる症状があればまずはお気軽にご相談ください。",
   alternates: { canonical: "/first" },
 };
 
@@ -29,15 +29,15 @@ export default function FirstVisitPage() {
 
       <section className="py-14 md:py-16">
         <div className="max-w-3xl mx-auto px-4 space-y-12">
-          {/* 予約について */}
+          {/* 診察について */}
           <div className="bg-[#FFFEF5] border border-[#F3E33A]/30 rounded-xl p-6">
             <h2 className="text-lg font-bold text-[#2F9FD3] mb-3">
-              ご予約について
+              診察について
             </h2>
             <p className="text-base md:text-lg text-[#333333] leading-relaxed mb-4">
-              当院は予約なしでも受診いただけます。
-              ただし、事前にお電話いただくと待ち時間が少なくなる場合があります。
-              初めての方も、まずはお気軽にお電話ください。
+              当院は予約制ではなく、直接ご来院いただけます。
+              受付順でのご案内となりますので、初めての方も安心してお越しください。
+              混雑時にはお待ちいただく場合がありますので、あらかじめご了承ください。
             </p>
             <CallButton variant="accent" />
           </div>
@@ -133,10 +133,10 @@ export default function FirstVisitPage() {
             </div>
           </div>
 
-          {/* 診療時間 */}
+          {/* 受付時間 */}
           <div>
             <h2 className="text-lg font-bold text-[#2F9FD3] mb-4">
-              診療時間
+              受付時間
             </h2>
             <div className="overflow-x-auto">
               <table className="w-full text-base border-collapse border border-[#DCEAF2]">

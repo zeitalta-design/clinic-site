@@ -10,7 +10,7 @@ import PageHero from "@/components/common/PageHero";
 export const metadata: Metadata = {
   title: "診療内容",
   description:
-    "高橋清仁クリニックの診療内容です。糖尿病・内分泌疾患・肥満症・生活習慣病・循環器・呼吸器・内科全般まで幅広く診療しております。",
+    "内科 高橋清仁クリニックの診療内容です。糖尿病・内分泌疾患・肥満症・生活習慣病・内科全般まで幅広く診療しております。",
   alternates: { canonical: "/services" },
 };
 
@@ -45,24 +45,6 @@ const SERVICE_CARDS = [
     title: "生活習慣病",
     description: "健診結果が気になる方へ",
     icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
-  },
-  {
-    slug: "cardiology",
-    title: "循環器内科",
-    description: "心臓・血管の病気",
-    icon: "M13 10V3L4 14h7v7l9-11h-7z",
-  },
-  {
-    slug: "respiratory",
-    title: "呼吸器内科",
-    description: "喘息・肺の病気",
-    icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
-  },
-  {
-    slug: "smoking-cessation",
-    title: "禁煙外来",
-    description: "禁煙のサポート",
-    icon: "M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636",
   },
 ] as const;
 

@@ -14,9 +14,6 @@ const TOP_SLUGS = [
   "obesity",
   "internal-medicine",
   "lifestyle-disease",
-  "cardiology",
-  "respiratory",
-  "smoking-cessation",
 ] as const;
 
 export default function ServicesSection() {

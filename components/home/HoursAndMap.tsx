@@ -7,7 +7,7 @@ import { SITE, HOURS_TABLE } from "@/lib/site";
 
 export default function HoursAndMap() {
   return (
-    <section className="bg-white py-12 md:py-16" aria-label="診療時間とアクセス">
+    <section className="bg-white py-12 md:py-16" aria-label="受付時間とアクセス">
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {/* 診療時間表 */}
@@ -29,7 +29,7 @@ export default function HoursAndMap() {
                   />
                 </svg>
               </div>
-              診療時間
+              受付時間
             </h2>
 
             <div className="overflow-x-auto -mx-1">

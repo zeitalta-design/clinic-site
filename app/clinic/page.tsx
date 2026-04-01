@@ -11,7 +11,7 @@ import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "クリニック紹介",
-  description: "高橋清仁クリニックの院内やアクセス情報、通いやすさについてご案内します。函館市美原、駐車場29台完備。",
+  description: "内科 高橋清仁クリニックの院内やアクセス情報、通いやすさについてご案内します。函館市美原、駐車場29台完備。",
   alternates: { canonical: "/clinic" },
 };
 
@@ -69,10 +69,10 @@ export default function ClinicPage() {
             </div>
             <div className="bg-white border border-[#DCEAF2] rounded-xl p-6">
               <h3 className="font-bold text-[#2F9FD3] mb-2">
-                予約なしでも受診可能
+                予約不要で受診可能
               </h3>
               <p className="text-base text-[#333333] leading-relaxed">
-                予約なしでも受診いただけます。ご不安な方は、事前にお電話いただくとよりスムーズです。
+                当院は予約制ではなく、直接ご来院いただけます。受付順でのご案内です。
               </p>
             </div>
           </div>
