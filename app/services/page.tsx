@@ -20,7 +20,7 @@ const CATEGORIES = [
   {
     label: "専門診療",
     description: "糖尿病専門医・内分泌専門医・肥満専門医が在籍しています。",
-    slugs: ["diabetes", "thyroid", "endocrine", "obesity"],
+    slugs: ["diabetes", "endocrine", "obesity"],
   },
   {
     label: "生活習慣病",
