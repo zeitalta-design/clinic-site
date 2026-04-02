@@ -11,7 +11,7 @@ import ClinicCalendar from "@/components/home/ClinicCalendar";
 export default function NewsSection() {
   let news: NewsItem[] = [];
   try {
-    news = getPublishedNews().slice(0, 5);
+    news = getPublishedNews().slice(0, 3);
   } catch {
     news = [];
   }
