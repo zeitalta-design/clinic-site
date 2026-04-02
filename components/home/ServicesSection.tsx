@@ -7,13 +7,15 @@ import Link from "next/link";
 import SectionTitle from "@/components/common/SectionTitle";
 import { SERVICES } from "@/lib/services-data";
 
-/** トップページに表示する8項目（診療内容ページと同じ） */
+/** トップページに表示する7項目（診療内容ページと同じ） */
 const TOP_SLUGS = [
   "diabetes",
   "endocrine",
   "obesity",
-  "internal-medicine",
+  "hypertension",
+  "dyslipidemia",
   "lifestyle-disease",
+  "internal-medicine",
 ] as const;
 
 export default function ServicesSection() {
