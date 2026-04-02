@@ -35,6 +35,25 @@ export interface ServiceItem {
   relatedSlugs: string[];
   /** 関連リンクの導入文（内部リンクSEO強化用） */
   relatedText: string;
+  /** ページ上部の症状訴求ブロック（任意） */
+  symptomAlert?: {
+    heading: string;
+    symptoms: string[];
+    message: string;
+  };
+  /** 放置リスク説明ブロック（任意） */
+  riskBlock?: {
+    heading: string;
+    paragraphs: string[];
+  };
+  /** 受診の目安ブロック（任意） */
+  consultGuide?: {
+    heading: string;
+    items: string[];
+    message: string;
+  };
+  /** 追加の内部リンク導線（任意） */
+  additionalLinks?: { label: string; href: string; description: string }[];
 }
 
 export const SERVICES: ServiceItem[] = [
@@ -42,12 +61,47 @@ export const SERVICES: ServiceItem[] = [
     slug: "diabetes",
     title: "糖尿病について",
     h1: "函館市美原で糖尿病のご相談をお考えの方へ",
-    seoTitle: "函館市で糖尿病のご相談なら",
+    seoTitle: "函館市美原で糖尿病のご相談なら｜内科高橋清仁クリニック",
     cardDescription: "血糖値が気になる方へ",
     relatedSlugs: ["hypertension", "lifestyle-disease", "internal-medicine"],
     relatedText: "糖尿病だけでなく、高血圧や生活習慣病についてもご相談いただけます。",
     introduction:
-      "健診で血糖値が高いと指摘された方、のどの渇きや疲れやすさが気になる方など、糖尿病に関するお悩みをお気軽にご相談ください。食事や生活習慣の見直しも含め、一人ひとりに合ったサポートを心がけています。",
+      "函館市美原の内科高橋清仁クリニックでは、糖尿病の診断・治療・生活指導を行っています。健診で血糖値が高いと指摘された方、のどの渇きや疲れやすさが気になる方など、糖尿病に関するお悩みをお気軽にご相談ください。食事や生活習慣の見直しも含め、一人ひとりに合ったサポートを心がけています。",
+    symptomAlert: {
+      heading: "こんな症状はありませんか？",
+      symptoms: [
+        "のどがよく渇く",
+        "トイレの回数が増えた",
+        "疲れやすい",
+        "体重が減ってきた",
+        "健康診断で血糖値を指摘された",
+      ],
+      message:
+        "これらは糖尿病の可能性があります。気になる症状がある方、健康診断で血糖値を指摘された方は、お早めにご相談ください。",
+    },
+    riskBlock: {
+      heading: "糖尿病を放置するとどうなるのか",
+      paragraphs: [
+        "糖尿病は初期には自覚症状が少ないこともありますが、放置すると合併症を引き起こす可能性があります。",
+        "たとえば、網膜症・腎症・神経障害などにつながることがあるため、早期の診断と継続的な治療が大切です。「まだ大丈夫」と思わず、気になった段階で一度ご相談いただくことをおすすめします。",
+      ],
+    },
+    consultGuide: {
+      heading: "受診の目安",
+      items: [
+        "健康診断で血糖値を指摘された",
+        "ご家族に糖尿病の方がいる",
+        "最近、のどの渇きや疲れやすさが気になる",
+        "体重の変化が気になる",
+      ],
+      message:
+        "気になる症状がある方は、お早めの受診をおすすめします。函館市で糖尿病の診断・治療をご希望の方は、当院までお気軽にご相談ください。",
+    },
+    additionalLinks: [
+      { label: "初めて受診される方へ", href: "/first", description: "初診の流れやお持ちいただくものをご案内しています。" },
+      { label: "生活習慣病について", href: "/services/lifestyle-disease", description: "糖尿病を含む生活習慣病全般についてご覧いただけます。" },
+      { label: "診察時間・アクセス", href: "/access", description: "診察時間や交通アクセスをご確認いただけます。" },
+    ],
     iconPath:
       "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
     concerns: [
@@ -68,7 +122,7 @@ export const SERVICES: ServiceItem[] = [
     closingMessage:
       "糖尿病は早めの対応が大切です。「ちょっと気になるかも」という段階でも、お気軽にご相談ください。",
     metaDescription:
-      "函館市美原の内科高橋清仁クリニックでは、糖尿病についてのご相談を受け付けています。健診結果や血糖値が気になる方はお気軽にご相談ください。",
+      "函館市美原の内科高橋清仁クリニックでは、糖尿病の診断・治療を行っています。のどの渇き、疲れやすさ、健康診断で血糖値を指摘された方はお気軽にご相談ください。",
   },
   {
     slug: "internal-medicine",

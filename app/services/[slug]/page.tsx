@@ -1,11 +1,17 @@
 /**
- * 診療内容 詳細ページ（CTA整理・可読性統一版）
+ * 診療内容 詳細ページ（SEO強化版）
  *
  * CTA方針（B案採用）:
  * - ページ下部に1回だけ電話CTAを配置
  * - 「診察について」セクションはCTAなしの案内テキストのみ
  * - アクセス情報内の電話番号は情報表示として残す
  * - フッターCTAは共通で存在する
+ *
+ * SEO強化:
+ * - 症状訴求ブロック（symptomAlert）
+ * - 放置リスク説明（riskBlock）
+ * - 受診の目安（consultGuide）
+ * - 関連ページ内部リンク（additionalLinks）
  */
 
 import type { Metadata } from "next";
@@ -94,6 +100,29 @@ export default async function ServiceDetailPage({
             </p>
           </section>
 
+          {/* --- 症状訴求ブロック（SEO強化） --- */}
+          {service.symptomAlert && (
+            <section className="bg-[#FFF8E1] rounded-xl p-6 md:p-8 border border-[#E8B818]/20">
+              <h3 className="text-xl md:text-2xl font-bold text-[#333333] mb-4 flex items-center gap-2">
+                <svg className="w-6 h-6 text-[#E8B818]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                </svg>
+                {service.symptomAlert.heading}
+              </h3>
+              <ul className="space-y-2.5 mb-4">
+                {service.symptomAlert.symptoms.map((s, i) => (
+                  <li key={i} className="flex items-start gap-2.5 text-base md:text-lg text-[#333333]">
+                    <span className="mt-1.5 w-2 h-2 rounded-full bg-[#E8B818] shrink-0" />
+                    {s}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-base text-[#4B5563] leading-relaxed">
+                {service.symptomAlert.message}
+              </p>
+            </section>
+          )}
+
           {/* --- こんなことで気になる方へ --- */}
           <section className="bg-[#FFF8E1] rounded-xl p-6 md:p-8">
             <h3 className="text-xl md:text-2xl font-bold text-[#2F9FD3] mb-5">
@@ -108,6 +137,22 @@ export default async function ServiceDetailPage({
               ))}
             </ul>
           </section>
+
+          {/* --- 放置リスク説明ブロック（SEO強化） --- */}
+          {service.riskBlock && (
+            <section>
+              <h3 className="text-xl md:text-2xl font-bold text-[#2F9FD3] mb-4">
+                {service.riskBlock.heading}
+              </h3>
+              <div className="bg-white border border-[#DCEAF2] rounded-xl p-6 md:p-8">
+                {service.riskBlock.paragraphs.map((p, i) => (
+                  <p key={i} className="text-base md:text-lg text-[#333333] leading-relaxed mb-3 last:mb-0">
+                    {p}
+                  </p>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* --- クリニックでご相談いただけること --- */}
           <section>
@@ -142,6 +187,31 @@ export default async function ServiceDetailPage({
             </p>
           </section>
 
+          {/* --- 受診の目安ブロック（SEO強化） --- */}
+          {service.consultGuide && (
+            <section className="bg-[#EDF7FC] rounded-xl p-6 md:p-8 border border-[#46B7E8]/20">
+              <h3 className="text-xl md:text-2xl font-bold text-[#2F9FD3] mb-4">
+                {service.consultGuide.heading}
+              </h3>
+              <p className="text-base text-[#333333] mb-4">
+                以下のような場合は、一度ご相談ください。
+              </p>
+              <ul className="space-y-2.5 mb-4">
+                {service.consultGuide.items.map((item, i) => (
+                  <li key={i} className="flex items-start gap-2.5 text-base md:text-lg text-[#333333]">
+                    <svg className="w-5 h-5 text-[#2F9FD3] mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-base text-[#4B5563] leading-relaxed">
+                {service.consultGuide.message}
+              </p>
+            </section>
+          )}
+
           {/* --- 診察について（案内テキストのみ、CTAなし） --- */}
           <section className="bg-white border border-[#DCEAF2] rounded-xl p-6 md:p-8">
             <h3 className="text-xl font-bold text-[#2F9FD3] mb-3">
@@ -153,6 +223,31 @@ export default async function ServiceDetailPage({
               混雑時にはお待ちいただく場合がありますので、あらかじめご了承ください。
             </p>
           </section>
+
+          {/* --- 関連ページ内部リンク（SEO強化） --- */}
+          {service.additionalLinks && service.additionalLinks.length > 0 && (
+            <section>
+              <h3 className="text-xl font-bold text-[#2F9FD3] mb-4">
+                関連するご案内
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {service.additionalLinks.map((link, i) => (
+                  <Link
+                    key={i}
+                    href={link.href}
+                    className="block bg-[#F8FCFE] border border-[#DCEAF2] rounded-xl p-4 hover:shadow-md hover:border-[#46B7E8]/30 transition-all duration-200"
+                  >
+                    <p className="text-[#2F9FD3] font-bold text-base mb-1">
+                      {link.label}
+                    </p>
+                    <p className="text-sm text-[#4B5563] leading-relaxed">
+                      {link.description}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* --- アクセス案内（情報表示、CTAではない） --- */}
           <section className="bg-[#F8FCFE] rounded-xl p-6 md:p-8 border border-[#DCEAF2]">
