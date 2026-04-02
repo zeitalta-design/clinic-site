@@ -74,7 +74,6 @@ export default function ClinicCalendar() {
   const firstDay = new Date(year, month, 1);
   const startDow = firstDay.getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const todayDate = now.getDate();
   const isCurrentMonth = year === now.getFullYear() && month === now.getMonth();
 
   const weeks: (number | null)[][] = [];
@@ -211,7 +210,6 @@ export default function ClinicCalendar() {
                 }
 
                 const holiday = holidayMap.get(day);
-                const isToday = isCurrentMonth && day === todayDate;
                 const isSunday = di === 0;
                 const isSaturday = di === 6;
                 const cellStyle = holiday ? TYPE_CELL_STYLES[holiday.type] : null;
@@ -222,13 +220,11 @@ export default function ClinicCalendar() {
                       className={`mx-auto w-8 h-8 md:w-9 md:h-9 flex items-center justify-center rounded-md text-sm leading-none font-medium transition-colors ${
                         cellStyle
                           ? `${cellStyle.bg} ${cellStyle.text} font-bold`
-                          : isToday
-                            ? "bg-[#46B7E8] text-white font-bold ring-2 ring-[#46B7E8]/30"
-                            : isSunday
-                              ? "text-red-500"
-                              : isSaturday
-                                ? "text-blue-500"
-                                : "text-[#333333]"
+                          : isSunday
+                            ? "text-red-500"
+                            : isSaturday
+                              ? "text-blue-500"
+                              : "text-[#333333]"
                       }`}
                       title={
                         holiday
@@ -249,12 +245,6 @@ export default function ClinicCalendar() {
       {/* 凡例 */}
       <div className="mt-3 pt-3 border-t border-[#DCEAF2]">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
-          {isCurrentMonth && (
-            <div className="flex items-center gap-1.5">
-              <span className="w-5 h-5 rounded-md bg-[#46B7E8] inline-block" />
-              <span className="text-xs text-[#555555] font-medium">今日</span>
-            </div>
-          )}
           {LEGEND_ITEMS.map((item) => (
             <div key={item.type} className="flex items-center gap-1.5">
               <span className={`w-5 h-5 rounded-md ${item.bg} inline-block`} />
