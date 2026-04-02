@@ -12,7 +12,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: "函館市美原の内科 , 糖尿病・代謝内科 , 内分泌内科｜内科高橋清仁クリニック",
+    default: "函館市美原の内科｜糖尿病・甲状腺なら内科高橋清仁クリニック",
     template: "%s｜内科高橋清仁クリニック",
   },
   description:
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "函館市美原の内科 , 糖尿病・代謝内科 , 内分泌内科｜内科高橋清仁クリニック",
+    title: "函館市美原の内科｜糖尿病・甲状腺なら内科高橋清仁クリニック",
     description:
       "函館市美原の内科高橋清仁クリニック。内科 , 糖尿病・代謝内科 , 内分泌内科に対応。函館バス「亀田支所前」徒歩7分、駐車場29台完備。",
     url: SITE.url,
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "函館市美原の内科 , 糖尿病・代謝内科 , 内分泌内科｜内科高橋清仁クリニック",
+    title: "函館市美原の内科｜糖尿病・甲状腺なら内科高橋清仁クリニック",
     description:
       "函館市美原の内科高橋清仁クリニック。内科 , 糖尿病・代謝内科 , 内分泌内科に対応。函館バス「亀田支所前」徒歩7分、駐車場29台完備。",
   },
