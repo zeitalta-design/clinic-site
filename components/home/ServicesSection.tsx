@@ -27,7 +27,7 @@ export default function ServicesSection() {
         <SectionTitle english="Services" japanese="診療内容" />
 
         <p className="text-center text-base md:text-lg text-[#4B5563] mb-8 -mt-4">
-          糖尿病や内分泌疾患の専門診療から、風邪・高血圧・生活習慣病など内科全般までご相談いただけます。
+          糖尿病や甲状腺・内分泌疾患の専門診療から、風邪・高血圧・生活習慣病など内科全般までご相談いただけます。
         </p>
 
         {/* 上段3枚 + 下段2枚中央寄せ（flexbox） */}

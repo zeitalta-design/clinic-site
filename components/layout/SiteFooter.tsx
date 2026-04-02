@@ -61,10 +61,10 @@ export default function SiteFooter() {
               </address>
             </div>
 
-            {/* 受付時間 */}
+            {/* 診察時間 */}
             <div>
               <h3 className="text-lg font-bold text-[#2F9FD3] mb-4">
-                受付時間
+                診察時間
               </h3>
               <table className="text-base w-full">
                 <thead>

@@ -16,7 +16,6 @@ import { SITE, HOURS_TABLE } from "@/lib/site";
 import {
   getServiceBySlug,
   getAllServiceSlugs,
-  SERVICES,
 } from "@/lib/services-data";
 
 /* ----- 静的パス生成 ----- */
@@ -186,8 +185,8 @@ export default async function ServiceDetailPage({
             </Link>
           </section>
 
-          {/* --- ナビゲーション + 関連リンク --- */}
-          <section className="space-y-6">
+          {/* --- ナビゲーション --- */}
+          <section>
             <div className="flex flex-wrap justify-center gap-4 text-base">
               <Link
                 href="/services"
@@ -195,35 +194,6 @@ export default async function ServiceDetailPage({
               >
                 ← 診療内容一覧に戻る
               </Link>
-            </div>
-
-            {/* 関連する診療内容（SEO内部リンク強化） */}
-            <div>
-              <h3 className="text-lg font-bold text-[#2F9FD3] mb-2 text-center">
-                関連するご相談
-              </h3>
-              <p className="text-base text-[#4B5563] text-center mb-4">
-                {service.relatedText}
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {service.relatedSlugs
-                  .map((rs) => SERVICES.find((s) => s.slug === rs))
-                  .filter(Boolean)
-                  .map((s) => (
-                    <Link
-                      key={s!.slug}
-                      href={`/services/${s!.slug}`}
-                      className="block bg-[#EDF7FC] rounded-lg px-4 py-4 hover:bg-[#d4ecf3] transition-colors"
-                    >
-                      <p className="text-base font-bold text-[#2F9FD3] mb-1">
-                        {s!.title.replace("について", "")}
-                      </p>
-                      <p className="text-sm text-[#4B5563]">
-                        {s!.cardDescription}
-                      </p>
-                    </Link>
-                  ))}
-              </div>
             </div>
           </section>
         </div>

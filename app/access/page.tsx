@@ -89,10 +89,10 @@ export default function AccessPage() {
               </table>
             </div>
 
-            {/* 受付時間 */}
+            {/* 診察時間 */}
             <div>
               <h2 className="text-lg font-bold text-[#2F9FD3] mb-4">
-                受付時間
+                診察時間
               </h2>
               <div className="overflow-x-auto">
                 <table className="w-full text-base border-collapse border border-[#DCEAF2]">
@@ -159,6 +159,18 @@ export default function AccessPage() {
                     )}
                   </p>
                 ))}
+              </div>
+
+              {/* 受付時間について */}
+              <div className="mt-4 bg-[#EDF7FC] rounded-xl p-5 border border-[#DCEAF2]">
+                <h3 className="text-base font-bold text-[#2F9FD3] mb-2">
+                  受付時間について
+                </h3>
+                <ul className="space-y-1.5 text-base text-[#333333]">
+                  <li>午前診療　9:00〜12:00</li>
+                  <li>午後診療　14:00〜17:30</li>
+                  <li className="text-[#4B5563] text-sm">（土曜日受付17:00まで）</li>
+                </ul>
               </div>
             </div>
           </div>

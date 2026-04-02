@@ -29,17 +29,26 @@ export default function FirstVisitPage() {
 
       <section className="py-14 md:py-16">
         <div className="max-w-3xl mx-auto px-4 space-y-12">
-          {/* 診察について */}
+          {/* 初めて受診される方へ */}
           <div className="bg-[#FFFEF5] border border-[#F3E33A]/30 rounded-xl p-6">
             <h2 className="text-lg font-bold text-[#2F9FD3] mb-3">
-              診察について
+              初めて受診される方へ
             </h2>
             <p className="text-base md:text-lg text-[#333333] leading-relaxed mb-4">
-              当院は予約制ではなく、直接ご来院いただけます。
-              受付順でのご案内となりますので、初めての方も安心してお越しください。
-              混雑時にはお待ちいただく場合がありますので、あらかじめご了承ください。
+              初診の方は、受付終了時間の1時間前までにご来院をお願いいたします。
+              診察内容によりお時間を要する場合があるため、お時間に余裕をもってお越しください。
             </p>
             <CallButton variant="accent" />
+          </div>
+
+          {/* 甲状腺の検査について */}
+          <div className="bg-[#EDF7FC] border border-[#DCEAF2] rounded-xl p-6">
+            <h2 className="text-lg font-bold text-[#2F9FD3] mb-3">
+              甲状腺の検査について
+            </h2>
+            <p className="text-base md:text-lg text-[#333333] leading-relaxed">
+              甲状腺疾患の診察では、結果のご説明までに2時間前後お時間をいただく場合がございます。あらかじめご了承ください。
+            </p>
           </div>
 
           {/* 来院の流れ */}
@@ -122,10 +131,10 @@ export default function FirstVisitPage() {
             </div>
           </div>
 
-          {/* 受付時間 */}
+          {/* 診察時間 */}
           <div>
             <h2 className="text-lg font-bold text-[#2F9FD3] mb-4">
-              受付時間
+              診察時間
             </h2>
             <div className="overflow-x-auto">
               <table className="w-full text-base border-collapse border border-[#DCEAF2]">
@@ -189,6 +198,18 @@ export default function FirstVisitPage() {
                   )}
                 </p>
               ))}
+            </div>
+
+            {/* 受付時間について */}
+            <div className="mt-4 bg-[#EDF7FC] rounded-xl p-5 border border-[#DCEAF2]">
+              <h3 className="text-base font-bold text-[#2F9FD3] mb-2">
+                受付時間について
+              </h3>
+              <ul className="space-y-1.5 text-base text-[#333333]">
+                <li>午前診療　9:00〜12:00</li>
+                <li>午後診療　14:00〜17:30</li>
+                <li className="text-[#4B5563] text-sm">（土曜日受付17:00まで）</li>
+              </ul>
             </div>
           </div>
 

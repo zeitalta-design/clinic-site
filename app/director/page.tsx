@@ -57,6 +57,7 @@ export default function DirectorPage() {
                     資格
                   </h3>
                   <ul className="list-disc list-inside space-y-1.5 text-[#333333] text-base leading-relaxed">
+                    <li>医学博士</li>
                     <li>日本内科学会認定医</li>
                     <li>日本糖尿病学会専門医</li>
                     <li>日本内分泌学会専門医</li>

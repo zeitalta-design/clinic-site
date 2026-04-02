@@ -7,7 +7,7 @@ import { SITE, HOURS_TABLE } from "@/lib/site";
 
 export default function HoursAndMap() {
   return (
-    <section className="bg-white py-12 md:py-16" aria-label="受付時間とアクセス">
+    <section className="bg-white py-12 md:py-16" aria-label="診察時間とアクセス">
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {/* 診療時間表 */}
@@ -29,7 +29,7 @@ export default function HoursAndMap() {
                   />
                 </svg>
               </div>
-              受付時間
+              診察時間
             </h2>
 
             <div className="overflow-x-auto -mx-1">
@@ -98,6 +98,18 @@ export default function HoursAndMap() {
                   )}
                 </p>
               ))}
+            </div>
+
+            {/* 受付時間について */}
+            <div className="mt-5 bg-white rounded-xl p-4 border border-[#DCEAF2]">
+              <h3 className="text-sm font-bold text-[#2F9FD3] mb-2">
+                受付時間について
+              </h3>
+              <ul className="space-y-1 text-xs text-[#333333]">
+                <li>午前診療　9:00〜12:00</li>
+                <li>午後診療　14:00〜17:30</li>
+                <li className="text-[#666666]">（土曜日受付17:00まで）</li>
+              </ul>
             </div>
           </div>
 

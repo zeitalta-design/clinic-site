@@ -39,7 +39,7 @@ export default function DoctorSchedule() {
                   区分
                 </th>
                 <th className="py-3 px-2 font-bold border border-[#3AABDC]">
-                  受付時間
+                  診察時間
                 </th>
                 {DAYS.map((day) => (
                   <th
