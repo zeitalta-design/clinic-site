@@ -52,12 +52,12 @@ export default function NewsSection() {
                         </span>
                       )}
                     </div>
-                    <div>
-                      <p className="text-[#333333] text-base md:text-lg">
+                    <div className="mt-0.5 sm:mt-0">
+                      <p className="text-[#222222] text-base md:text-lg font-semibold leading-snug">
                         {item.title}
                       </p>
                       {item.body && (
-                        <p className="text-[#666666] text-base mt-1 leading-relaxed">
+                        <p className="text-[#777777] text-sm md:text-base mt-1.5 leading-relaxed">
                           {item.body}
                         </p>
                       )}
