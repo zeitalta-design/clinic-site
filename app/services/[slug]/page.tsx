@@ -39,11 +39,11 @@ export async function generateMetadata({
   const service = getServiceBySlug(slug);
   if (!service) return { title: "ページが見つかりません" };
   return {
-    title: service.seoTitle,
+    title: { absolute: service.seoTitle },
     description: service.metaDescription,
     alternates: { canonical: `/services/${slug}` },
     openGraph: {
-      title: `${service.seoTitle}｜内科高橋清仁クリニック`,
+      title: service.seoTitle,
       description: service.metaDescription,
     },
   };
