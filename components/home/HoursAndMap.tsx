@@ -147,7 +147,7 @@ export default function HoursAndMap() {
                 <p>{SITE.address}</p>
               </div>
               <iframe
-                src="https://www.google.com/maps?q=41.81241,140.75440&hl=ja&z=17&output=embed"
+                src={`https://www.google.com/maps?q=${SITE.mapQuery}&hl=ja&z=17&output=embed`}
                 className="absolute inset-0 w-full h-full border-0"
                 loading="lazy"
                 title="クリニックの地図"

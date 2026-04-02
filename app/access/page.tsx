@@ -183,7 +183,7 @@ export default function AccessPage() {
                 <p>{SITE.address}</p>
               </div>
               <iframe
-                src="https://www.google.com/maps?q=41.81241,140.75440&hl=ja&z=17&output=embed"
+                src={`https://www.google.com/maps?q=${SITE.mapQuery}&hl=ja&z=17&output=embed`}
                 className="absolute inset-0 w-full h-full border-0"
                 loading="lazy"
                 title="クリニックの地図"
@@ -192,7 +192,7 @@ export default function AccessPage() {
             </div>
             <p className="mt-2 text-base text-[#4B5563]">
               <a
-                href="https://maps.app.goo.gl/UnnQKpGhc8KbF96a8"
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SITE.name)}&query_place_id=${SITE.placeId}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#2F9FD3] hover:underline"
