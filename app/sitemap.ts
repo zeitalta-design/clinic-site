@@ -7,6 +7,8 @@ import type { MetadataRoute } from "next";
 import { SITE } from "@/lib/site";
 import { getAllServiceSlugs } from "@/lib/services-data";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE.url;
   const now = new Date().toISOString();

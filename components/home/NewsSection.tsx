@@ -1,19 +1,25 @@
 /**
  * お知らせセクション（カレンダー併設版）
  * 左: お知らせ一覧、右: 休診カレンダー
+ * データソース: microCMS（未接続時はローカルJSONフォールバック）
  */
 
-import { getPublishedNews, type NewsItem } from "@/lib/news-store";
+import { getNews, getHolidays, type CmsNewsItem, type CmsHolidayItem } from "@/lib/microcms";
 import { formatDate } from "@/lib/utils";
 import SectionTitle from "@/components/common/SectionTitle";
 import ClinicCalendar from "@/components/home/ClinicCalendar";
 
-export default function NewsSection() {
-  let news: NewsItem[] = [];
+export default async function NewsSection() {
+  let news: CmsNewsItem[] = [];
+  let holidays: CmsHolidayItem[] = [];
   try {
-    news = getPublishedNews().slice(0, 3);
+    [news, holidays] = await Promise.all([
+      getNews(3),
+      getHolidays(),
+    ]);
   } catch {
     news = [];
+    holidays = [];
   }
 
   return (
@@ -74,7 +80,12 @@ export default function NewsSection() {
 
           {/* 右: 休診カレンダー */}
           <div>
-            <ClinicCalendar />
+            <ClinicCalendar holidays={holidays.map(h => ({
+              id: h.id,
+              date: h.date,
+              type: Array.isArray(h.type) ? h.type[0] : (h.type as string),
+              label: h.label,
+            }))} />
           </div>
         </div>
       </div>

@@ -8,15 +8,19 @@
 
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState } from "react";
 
 type HolidayType = "休診" | "午前休" | "午後休" | "臨時休診";
 
 interface HolidayItem {
   id: string;
   date: string;
-  type: HolidayType;
+  type: HolidayType | string;
   label?: string;
+}
+
+interface ClinicCalendarProps {
+  holidays?: HolidayItem[];
 }
 
 /** 種別ごとの背景色（日付セル用） - 落ち着いた色味 */
@@ -36,26 +40,10 @@ const LEGEND_ITEMS: { type: string; bg: string; text: string; label: string }[] 
 
 const WEEKDAY_LABELS = ["日", "月", "火", "水", "木", "金", "土"];
 
-export default function ClinicCalendar() {
+export default function ClinicCalendar({ holidays = [] }: ClinicCalendarProps) {
   const now = new Date();
   const [year, setYear] = useState(now.getFullYear());
   const [month, setMonth] = useState(now.getMonth()); // 0-indexed
-  const [holidays, setHolidays] = useState<HolidayItem[]>([]);
-
-  const fetchHolidays = useCallback(async () => {
-    try {
-      const res = await fetch("/api/holidays");
-      if (res.ok) {
-        setHolidays(await res.json());
-      }
-    } catch {
-      setHolidays([]);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchHolidays();
-  }, [fetchHolidays]);
 
   // 表示月の休診日をフィルタ
   const monthHolidays = holidays.filter((h) => {
@@ -212,7 +200,7 @@ export default function ClinicCalendar() {
                 const holiday = holidayMap.get(day);
                 const isSunday = di === 0;
                 const isSaturday = di === 6;
-                const cellStyle = holiday ? TYPE_CELL_STYLES[holiday.type] : null;
+                const cellStyle = holiday && holiday.type in TYPE_CELL_STYLES ? TYPE_CELL_STYLES[holiday.type as HolidayType] : null;
 
                 return (
                   <td key={di} className="py-0.5">
@@ -258,7 +246,7 @@ export default function ClinicCalendar() {
       {monthHolidays.length > 0 && (
         <div className="mt-3 space-y-1">
           {monthHolidays.map((h) => {
-            const style = TYPE_CELL_STYLES[h.type];
+            const style = h.type in TYPE_CELL_STYLES ? TYPE_CELL_STYLES[h.type as HolidayType] : TYPE_CELL_STYLES["休診"];
             return (
               <div key={h.id} className="flex items-center gap-2 text-xs">
                 <span className={`px-1.5 py-0.5 rounded text-xs font-bold ${style.bg} ${style.text}`}>
