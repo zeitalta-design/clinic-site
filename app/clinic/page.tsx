@@ -56,7 +56,7 @@ export default function ClinicPage() {
                 火曜は夜間も診療
               </h3>
               <p className="text-base text-[#333333] leading-relaxed">
-                火曜日は19:30まで受付しています。お仕事や学校の後でも受診しやすい体制です。
+                火曜日は19:30まで診察しています。お仕事や学校の後でも受診しやすい体制です。
               </p>
             </div>
             <div className="bg-white border border-[#DCEAF2] rounded-xl p-6">
