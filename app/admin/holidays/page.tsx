@@ -1,5 +1,5 @@
 /**
- * お知らせ管理画面
+ * 休院日管理画面
  * CRUD + 公開/非公開切り替え
  */
 "use client";
@@ -8,46 +8,62 @@ import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-interface NewsItem {
+type HolidayType = "休診" | "午前休" | "午後休" | "臨時休診";
+
+interface HolidayItem {
   id: string;
-  title: string;
   date: string;
-  category?: string;
-  body?: string;
+  type: HolidayType;
+  label?: string;
+  note?: string;
   isPublished: boolean;
   createdAt?: string;
   updatedAt?: string;
 }
 
-export default function AdminNewsPage() {
-  const [news, setNews] = useState<NewsItem[]>([]);
+const TYPE_OPTIONS: HolidayType[] = ["休診", "午前休", "午後休", "臨時休診"];
+
+const TYPE_COLORS: Record<HolidayType, string> = {
+  休診: "bg-red-50 text-red-600 border border-red-200",
+  午前休: "bg-amber-50 text-amber-600 border border-amber-200",
+  午後休: "bg-blue-50 text-blue-600 border border-blue-200",
+  臨時休診: "bg-purple-50 text-purple-600 border border-purple-200",
+};
+
+export default function AdminHolidaysPage() {
+  const [holidays, setHolidays] = useState<HolidayItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   const [editingId, setEditingId] = useState<string | null>(null);
-  const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
-  const [category, setCategory] = useState("お知らせ");
-  const [body, setBody] = useState("");
+  const [type, setType] = useState<HolidayType>("休診");
+  const [label, setLabel] = useState("");
+  const [note, setNote] = useState("");
   const [isPublished, setIsPublished] = useState(true);
   const [saving, setSaving] = useState(false);
 
   const router = useRouter();
 
-  const fetchNews = useCallback(async () => {
+  const fetchHolidays = useCallback(async () => {
     try {
-      const res = await fetch("/api/admin/news");
-      if (res.status === 401) { router.push("/admin/login"); return; }
+      const res = await fetch("/api/admin/holidays");
+      if (res.status === 401) {
+        router.push("/admin/login");
+        return;
+      }
       if (!res.ok) throw new Error("取得失敗");
-      setNews(await res.json());
+      setHolidays(await res.json());
     } catch {
-      setError("お知らせの取得に失敗しました");
+      setError("休院日の取得に失敗しました");
     } finally {
       setLoading(false);
     }
   }, [router]);
 
-  useEffect(() => { fetchNews(); }, [fetchNews]);
+  useEffect(() => {
+    fetchHolidays();
+  }, [fetchHolidays]);
 
   useEffect(() => {
     if (!date) setDate(new Date().toISOString().split("T")[0]);
@@ -55,10 +71,10 @@ export default function AdminNewsPage() {
 
   const resetForm = () => {
     setEditingId(null);
-    setTitle("");
     setDate(new Date().toISOString().split("T")[0]);
-    setCategory("お知らせ");
-    setBody("");
+    setType("休診");
+    setLabel("");
+    setNote("");
     setIsPublished(true);
   };
 
@@ -68,15 +84,25 @@ export default function AdminNewsPage() {
     setError("");
     try {
       const method = editingId ? "PUT" : "POST";
-      const res = await fetch("/api/admin/news", {
+      const res = await fetch("/api/admin/holidays", {
         method,
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: editingId, title, date, category, body, isPublished }),
+        body: JSON.stringify({
+          id: editingId,
+          date,
+          type,
+          label: label || undefined,
+          note: note || undefined,
+          isPublished,
+        }),
       });
-      if (res.status === 401) { router.push("/admin/login"); return; }
+      if (res.status === 401) {
+        router.push("/admin/login");
+        return;
+      }
       if (!res.ok) throw new Error("保存失敗");
       resetForm();
-      await fetchNews();
+      await fetchHolidays();
     } catch {
       setError("保存に失敗しました");
     } finally {
@@ -84,41 +110,48 @@ export default function AdminNewsPage() {
     }
   };
 
-  const handleEdit = (item: NewsItem) => {
+  const handleEdit = (item: HolidayItem) => {
     setEditingId(item.id);
-    setTitle(item.title);
     setDate(item.date);
-    setCategory(item.category || "お知らせ");
-    setBody(item.body || "");
+    setType(item.type);
+    setLabel(item.label || "");
+    setNote(item.note || "");
     setIsPublished(item.isPublished);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleTogglePublish = async (item: NewsItem) => {
+  const handleTogglePublish = async (item: HolidayItem) => {
     try {
-      const res = await fetch("/api/admin/news", {
+      const res = await fetch("/api/admin/holidays", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: item.id, isPublished: !item.isPublished }),
       });
-      if (res.status === 401) { router.push("/admin/login"); return; }
+      if (res.status === 401) {
+        router.push("/admin/login");
+        return;
+      }
       if (!res.ok) throw new Error("変更失敗");
-      await fetchNews();
+      await fetchHolidays();
     } catch {
       setError("公開状態の変更に失敗しました");
     }
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm("このお知らせを削除しますか？")) return;
+    if (!confirm("この休院日を削除しますか？")) return;
     try {
-      const res = await fetch("/api/admin/news", {
+      const res = await fetch("/api/admin/holidays", {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id }),
       });
-      if (res.status === 401) { router.push("/admin/login"); return; }
+      if (res.status === 401) {
+        router.push("/admin/login");
+        return;
+      }
       if (!res.ok) throw new Error("削除失敗");
-      await fetchNews();
+      await fetchHolidays();
     } catch {
       setError("削除に失敗しました");
     }
@@ -129,16 +162,26 @@ export default function AdminNewsPage() {
     router.push("/admin/login");
   };
 
+  const formatDateLabel = (d: string) => {
+    try {
+      const dt = new Date(d + "T00:00:00");
+      const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+      return `${dt.getFullYear()}/${String(dt.getMonth() + 1).padStart(2, "0")}/${String(dt.getDate()).padStart(2, "0")}（${weekdays[dt.getDay()]}）`;
+    } catch {
+      return d;
+    }
+  };
+
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-[#2F9FD3]">お知らせ管理</h1>
+        <h1 className="text-2xl font-bold text-[#2F9FD3]">休院日管理</h1>
         <div className="flex items-center gap-4">
           <Link
-            href="/admin/holidays"
+            href="/admin/news"
             className="text-base text-[#2F9FD3] hover:underline"
           >
-            休院日管理
+            お知らせ管理
           </Link>
           <button
             onClick={handleLogout}
@@ -155,10 +198,10 @@ export default function AdminNewsPage() {
         </p>
       )}
 
-      {/* 投稿フォーム */}
+      {/* 登録フォーム */}
       <div className="bg-[#EDF7FC] rounded-xl p-6 mb-8">
         <h2 className="font-bold text-[#2F9FD3] text-lg mb-4">
-          {editingId ? "お知らせを編集" : "新しいお知らせ"}
+          {editingId ? "休院日を編集" : "新しい休院日"}
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -176,48 +219,48 @@ export default function AdminNewsPage() {
             </div>
             <div>
               <label className="block text-base font-medium text-[#333333] mb-1">
-                カテゴリ
+                種別
               </label>
               <select
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
+                value={type}
+                onChange={(e) => setType(e.target.value as HolidayType)}
                 className="w-full px-4 py-3 border border-[#DCEAF2] rounded-lg text-base text-[#333333]"
               >
-                <option value="お知らせ">お知らせ</option>
-                <option value="休診">休診</option>
-                <option value="重要">重要</option>
+                {TYPE_OPTIONS.map((t) => (
+                  <option key={t} value={t}>
+                    {t}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
           <div>
             <label className="block text-base font-medium text-[#333333] mb-1">
-              タイトル
+              表示ラベル（任意）
             </label>
             <input
               type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required
-              maxLength={100}
+              value={label}
+              onChange={(e) => setLabel(e.target.value)}
+              maxLength={50}
               className="w-full px-4 py-3 border border-[#DCEAF2] rounded-lg text-base text-[#333333]"
-              placeholder="お知らせのタイトル"
+              placeholder="例: 年末年始休診"
             />
           </div>
           <div>
             <label className="block text-base font-medium text-[#333333] mb-1">
-              本文（任意・短文）
+              補足メモ（任意）
             </label>
             <textarea
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
-              maxLength={500}
-              rows={3}
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
+              maxLength={200}
+              rows={2}
               className="w-full px-4 py-3 border border-[#DCEAF2] rounded-lg text-base text-[#333333]"
               placeholder="補足事項があれば記入"
             />
           </div>
 
-          {/* 公開/非公開 */}
           <div className="flex items-center gap-3">
             <label className="flex items-center gap-2 cursor-pointer">
               <input
@@ -232,7 +275,7 @@ export default function AdminNewsPage() {
             </label>
             {!isPublished && (
               <span className="text-base text-[#4B5563]">
-                （非公開：トップページに表示されません）
+                （非公開：カレンダーに表示されません）
               </span>
             )}
           </div>
@@ -259,16 +302,18 @@ export default function AdminNewsPage() {
       </div>
 
       {/* 一覧 */}
-      <h2 className="font-bold text-[#2F9FD3] text-lg mb-4">登録済みお知らせ</h2>
+      <h2 className="font-bold text-[#2F9FD3] text-lg mb-4">
+        登録済み休院日
+      </h2>
       {loading ? (
         <p className="text-[#4B5563] text-base">読み込み中...</p>
-      ) : news.length === 0 ? (
+      ) : holidays.length === 0 ? (
         <p className="text-[#4B5563] text-base py-4">
-          お知らせはまだ登録されていません
+          休院日はまだ登録されていません
         </p>
       ) : (
         <ul className="space-y-3">
-          {news.map((item) => (
+          {holidays.map((item) => (
             <li
               key={item.id}
               className={`bg-white border rounded-lg p-4 ${
@@ -280,14 +325,14 @@ export default function AdminNewsPage() {
               <div className="flex items-start justify-between gap-3">
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-2 mb-1">
-                    <span className="text-base text-[#4B5563] font-medium">
-                      {item.date}
+                    <span className="text-base text-[#333333] font-bold">
+                      {formatDateLabel(item.date)}
                     </span>
-                    {item.category && (
-                      <span className="text-sm px-2 py-0.5 bg-[#EDF7FC] text-[#2F9FD3] rounded">
-                        {item.category}
-                      </span>
-                    )}
+                    <span
+                      className={`text-sm px-2.5 py-0.5 rounded-full font-medium ${TYPE_COLORS[item.type]}`}
+                    >
+                      {item.type}
+                    </span>
                     <span
                       className={`text-sm px-2 py-0.5 rounded font-medium ${
                         item.isPublished
@@ -298,18 +343,13 @@ export default function AdminNewsPage() {
                       {item.isPublished ? "公開中" : "非公開"}
                     </span>
                   </div>
-                  <p className="text-base font-medium text-[#333333]">
-                    {item.title}
-                  </p>
-                  {item.body && (
-                    <p className="text-base text-[#4B5563] mt-1 line-clamp-2">
-                      {item.body}
+                  {item.label && (
+                    <p className="text-base font-medium text-[#333333]">
+                      {item.label}
                     </p>
                   )}
-                  {item.updatedAt && (
-                    <p className="text-sm text-[#4B5563] mt-1">
-                      更新: {new Date(item.updatedAt).toLocaleString("ja-JP")}
-                    </p>
+                  {item.note && (
+                    <p className="text-sm text-[#4B5563] mt-1">{item.note}</p>
                   )}
                 </div>
                 <div className="flex flex-col gap-2 shrink-0">
