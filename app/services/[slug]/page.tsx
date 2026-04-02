@@ -187,6 +187,22 @@ export default async function ServiceDetailPage({
             </p>
           </section>
 
+          {/* --- 追加コンテンツセクション（SEO強化） --- */}
+          {service.extraSections && service.extraSections.length > 0 && (
+            <div className="space-y-8">
+              {service.extraSections.map((sec, i) => (
+                <section key={i}>
+                  <h3 className="text-xl md:text-2xl font-bold text-[#2F9FD3] mb-3">
+                    {sec.heading}
+                  </h3>
+                  <p className="text-base md:text-lg text-[#333333] leading-relaxed">
+                    {sec.content}
+                  </p>
+                </section>
+              ))}
+            </div>
+          )}
+
           {/* --- 受診の目安ブロック（SEO強化） --- */}
           {service.consultGuide && (
             <section className="bg-[#EDF7FC] rounded-xl p-6 md:p-8 border border-[#46B7E8]/20">

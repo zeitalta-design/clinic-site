@@ -5,6 +5,7 @@
 
 import type { Metadata } from "next";
 import PageHero from "@/components/common/PageHero";
+import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "院長・副院長紹介",
@@ -13,9 +14,38 @@ export const metadata: Metadata = {
   alternates: { canonical: "/director" },
 };
 
+/** Physician JSON-LD */
+const physicianJsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Physician",
+    name: "高橋 清仁",
+    jobTitle: "院長",
+    medicalSpecialty: ["内科", "糖尿病・代謝内科", "内分泌内科"],
+    qualifications: ["医学博士", "日本内科学会認定医", "日本糖尿病学会専門医", "日本内分泌学会専門医"],
+    worksFor: { "@type": "MedicalClinic", name: SITE.name, url: SITE.url },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Physician",
+    name: "高橋 清彦",
+    jobTitle: "副院長",
+    medicalSpecialty: ["内科", "糖尿病・代謝内科", "内分泌内科"],
+    qualifications: ["医学博士", "日本内科学会認定医", "日本内科学会総合内科専門医", "日本糖尿病学会専門医", "日本内分泌学会専門医", "日本肥満学会専門医"],
+    worksFor: { "@type": "MedicalClinic", name: SITE.name, url: SITE.url },
+  },
+];
+
 export default function DirectorPage() {
   return (
     <>
+      {physicianJsonLd.map((ld, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }}
+        />
+      ))}
       <PageHero
         title="院長・副院長紹介"
         breadcrumbs={[

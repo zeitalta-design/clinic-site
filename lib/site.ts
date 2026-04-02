@@ -9,7 +9,7 @@ export const SITE = {
   nameKana: "たかはしきよひとクリニック",
   description:
     "北海道函館市の内科 , 糖尿病・代謝内科 , 内分泌内科。内科高橋清仁クリニックは地域の皆さまのかかりつけ医として、体調の不安やお悩みに寄り添います。",
-  url: "https://takahashi-kiyohito-clinic.jp",
+  url: "https://takahashi-diabetes.com",
   phone: "0138-40-5100",
   phoneHref: "tel:0138405100",
   zip: "〒041-0806",
