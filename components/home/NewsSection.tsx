@@ -83,7 +83,7 @@ export default async function NewsSection() {
             <ClinicCalendar holidays={holidays.map(h => ({
               id: h.id,
               date: h.date,
-              type: Array.isArray(h.type) ? h.type[0] : (h.type as string),
+              type: h.type,
               label: h.label,
             }))} />
           </div>

@@ -48,7 +48,8 @@ export type HolidayType = "休診" | "午前休" | "午後休" | "臨時休診";
 export interface CmsHolidayItem {
   id: string;
   date: string;
-  type: HolidayType[];
+  /** microCMS セレクトフィールド（単一選択 = 文字列） */
+  type: HolidayType;
   label?: string;
   note?: string;
   publishedAt: string;
