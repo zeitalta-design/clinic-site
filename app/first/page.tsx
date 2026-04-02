@@ -75,7 +75,7 @@ export default function FirstVisitPage() {
                 },
               ].map((item) => (
                 <div key={item.step} className="flex gap-4">
-                  <div className="w-10 h-10 rounded-full bg-[#E8B818] text-[#333333] flex items-center justify-center text-lg font-bold shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#F3E33A] text-[#333333] flex items-center justify-center text-lg font-bold shrink-0">
                     {item.step}
                   </div>
                   <div>
