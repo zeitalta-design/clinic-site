@@ -40,7 +40,7 @@ export default function NewsSection() {
                       </time>
                       {item.category && (
                         <span
-                          className={`text-xs px-2.5 py-0.5 rounded-full font-medium ${
+                          className={`inline-block min-w-[4.5rem] text-center text-xs px-2.5 py-0.5 rounded-full font-medium ${
                             item.category === "重要"
                               ? "bg-red-50 text-red-600 border border-red-200"
                               : item.category === "休診"
