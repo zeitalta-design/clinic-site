@@ -183,7 +183,7 @@ export default function AccessPage() {
                 <p>{SITE.address}</p>
               </div>
               <iframe
-                src={`https://www.google.com/maps?q=${SITE.mapQuery}&hl=ja&z=17&output=embed`}
+                src={`https://www.google.com/maps?q=${SITE.latitude},${SITE.longitude}&hl=ja&z=17&output=embed`}
                 className="absolute inset-0 w-full h-full border-0"
                 loading="lazy"
                 title="クリニックの地図"

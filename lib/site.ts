@@ -18,9 +18,9 @@ export const SITE = {
   parking: "駐車場29台完備",
   departments: ["内科", "糖尿病・代謝内科", "内分泌内科"],
   mapQuery: "内科高橋清仁クリニック+函館市美原1丁目14番12号",
-  /** Google Place ID（地図埋め込みで安定した位置指定に使用） */
+  /** Google Place ID（外部リンクで使用。将来Embed API導入時にiframeでも使用） */
   placeId: "ChIJYad4dyX0nl8R8mUfWI6Wv7Y",
-  /** 緯度経度（JSON-LD用） */
+  /** 緯度経度（iframe埋め込み・JSON-LD共通。Embed API導入時はplaceIdに移行） */
   latitude: 41.81241,
   longitude: 140.75440,
 } as const;
