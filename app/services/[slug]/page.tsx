@@ -310,14 +310,39 @@ export default async function ServiceDetailPage({
             </Link>
           </section>
 
-          {/* --- ナビゲーション --- */}
-          <section>
-            <div className="flex flex-wrap justify-center gap-4 text-base">
+          {/* --- 共通導線（全ページ共通） --- */}
+          <section className="bg-[#EDF7FC] rounded-xl p-6 md:p-8">
+            <h3 className="text-lg font-bold text-[#2F9FD3] mb-4 text-center">
+              ご受診をお考えの方へ
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <Link
+                href="/first"
+                className="block bg-white border border-[#DCEAF2] rounded-lg p-3 text-center hover:shadow-md transition-shadow"
+              >
+                <p className="text-sm font-bold text-[#2F9FD3]">初めての方へ</p>
+                <p className="text-xs text-[#4B5563] mt-1">初診のご案内</p>
+              </Link>
+              <Link
+                href="/access"
+                className="block bg-white border border-[#DCEAF2] rounded-lg p-3 text-center hover:shadow-md transition-shadow"
+              >
+                <p className="text-sm font-bold text-[#2F9FD3]">アクセス</p>
+                <p className="text-xs text-[#4B5563] mt-1">診察時間・地図</p>
+              </Link>
+              <Link
+                href="/director"
+                className="block bg-white border border-[#DCEAF2] rounded-lg p-3 text-center hover:shadow-md transition-shadow"
+              >
+                <p className="text-sm font-bold text-[#2F9FD3]">医師紹介</p>
+                <p className="text-xs text-[#4B5563] mt-1">院長・副院長</p>
+              </Link>
               <Link
                 href="/services"
-                className="text-[#2F9FD3] font-medium hover:underline"
+                className="block bg-white border border-[#DCEAF2] rounded-lg p-3 text-center hover:shadow-md transition-shadow"
               >
-                ← 診療内容一覧に戻る
+                <p className="text-sm font-bold text-[#2F9FD3]">診療内容一覧</p>
+                <p className="text-xs text-[#4B5563] mt-1">全診療科目</p>
               </Link>
             </div>
           </section>
