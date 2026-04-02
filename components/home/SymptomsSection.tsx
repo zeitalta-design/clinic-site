@@ -25,33 +25,33 @@ const SYMPTOMS = [
 
 export default function SymptomsSection() {
   return (
-    <section className="py-16 md:py-20 bg-[#FFF8E1]" aria-label="こんな症状の方はご相談ください">
+    <section className="py-10 md:py-14 bg-[#FFF8E1]" aria-label="こんな症状の方はご相談ください">
       <div className="max-w-4xl mx-auto px-4">
         <SectionTitle
           english="Symptoms"
           japanese="こんな症状の方はご相談ください"
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
+        <ul className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-2 md:gap-2.5 mb-8">
           {SYMPTOMS.map((s, i) => (
-            <div
+            <li
               key={i}
-              className="flex items-center gap-3 bg-white rounded-lg px-5 py-4 border border-[#DCEAF2]"
+              className="flex items-start gap-2 bg-white rounded-lg px-3 py-2 border border-yellow-200 shadow-sm"
             >
-              <span className="w-3 h-3 rounded-full bg-[#E5C71D] shrink-0" />
-              <span className="text-base md:text-lg text-[#333333] leading-relaxed">{s}</span>
-            </div>
+              <span className="w-2 h-2 mt-[5px] rounded-full bg-[#E5C71D] shrink-0" />
+              <span className="text-sm md:text-base text-[#333333] leading-snug">{s}</span>
+            </li>
           ))}
-        </div>
+        </ul>
 
         <div className="text-center">
-          <p className="text-[#4B5563] text-base md:text-lg mb-5 max-w-md mx-auto leading-relaxed">
+          <p className="text-[#4B5563] text-sm md:text-base mb-4 max-w-md mx-auto leading-relaxed">
             「こんなことで受診していいのかな？」と迷ったら、
             まずはお気軽にお電話ください。
           </p>
           <a
             href={SITE.phoneHref}
-            className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#46B7E8] text-white font-bold rounded-lg shadow-md hover:shadow-lg hover:opacity-95 transition-all text-lg"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#46B7E8] text-white font-bold rounded-lg shadow-md hover:shadow-lg hover:opacity-95 transition-all text-base"
           >
             <svg
               className="w-6 h-6"
