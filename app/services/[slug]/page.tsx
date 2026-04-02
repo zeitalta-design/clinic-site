@@ -103,40 +103,22 @@ export default async function ServiceDetailPage({
           {/* --- 症状訴求ブロック（SEO強化） --- */}
           {service.symptomAlert && (
             <section className="bg-[#FFF8E1] rounded-xl p-6 md:p-8 border border-[#E8B818]/20">
-              <h3 className="text-xl md:text-2xl font-bold text-[#333333] mb-4 flex items-center gap-2">
-                <svg className="w-6 h-6 text-[#E8B818]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" />
-                </svg>
+              <h3 className="text-xl md:text-2xl font-bold text-[#2F9FD3] mb-5">
                 {service.symptomAlert.heading}
               </h3>
-              <ul className="space-y-2.5 mb-4">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {service.symptomAlert.symptoms.map((s, i) => (
                   <li key={i} className="flex items-start gap-2.5 text-base md:text-lg text-[#333333]">
-                    <span className="mt-1.5 w-2 h-2 rounded-full bg-[#E8B818] shrink-0" />
+                    <span className="mt-2 w-2.5 h-2.5 rounded-full bg-[#E5C71D] shrink-0" />
                     {s}
                   </li>
                 ))}
               </ul>
-              <p className="text-base text-[#4B5563] leading-relaxed">
+              <p className="mt-4 text-base text-[#4B5563] leading-relaxed">
                 {service.symptomAlert.message}
               </p>
             </section>
           )}
-
-          {/* --- こんなことで気になる方へ --- */}
-          <section className="bg-[#FFF8E1] rounded-xl p-6 md:p-8">
-            <h3 className="text-xl md:text-2xl font-bold text-[#2F9FD3] mb-5">
-              こんなことが気になっていませんか？
-            </h3>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {service.concerns.map((c, i) => (
-                <li key={i} className="flex items-start gap-2.5 text-base md:text-lg text-[#333333]">
-                  <span className="mt-2 w-2.5 h-2.5 rounded-full bg-[#E5C71D] shrink-0" />
-                  {c}
-                </li>
-              ))}
-            </ul>
-          </section>
 
           {/* --- 放置リスク説明ブロック（SEO強化） --- */}
           {service.riskBlock && (

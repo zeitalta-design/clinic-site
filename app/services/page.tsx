@@ -11,7 +11,7 @@ import { SERVICES } from "@/lib/services-data";
 export const metadata: Metadata = {
   title: { absolute: "函館市美原の診療内容一覧｜内科高橋清仁クリニック" },
   description:
-    "函館市美原の内科高橋清仁クリニックの診療内容です。糖尿病・甲状腺・内分泌疾患・高血圧・脂質異常症・肥満症・骨粗しょう症・生活習慣病・内科全般まで幅広く診療しております。",
+    "函館市美原の内科高橋清仁クリニックの診療内容です。糖尿病・甲状腺・内分泌疾患・高血圧・脂質異常症・肥満症・生活習慣病・内科全般まで幅広く診療しております。",
   alternates: { canonical: "/services" },
 };
 
@@ -25,7 +25,7 @@ const CATEGORIES = [
   {
     label: "生活習慣病",
     description: "健診で指摘された方、数値が気になる方はご相談ください。",
-    slugs: ["hypertension", "dyslipidemia", "lifestyle-disease", "osteoporosis"],
+    slugs: ["hypertension", "dyslipidemia", "lifestyle-disease"],
   },
   {
     label: "一般内科",
@@ -51,7 +51,7 @@ export default function ServicesPage() {
           <div className="text-center max-w-2xl mx-auto mb-12">
             <p className="text-base md:text-lg text-[#333333] leading-relaxed">
               内科高橋清仁クリニックでは、糖尿病・甲状腺・内分泌疾患をはじめ、
-              高血圧・脂質異常症・骨粗しょう症・肥満症などの生活習慣病、
+              高血圧・脂質異常症・肥満症などの生活習慣病、
               内科全般まで幅広く診療しております。
             </p>
             <p className="text-base text-[#4B5563] mt-3">
