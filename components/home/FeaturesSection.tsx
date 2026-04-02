@@ -21,7 +21,7 @@ const FEATURES = [
   {
     title: "火曜は夜間も診療",
     description:
-      "火曜日は19:00まで受付しています。お仕事帰りや学校帰りでも受診しやすい体制です。",
+      "火曜日は19:30まで受付しています。お仕事帰りや学校帰りでも受診しやすい体制です。",
     icon: (
       <svg className="w-9 h-9" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
         {/* 月＋時計（夜間診療） */}

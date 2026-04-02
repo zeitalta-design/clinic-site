@@ -167,9 +167,9 @@ export default function AccessPage() {
                   受付時間について
                 </h3>
                 <ul className="space-y-1.5 text-base text-[#333333]">
-                  <li>午前のみ　9:00〜12:00</li>
-                  <li>午後のみ　14:00〜16:30</li>
-                  <li className="text-[#4B5563] text-sm">（火曜午後は19:00まで受付）</li>
+                  <li>午前のみ　9:00〜12:30</li>
+                  <li>午後のみ　14:00〜17:00</li>
+                  <li className="text-[#4B5563] text-sm">（火曜午後は19:30まで受付）</li>
                 </ul>
               </div>
             </div>

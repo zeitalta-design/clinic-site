@@ -97,7 +97,17 @@ export default function ClinicCalendar() {
     weeks.push(currentWeek);
   }
 
+  // 今月と翌月のみ表示可能
+  const currentY = now.getFullYear();
+  const currentM = now.getMonth();
+  const nextM = currentM === 11 ? 0 : currentM + 1;
+  const nextY = currentM === 11 ? currentY + 1 : currentY;
+
+  const canGoPrev = !(year === currentY && month === currentM);
+  const canGoNext = !(year === nextY && month === nextM);
+
   const goPrev = () => {
+    if (!canGoPrev) return;
     if (month === 0) {
       setYear(year - 1);
       setMonth(11);
@@ -107,6 +117,7 @@ export default function ClinicCalendar() {
   };
 
   const goNext = () => {
+    if (!canGoNext) return;
     if (month === 11) {
       setYear(year + 1);
       setMonth(0);
@@ -115,18 +126,16 @@ export default function ClinicCalendar() {
     }
   };
 
-  const goToday = () => {
-    setYear(now.getFullYear());
-    setMonth(now.getMonth());
-  };
-
   return (
     <div className="bg-white rounded-xl border border-[#DCEAF2] p-4 md:p-5">
       {/* ヘッダー: 月送りナビ */}
       <div className="flex items-center justify-between mb-3">
         <button
           onClick={goPrev}
-          className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#EDF7FC] transition-colors text-[#2F9FD3]"
+          disabled={!canGoPrev}
+          className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors ${
+            canGoPrev ? "hover:bg-[#EDF7FC] text-[#2F9FD3]" : "text-[#D0D0D0] cursor-default"
+          }`}
           aria-label="前月"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
@@ -158,7 +167,10 @@ export default function ClinicCalendar() {
 
         <button
           onClick={goNext}
-          className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#EDF7FC] transition-colors text-[#2F9FD3]"
+          disabled={!canGoNext}
+          className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors ${
+            canGoNext ? "hover:bg-[#EDF7FC] text-[#2F9FD3]" : "text-[#D0D0D0] cursor-default"
+          }`}
           aria-label="次月"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
@@ -167,16 +179,10 @@ export default function ClinicCalendar() {
         </button>
       </div>
 
-      {/* 年表示（控えめ） + 今月ボタン */}
+      {/* 年表示（翌月表示時のみ控えめに表示） */}
       {!isCurrentMonth && (
-        <div className="flex items-center justify-center gap-2 mb-2">
+        <div className="flex items-center justify-center mb-2">
           <span className="text-xs text-[#999999]">{year}年</span>
-          <button
-            onClick={goToday}
-            className="text-xs text-[#2F9FD3] hover:underline"
-          >
-            今月に戻る
-          </button>
         </div>
       )}
 

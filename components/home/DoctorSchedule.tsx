@@ -58,7 +58,7 @@ export default function DoctorSchedule() {
                   午前
                 </td>
                 <td className="py-3 px-2 text-[#333333] bg-[#EDF7FC] border border-[#DCEAF2] whitespace-nowrap">
-                  9:00〜12:00
+                  9:00〜12:30
                 </td>
                 {AM_SCHEDULE.map((doc, i) => (
                   <td
@@ -75,10 +75,10 @@ export default function DoctorSchedule() {
                   午後
                 </td>
                 <td className="py-3 px-2 text-[#333333] bg-[#EDF7FC] border border-[#DCEAF2] whitespace-nowrap">
-                  <span>14:00〜16:30</span>
+                  <span>14:00〜17:00</span>
                   <br />
                   <span className="text-xs text-[#666666]">
-                    ※火曜は19:00まで
+                    ※火曜は19:30まで
                   </span>
                 </td>
                 {PM_SCHEDULE.map((doc, i) => (
