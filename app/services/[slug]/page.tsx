@@ -212,6 +212,20 @@ export default async function ServiceDetailPage({
             </section>
           )}
 
+          {/* --- 補足ブロック（例: 女性に多い症状） --- */}
+          {service.supplementBlock && (
+            <section className="bg-[#FFF8E1] rounded-xl p-6 md:p-8 border border-[#E8B818]/20">
+              <h3 className="text-xl md:text-2xl font-bold text-[#333333] mb-4">
+                {service.supplementBlock.heading}
+              </h3>
+              {service.supplementBlock.paragraphs.map((p, i) => (
+                <p key={i} className="text-base md:text-lg text-[#333333] leading-relaxed mb-3 last:mb-0">
+                  {p}
+                </p>
+              ))}
+            </section>
+          )}
+
           {/* --- 診察について（案内テキストのみ、CTAなし） --- */}
           <section className="bg-white border border-[#DCEAF2] rounded-xl p-6 md:p-8">
             <h3 className="text-xl font-bold text-[#2F9FD3] mb-3">
