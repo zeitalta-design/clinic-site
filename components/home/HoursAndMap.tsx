@@ -106,8 +106,8 @@ export default function HoursAndMap() {
                 受付時間について
               </h3>
               <ul className="space-y-1 text-xs text-[#333333]">
-                <li>午前のみ　9:00〜12:30</li>
-                <li>午後のみ　14:00〜17:00</li>
+                <li>午前　9:00〜12:30</li>
+                <li>午後　14:00〜17:00</li>
                 <li className="text-[#666666]">（火曜午後は19:30まで受付）</li>
               </ul>
             </div>
