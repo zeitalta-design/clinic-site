@@ -33,7 +33,7 @@ export default function FirstVisitSection() {
               },
             ].map((item) => (
               <div key={item.step} className="text-center">
-                <div className="w-14 h-14 rounded-full bg-[#F3E33A] text-[#333333] flex items-center justify-center text-xl font-bold mx-auto mb-4 shadow-sm">
+                <div className="w-14 h-14 rounded-full bg-[#E8B818] text-[#333333] flex items-center justify-center text-xl font-bold mx-auto mb-4 shadow-sm">
                   {item.step}
                 </div>
                 <h3 className="font-bold text-[#2F9FD3] mb-2 text-lg">

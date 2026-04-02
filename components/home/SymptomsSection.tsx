@@ -25,7 +25,7 @@ const SYMPTOMS = [
 
 export default function SymptomsSection() {
   return (
-    <section className="py-16 md:py-20 bg-[#FFFEF5]" aria-label="こんな症状の方はご相談ください">
+    <section className="py-16 md:py-20 bg-[#FFF8E1]" aria-label="こんな症状の方はご相談ください">
       <div className="max-w-4xl mx-auto px-4">
         <SectionTitle
           english="Symptoms"

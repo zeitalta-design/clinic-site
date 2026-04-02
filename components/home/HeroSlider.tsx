@@ -114,7 +114,7 @@ export default function HeroSlider() {
               onClick={() => setCurrent(i)}
               className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                 i === current
-                  ? "bg-[#F3E33A] scale-110"
+                  ? "bg-[#E8B818] scale-110"
                   : "bg-white/50 hover:bg-white/70"
               }`}
               aria-label={`スライド ${i + 1} に切り替え`}

@@ -8,7 +8,7 @@ export default function ClinicIntro() {
   return (
     <section className="py-10 md:py-14 bg-gradient-to-b from-[#EDF7FC] to-[#f2f9fb]" aria-label="ごあいさつ">
       <div className="max-w-3xl mx-auto px-4 text-center">
-        <p className="text-base md:text-lg tracking-[0.1em] text-[#D4A017] font-semibold mb-3">
+        <p className="text-base md:text-lg tracking-[0.1em] text-[#C49208] font-semibold mb-3">
           {SITE.departments.join(" , ")}
         </p>
         <h2 className="text-xl md:text-3xl font-bold text-[#2F9FD3] mb-5 leading-snug">

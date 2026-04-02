@@ -13,9 +13,9 @@ export default function HoursAndMap() {
           {/* 診療時間表 */}
           <div className="bg-gradient-to-br from-[#EDF7FC] to-[#f0f7fa] rounded-2xl p-6 md:p-7 shadow-sm">
             <h2 className="text-lg font-bold text-[#2F9FD3] mb-5 flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-[#FFFEF5] flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full bg-[#FFF8E1] flex items-center justify-center">
                 <svg
-                  className="w-4 h-4 text-[#F3E33A]"
+                  className="w-4 h-4 text-[#E8B818]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -62,7 +62,7 @@ export default function HoursAndMap() {
                                 ? "text-gray-300"
                                 : cell === "●"
                                   ? "text-[#2F9FD3]"
-                                  : "text-[#F3E33A]"
+                                  : "text-[#E8B818]"
                           }`}
                         >
                           {cell === "●" ? (
@@ -116,9 +116,9 @@ export default function HoursAndMap() {
           {/* 地図 + アクセス情報 */}
           <div className="bg-gradient-to-br from-[#EDF7FC] to-[#f0f7fa] rounded-2xl p-6 md:p-7 shadow-sm">
             <h2 className="text-lg font-bold text-[#2F9FD3] mb-5 flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-[#FFFEF5] flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full bg-[#FFF8E1] flex items-center justify-center">
                 <svg
-                  className="w-4 h-4 text-[#F3E33A]"
+                  className="w-4 h-4 text-[#E8B818]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"

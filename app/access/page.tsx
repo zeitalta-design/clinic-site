@@ -124,7 +124,7 @@ export default function AccessPage() {
                                   ? "text-gray-400"
                                   : cell === "●"
                                     ? "text-[#2F9FD3]"
-                                    : "text-[#F3E33A]"
+                                    : "text-[#E8B818]"
                             }`}
                           >
                             {cell === "●" ? (

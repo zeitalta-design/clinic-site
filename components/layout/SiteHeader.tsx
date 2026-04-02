@@ -73,7 +73,7 @@ export default function SiteHeader() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-base font-medium text-[#333333] hover:text-[#2F9FD3] transition-colors relative after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-[#F3E33A] after:transition-all hover:after:w-full"
+              className="text-base font-medium text-[#333333] hover:text-[#2F9FD3] transition-colors relative after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-[#E8B818] after:transition-all hover:after:w-full"
             >
               {link.label}
             </Link>

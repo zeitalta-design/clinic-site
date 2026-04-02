@@ -13,7 +13,7 @@ export default function SiteFooter() {
   return (
     <footer>
       {/* 黄色帯CTA：全ページ共通の電話導線 */}
-      <div className="bg-[#F3E33A] py-6">
+      <div className="bg-[#E8B818] py-6">
         <div className="max-w-6xl mx-auto px-4 flex flex-col items-center text-center gap-3">
           <p className="text-base md:text-lg text-[#333333] leading-relaxed">
             ご不明な点がございましたら、お気軽にお問い合わせください。

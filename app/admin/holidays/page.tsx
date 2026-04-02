@@ -24,10 +24,10 @@ interface HolidayItem {
 const TYPE_OPTIONS: HolidayType[] = ["休診", "午前休", "午後休", "臨時休診"];
 
 const TYPE_COLORS: Record<HolidayType, string> = {
-  休診: "bg-red-50 text-red-600 border border-red-200",
-  午前休: "bg-amber-50 text-amber-600 border border-amber-200",
-  午後休: "bg-blue-50 text-blue-600 border border-blue-200",
-  臨時休診: "bg-purple-50 text-purple-600 border border-purple-200",
+  休診: "bg-[#F8D7DA] text-[#9B2C2C] border border-red-200",
+  午前休: "bg-[#D4EDDA] text-[#276749] border border-green-200",
+  午後休: "bg-[#FFF3CD] text-[#856404] border border-yellow-200",
+  臨時休診: "bg-[#F8D7DA] text-[#9B2C2C] border border-red-200",
 };
 
 export default function AdminHolidaysPage() {

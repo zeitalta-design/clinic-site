@@ -62,8 +62,8 @@ export const COLORS = {
   primary: "#46B7E8",       // 明るいスカイブルー
   primaryHover: "#3AABDC",  // ホバー用ブルー
   primaryLight: "#EDF7FC",  // 薄いブルー背景
-  accent: "#F3E33A",        // 菜の花イエロー
-  accentLight: "#FFFEF5",   // 薄いイエロー背景
+  accent: "#E8B818",        // 菜の花イエロー
+  accentLight: "#FFF8E1",   // 薄いイエロー背景
   bg: "#FFFFFF",            // ページ背景
   bgAlt: "#F8FCFE",         // セクション背景
   text: "#333333",          // 本文

@@ -30,7 +30,7 @@ export default function FirstVisitPage() {
       <section className="py-14 md:py-16">
         <div className="max-w-3xl mx-auto px-4 space-y-12">
           {/* 初めて受診される方へ */}
-          <div className="bg-[#FFFEF5] border border-[#F3E33A]/30 rounded-xl p-6">
+          <div className="bg-[#FFF8E1] border border-[#E8B818]/30 rounded-xl p-6">
             <h2 className="text-lg font-bold text-[#2F9FD3] mb-3">
               初めて受診される方へ
             </h2>
@@ -75,7 +75,7 @@ export default function FirstVisitPage() {
                 },
               ].map((item) => (
                 <div key={item.step} className="flex gap-4">
-                  <div className="w-10 h-10 rounded-full bg-[#F3E33A] text-[#333333] flex items-center justify-center text-lg font-bold shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#E8B818] text-[#333333] flex items-center justify-center text-lg font-bold shrink-0">
                     {item.step}
                   </div>
                   <div>
@@ -163,7 +163,7 @@ export default function FirstVisitPage() {
                                 ? "text-gray-400"
                                 : cell === "●"
                                   ? "text-[#2F9FD3]"
-                                  : "text-[#F3E33A]"
+                                  : "text-[#E8B818]"
                           }`}
                         >
                           {cell === "●" ? (

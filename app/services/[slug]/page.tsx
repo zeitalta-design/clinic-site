@@ -95,7 +95,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* --- こんなことで気になる方へ --- */}
-          <section className="bg-[#FFFEF5] rounded-xl p-6 md:p-8">
+          <section className="bg-[#FFF8E1] rounded-xl p-6 md:p-8">
             <h3 className="text-xl md:text-2xl font-bold text-[#2F9FD3] mb-5">
               こんなことが気になっていませんか？
             </h3>
