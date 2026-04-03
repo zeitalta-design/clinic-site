@@ -263,10 +263,10 @@ export default function ClinicCalendar({ holidays = [] }: ClinicCalendarProps) {
             })}
           </div>
 
-          {/* 休診日詳細リスト */}
-          {monthHolidays.length > 0 ? (
+          {/* 臨時休診リスト（CMS登録分のみ表示。定休日・祝日は表示しない） */}
+          {cmsHolidays.length > 0 ? (
             <div className="space-y-1.5">
-              {monthHolidays.map((h) => {
+              {cmsHolidays.map((h) => {
                 const style = h.type in TYPE_CELL_STYLES ? TYPE_CELL_STYLES[h.type as HolidayType] : TYPE_CELL_STYLES["休診"];
                 const d = new Date(h.date + "T00:00:00");
                 return (
