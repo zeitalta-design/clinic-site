@@ -245,8 +245,8 @@ export default function ClinicCalendar({ holidays = [] }: ClinicCalendarProps) {
       </div>
 
       {/* 重要なお知らせ */}
-      <div className="mx-3 md:mx-4 mb-2 bg-red-50 border border-red-200 rounded-lg px-3 py-2.5">
-        <p className="text-sm text-red-700 font-bold leading-relaxed">
+      <div className="mx-3 md:mx-4 mb-2 px-3 py-2">
+        <p className="text-sm text-[#333333] leading-relaxed">
           ※4月29日は休日当番医のため、救急患者のみ対応しております。
           <br />
           通常診療は行っておりませんのでご了承ください。
