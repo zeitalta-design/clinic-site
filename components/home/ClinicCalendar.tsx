@@ -46,12 +46,45 @@ export default function ClinicCalendar({ holidays = [] }: ClinicCalendarProps) {
   const [month, setMonth] = useState(now.getMonth()); // 0-indexed
 
   // 表示月の休診日をフィルタ（不正な日付は除外）
-  const monthHolidays = holidays.filter((h) => {
+  const cmsHolidays = holidays.filter((h) => {
     if (!h.date) return false;
     const d = new Date(h.date + "T00:00:00");
     if (isNaN(d.getTime())) return false;
     return d.getFullYear() === year && d.getMonth() === month;
   });
+
+  // 定休日を自動生成：日曜=休診、木曜午後休、土曜午後休
+  const daysInMonthCount = new Date(year, month + 1, 0).getDate();
+  const regularHolidays: HolidayItem[] = [];
+  for (let day = 1; day <= daysInMonthCount; day++) {
+    const dow = new Date(year, month, day).getDay();
+    const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+    // CMS側で個別指定があればスキップ
+    if (cmsHolidays.some((h) => h.date === dateStr)) continue;
+    if (dow === 0) {
+      regularHolidays.push({ id: `regular-sun-${day}`, date: dateStr, type: "休診" });
+    } else if (dow === 4) {
+      regularHolidays.push({ id: `regular-thu-${day}`, date: dateStr, type: "午後休" });
+    } else if (dow === 6) {
+      regularHolidays.push({ id: `regular-sat-${day}`, date: dateStr, type: "午後休" });
+    }
+  }
+
+  // 祝日判定（日本の主要祝日）
+  const jpHolidays = getJapaneseHolidays(year);
+  for (const hd of jpHolidays) {
+    if (hd.getMonth() !== month) continue;
+    const day = hd.getDate();
+    const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+    // すでにCMSや定休で登録済みならスキップ
+    if (cmsHolidays.some((h) => h.date === dateStr)) continue;
+    if (regularHolidays.some((h) => h.date === dateStr)) continue;
+    regularHolidays.push({ id: `holiday-${day}`, date: dateStr, type: "休診" });
+  }
+
+  const monthHolidays = [...cmsHolidays, ...regularHolidays].sort(
+    (a, b) => a.date.localeCompare(b.date)
+  );
 
   // 日付をキーにしたMap
   const holidayMap = new Map<number, HolidayItem>();
@@ -258,4 +291,64 @@ export default function ClinicCalendar({ holidays = [] }: ClinicCalendarProps) {
       </div>
     </div>
   );
+}
+
+/** 日本の祝日を取得（簡易版：固定日＋春分・秋分＋振替休日） */
+function getJapaneseHolidays(year: number): Date[] {
+  const holidays: Date[] = [];
+  const add = (m: number, d: number) => holidays.push(new Date(year, m - 1, d));
+
+  // 固定祝日
+  add(1, 1);   // 元日
+  add(2, 11);  // 建国記念の日
+  add(2, 23);  // 天皇誕生日
+  add(4, 29);  // 昭和の日
+  add(5, 3);   // 憲法記念日
+  add(5, 4);   // みどりの日
+  add(5, 5);   // こどもの日
+  add(8, 11);  // 山の日
+  add(11, 3);  // 文化の日
+  add(11, 23); // 勤労感謝の日
+
+  // ハッピーマンデー
+  add(1, getNthMondayDate(year, 1, 2));   // 成人の日（1月第2月曜）
+  add(7, getNthMondayDate(year, 7, 3));   // 海の日（7月第3月曜）
+  add(9, getNthMondayDate(year, 9, 3));   // 敬老の日（9月第3月曜）
+  add(10, getNthMondayDate(year, 10, 2)); // スポーツの日（10月第2月曜）
+
+  // 春分・秋分（近似計算）
+  const springEquinox = Math.floor(20.8431 + 0.242194 * (year - 1980) - Math.floor((year - 1980) / 4));
+  const autumnEquinox = Math.floor(23.2488 + 0.242194 * (year - 1980) - Math.floor((year - 1980) / 4));
+  add(3, springEquinox);
+  add(9, autumnEquinox);
+
+  // 振替休日：祝日が日曜なら翌月曜
+  const baseHolidays = [...holidays];
+  for (const h of baseHolidays) {
+    if (h.getDay() === 0) {
+      const substitute = new Date(h);
+      substitute.setDate(substitute.getDate() + 1);
+      // 振替先も祝日なら更に翌日（GW対応）
+      while (baseHolidays.some((bh) => bh.getTime() === substitute.getTime())) {
+        substitute.setDate(substitute.getDate() + 1);
+      }
+      holidays.push(substitute);
+    }
+  }
+
+  return holidays;
+}
+
+/** 第N月曜日の日付を取得 */
+function getNthMondayDate(year: number, month: number, nth: number): number {
+  let count = 0;
+  for (let day = 1; day <= 31; day++) {
+    const d = new Date(year, month - 1, day);
+    if (d.getMonth() !== month - 1) break;
+    if (d.getDay() === 1) {
+      count++;
+      if (count === nth) return day;
+    }
+  }
+  return 1;
 }
