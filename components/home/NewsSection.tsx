@@ -27,30 +27,28 @@ export default async function NewsSection() {
       <div className="max-w-5xl mx-auto px-4">
         <SectionTitle english="News" japanese="お知らせ" id="news" />
 
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6 md:gap-8">
           {/* 左: お知らせ一覧 */}
           <div>
             {news.length > 0 ? (
-              <ul className="divide-y divide-[#DCEAF2] border-t border-b border-[#DCEAF2]">
+              <ul className="divide-y divide-[#E8EFF4]">
                 {news.map((item) => (
-                  <li
-                    key={item.id}
-                    className="py-4 md:py-5 flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4"
-                  >
-                    <div className="flex items-center gap-2 shrink-0">
+                  <li key={item.id} className="py-5 first:pt-0 last:pb-0">
+                    {/* 日付 + カテゴリ */}
+                    <div className="flex items-center gap-2.5 mb-1.5">
                       <time
                         dateTime={item.date}
-                        className="text-sm text-[#666666] tabular-nums font-medium"
+                        className="text-xs text-[#888888] tabular-nums tracking-wide"
                       >
                         {formatDate(item.date)}
                       </time>
                       {item.category && (
                         <span
-                          className={`inline-block min-w-[4.5rem] text-center text-xs px-2.5 py-0.5 rounded-full font-medium ${
+                          className={`inline-block min-w-[4rem] text-center text-[11px] leading-none px-2.5 py-1 rounded font-bold ${
                             item.category === "重要"
                               ? "bg-red-50 text-red-600 border border-red-200"
                               : item.category === "休診"
-                                ? "bg-amber-50 text-amber-600 border border-amber-200"
+                                ? "bg-amber-50 text-amber-700 border border-amber-200"
                                 : "bg-[#EDF7FC] text-[#2F9FD3] border border-[#d0e8f0]"
                           }`}
                         >
@@ -58,21 +56,23 @@ export default async function NewsSection() {
                         </span>
                       )}
                     </div>
-                    <div className="mt-0.5 sm:mt-0">
-                      <p className="text-[#222222] text-base md:text-lg font-semibold leading-snug">
-                        {item.title}
+
+                    {/* タイトル */}
+                    <p className="text-[#1a1a1a] text-[15px] md:text-base font-bold leading-normal">
+                      {item.title}
+                    </p>
+
+                    {/* 本文 */}
+                    {item.body && (
+                      <p className="text-[#888888] text-sm mt-1 leading-relaxed line-clamp-2">
+                        {item.body}
                       </p>
-                      {item.body && (
-                        <p className="text-[#777777] text-sm md:text-base mt-1.5 leading-relaxed">
-                          {item.body}
-                        </p>
-                      )}
-                    </div>
+                    )}
                   </li>
                 ))}
               </ul>
             ) : (
-              <p className="text-center text-[#666666] py-10 text-base">
+              <p className="text-center text-[#999999] py-10 text-sm">
                 現在お知らせはありません
               </p>
             )}
