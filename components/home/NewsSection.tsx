@@ -1,26 +1,16 @@
 /**
  * お知らせセクション（カレンダー併設版）
  * 左: お知らせ一覧、右: 休診カレンダー
- * データソース: microCMS（未接続時はローカルJSONフォールバック）
+ * データソース: lib/news-data.ts（ローカルデータ直接参照）
  */
 
-import { getNews, getHolidays, type CmsNewsItem, type CmsHolidayItem } from "@/lib/microcms";
-import { formatDate } from "@/lib/utils";
+import { getNews, getHolidays, formatNewsDate } from "@/lib/news-data";
 import SectionTitle from "@/components/common/SectionTitle";
 import ClinicCalendar from "@/components/home/ClinicCalendar";
 
-export default async function NewsSection() {
-  let news: CmsNewsItem[] = [];
-  let holidays: CmsHolidayItem[] = [];
-  try {
-    [news, holidays] = await Promise.all([
-      getNews(3),
-      getHolidays(),
-    ]);
-  } catch {
-    news = [];
-    holidays = [];
-  }
+export default function NewsSection() {
+  const news = getNews(3);
+  const holidays = getHolidays();
 
   return (
     <section className="py-14 md:py-16 bg-[#F8FCFE]" aria-label="お知らせ">
@@ -37,20 +27,14 @@ export default async function NewsSection() {
                     {/* 日付 + カテゴリ */}
                     <div className="flex items-center gap-2.5 mb-1.5">
                       <time
-                        dateTime={item.publishedAt}
+                        dateTime={item.date}
                         className="text-xs text-[#888888] tabular-nums tracking-wide"
                       >
-                        {formatDate(item.publishedAt)}
+                        {formatNewsDate(item.date)}
                       </time>
                       {item.category && (
                         <span
-                          className={`inline-block min-w-[4rem] text-center text-[11px] leading-none px-2.5 py-1 rounded font-bold ${
-                            item.category === "重要"
-                              ? "bg-red-50 text-red-600 border border-red-200"
-                              : item.category === "休診"
-                                ? "bg-amber-50 text-amber-700 border border-amber-200"
-                                : "bg-[#EDF7FC] text-[#2F9FD3] border border-[#d0e8f0]"
-                          }`}
+                          className="inline-block min-w-[4rem] text-center text-[11px] leading-none px-2.5 py-1 rounded font-bold bg-[#EDF7FC] text-[#2F9FD3] border border-[#d0e8f0]"
                         >
                           {item.category}
                         </span>
