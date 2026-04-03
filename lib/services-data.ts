@@ -148,7 +148,7 @@ export const SERVICES: ServiceItem[] = [
     relatedSlugs: ["diabetes", "hypertension", "lifestyle-disease"],
     relatedText: "内科の症状に加え、糖尿病や高血圧についてもご相談いただけます。",
     introduction:
-      "内科高橋清仁クリニックでは、かぜ症状、発熱、だるさなど、日常的な体調不良に幅広く対応しています。「何科に行けばいいかわからない」というときも、まずは内科にご相談ください。",
+      "日常的な体調不良に幅広く対応しています。「何科に行けばいいかわからない」というときも、まずは内科にご相談ください。",
     symptomAlert: {
       heading: "こんな症状はありませんか？",
       symptoms: [
