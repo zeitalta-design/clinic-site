@@ -33,7 +33,7 @@ const FEATURES = [
   {
     title: "通いやすい立地",
     description:
-      "函館バス「亀田支所前」から徒歩7分。駐車場29台完備で、お車でもお越しいただけます。",
+      "函館バス「亀田支所前」から徒歩7分。敷地内に18台分の駐車場のほか、提携駐車場もご利用いただけます。",
     icon: (
       <svg className="w-9 h-9" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
         {/* 地図ピン＋P（駐車場あり） */}

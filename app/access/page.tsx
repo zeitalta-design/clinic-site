@@ -9,7 +9,7 @@ import { SITE, HOURS_TABLE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "アクセス",
-  description: "内科高橋清仁クリニックへのアクセス情報です。北海道函館市美原1丁目14番12号、函館バス「亀田支所前」徒歩7分、駐車場29台完備。",
+  description: "内科高橋清仁クリニックへのアクセス情報です。北海道函館市美原1丁目14番12号、函館バス「亀田支所前」徒歩7分、駐車場完備。",
   alternates: { canonical: "/access" },
 };
 
@@ -70,7 +70,7 @@ export default function AccessPage() {
                       診療科目
                     </th>
                     <td className="py-3 text-[#333333]">
-                      {SITE.departments.join(" , ")}
+                      {SITE.departments.join("、")}
                     </td>
                   </tr>
                   <tr className="border-b border-[#DCEAF2]">

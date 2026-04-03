@@ -11,7 +11,7 @@ import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "クリニック紹介",
-  description: "内科高橋清仁クリニックの院内やアクセス情報、通いやすさについてご案内します。函館市美原、駐車場29台完備。",
+  description: "内科高橋清仁クリニックの院内やアクセス情報、通いやすさについてご案内します。函館市美原、駐車場完備。",
   alternates: { canonical: "/clinic" },
 };
 
@@ -61,10 +61,10 @@ export default function ClinicPage() {
             </div>
             <div className="bg-white border border-[#DCEAF2] rounded-xl p-6">
               <h3 className="font-bold text-[#2F9FD3] mb-2">
-                駐車場29台完備
+                駐車場完備
               </h3>
               <p className="text-base text-[#333333] leading-relaxed">
-                29台分の駐車場を完備しています。お車でも安心してお越しいただけます。
+                敷地内に18台分の駐車場のほか、提携駐車場もご利用いただけます。お車でも安心してお越しください。
               </p>
             </div>
             <div className="bg-white border border-[#DCEAF2] rounded-xl p-6">

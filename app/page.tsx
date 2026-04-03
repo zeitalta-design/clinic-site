@@ -8,7 +8,6 @@ import HoursAndMap from "@/components/home/HoursAndMap";
 import ClinicIntro from "@/components/home/ClinicIntro";
 import NewsSection from "@/components/home/NewsSection";
 import FeaturesSection from "@/components/home/FeaturesSection";
-import SymptomsSection from "@/components/home/SymptomsSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import FirstVisitSection from "@/components/home/FirstVisitSection";
 import AccessSection from "@/components/home/AccessSection";
@@ -37,10 +36,7 @@ export default function HomePage() {
       {/* 5. 当院の特徴 */}
       <FeaturesSection />
 
-      {/* 6. こんな症状の方はご相談ください */}
-      <SymptomsSection />
-
-      {/* 7. 診療内容 */}
+      {/* 6. 診療内容 */}
       <ServicesSection />
 
       {/* 8. 初診の方へ */}
