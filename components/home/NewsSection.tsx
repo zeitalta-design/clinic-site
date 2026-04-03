@@ -58,7 +58,7 @@ export default async function NewsSection() {
                     </div>
 
                     {/* 本文（タイトル＋本文を統合表示） */}
-                    <p className="text-base text-[#4B5563] leading-relaxed mt-1">
+                    <p className="text-base text-[#4B5563] leading-relaxed mt-1 whitespace-pre-line">
                       {item.body || item.title}
                     </p>
                   </li>

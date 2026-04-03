@@ -65,7 +65,7 @@ export interface CmsHolidayItem {
 /* ---------- お知らせ取得 ---------- */
 
 export async function getNews(limit = 10): Promise<CmsNewsItem[]> {
-  if (!client) return getFallbackNews();
+  if (!client) return getFallbackNews(limit);
   try {
     const res = await client.getList<CmsNewsItem>({
       endpoint: "news",
@@ -120,23 +120,27 @@ function sanitizeHolidayItem(item: CmsHolidayItem): CmsHolidayItem {
 
 /* ---------- フォールバック（CMS未設定時はローカルJSONを使用） ---------- */
 
-function getFallbackNews(): CmsNewsItem[] {
+function getFallbackNews(limit = 10): CmsNewsItem[] {
   try {
     const fs = require("fs");
     const path = require("path");
     const file = path.join(process.cwd(), "data", "news.json");
     if (!fs.existsSync(file)) return [];
     const data = JSON.parse(fs.readFileSync(file, "utf-8"));
-    return (data as Record<string, unknown>[]).map((item) =>
-      sanitizeNewsItem({
-        id: (item.id as string) || "",
-        title: (item.title as string) || "",
-        category: item.category as string | undefined,
-        body: item.body as string | undefined,
-        publishedAt: (item.date as string) || (item.createdAt as string) || "",
-        updatedAt: (item.updatedAt as string) || "",
-      })
-    );
+    const all = (data as Record<string, unknown>[])
+      .filter((item) => item.isPublished !== false)
+      .map((item) =>
+        sanitizeNewsItem({
+          id: (item.id as string) || "",
+          title: (item.title as string) || "",
+          category: item.category as string | undefined,
+          body: item.body as string | undefined,
+          publishedAt: (item.date as string) || (item.createdAt as string) || "",
+          updatedAt: (item.updatedAt as string) || "",
+        })
+      )
+      .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
+    return all.slice(0, limit);
   } catch {
     return [];
   }
