@@ -57,17 +57,10 @@ export default async function NewsSection() {
                       )}
                     </div>
 
-                    {/* タイトル */}
-                    <p className="text-[#1a1a1a] text-[15px] md:text-base font-bold leading-normal">
-                      {item.title}
+                    {/* 本文（タイトル＋本文を統合表示） */}
+                    <p className="text-base text-[#4B5563] leading-relaxed mt-1">
+                      {item.body || item.title}
                     </p>
-
-                    {/* 本文 */}
-                    {item.body && (
-                      <p className="text-[#888888] text-sm mt-1 leading-relaxed line-clamp-2">
-                        {item.body}
-                      </p>
-                    )}
                   </li>
                 ))}
               </ul>
