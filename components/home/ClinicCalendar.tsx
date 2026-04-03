@@ -45,9 +45,11 @@ export default function ClinicCalendar({ holidays = [] }: ClinicCalendarProps) {
   const [year, setYear] = useState(now.getFullYear());
   const [month, setMonth] = useState(now.getMonth()); // 0-indexed
 
-  // 表示月の休診日をフィルタ
+  // 表示月の休診日をフィルタ（不正な日付は除外）
   const monthHolidays = holidays.filter((h) => {
+    if (!h.date) return false;
     const d = new Date(h.date + "T00:00:00");
+    if (isNaN(d.getTime())) return false;
     return d.getFullYear() === year && d.getMonth() === month;
   });
 

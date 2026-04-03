@@ -37,10 +37,10 @@ export default async function NewsSection() {
                     {/* 日付 + カテゴリ */}
                     <div className="flex items-center gap-2.5 mb-1.5">
                       <time
-                        dateTime={item.date}
+                        dateTime={item.publishedAt}
                         className="text-xs text-[#888888] tabular-nums tracking-wide"
                       >
-                        {formatDate(item.date)}
+                        {formatDate(item.publishedAt)}
                       </time>
                       {item.category && (
                         <span
