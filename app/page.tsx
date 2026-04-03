@@ -7,6 +7,7 @@ import HeroSlider from "@/components/home/HeroSlider";
 import HoursAndMap from "@/components/home/HoursAndMap";
 import ClinicIntro from "@/components/home/ClinicIntro";
 import NewsSection from "@/components/home/NewsSection";
+import ColumnSection from "@/components/home/ColumnSection";
 import FeaturesSection from "@/components/home/FeaturesSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import FirstVisitSection from "@/components/home/FirstVisitSection";
@@ -32,6 +33,9 @@ export default function HomePage() {
 
       {/* 4. お知らせ */}
       <NewsSection />
+
+      {/* 4.5. 健康コラム */}
+      <ColumnSection />
 
       {/* 5. 当院の特徴 */}
       <FeaturesSection />
