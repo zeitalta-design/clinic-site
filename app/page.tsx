@@ -1,7 +1,11 @@
 /**
  * トップページ
  * 各セクションを仕様の順番で配置
+ *
+ * revalidate: お知らせ欄がSupabase連携のため、60秒ごとに再生成（ISR）
  */
+
+export const revalidate = 60;
 
 import HeroSlider from "@/components/home/HeroSlider";
 import HoursAndMap from "@/components/home/HoursAndMap";
