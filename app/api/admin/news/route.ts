@@ -41,6 +41,7 @@ export async function POST(request: Request) {
     return NextResponse.json(item, { status: 201 });
   } catch (e) {
     const msg = e instanceof Error ? e.message : "サーバーエラー";
+    console.error("[POST /api/admin/news]", msg);
     return NextResponse.json({ error: msg }, { status: 500 });
   }
 }
