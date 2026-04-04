@@ -1,69 +1,53 @@
 /**
- * お知らせセクション（カレンダー併設版）
- * 左: お知らせ一覧、右: 休診カレンダー
+ * お知らせセクション
  * データソース: lib/news-data.ts（ローカルデータ直接参照）
  */
 
-import { getNews, getHolidays, formatNewsDate } from "@/lib/news-data";
+import { getNews, formatNewsDate } from "@/lib/news-data";
 import SectionTitle from "@/components/common/SectionTitle";
-import ClinicCalendar from "@/components/home/ClinicCalendar";
 
 export default function NewsSection() {
   const news = getNews(3);
-  const holidays = getHolidays();
 
   return (
     <section className="py-14 md:py-16 bg-[#F8FCFE]" aria-label="お知らせ">
       <div className="max-w-5xl mx-auto px-4">
         <SectionTitle english="News" japanese="お知らせ" id="news" />
 
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6 md:gap-8">
-          {/* 左: お知らせ一覧 */}
-          <div>
-            {news.length > 0 ? (
-              <ul className="divide-y divide-[#E8EFF4]">
-                {news.map((item) => (
-                  <li key={item.id} className="py-5 first:pt-0 last:pb-0">
-                    {/* 日付 + カテゴリ */}
-                    <div className="flex items-center gap-2.5 mb-1.5">
-                      <time
-                        dateTime={item.date}
-                        className="text-xs text-[#888888] tabular-nums tracking-wide"
+        <div>
+          {news.length > 0 ? (
+            <ul className="divide-y divide-[#E8EFF4]">
+              {news.map((item) => (
+                <li key={item.id} className="py-5 first:pt-0 last:pb-0">
+                  {/* 日付 + カテゴリ */}
+                  <div className="flex items-center gap-2.5 mb-1.5">
+                    <time
+                      dateTime={item.date}
+                      className="text-xs text-[#888888] tabular-nums tracking-wide"
+                    >
+                      {formatNewsDate(item.date)}
+                    </time>
+                    {item.category && (
+                      <span
+                        className="inline-block min-w-[4rem] text-center text-[11px] leading-none px-2.5 py-1 rounded font-bold bg-[#EDF7FC] text-[#2F9FD3] border border-[#d0e8f0]"
                       >
-                        {formatNewsDate(item.date)}
-                      </time>
-                      {item.category && (
-                        <span
-                          className="inline-block min-w-[4rem] text-center text-[11px] leading-none px-2.5 py-1 rounded font-bold bg-[#EDF7FC] text-[#2F9FD3] border border-[#d0e8f0]"
-                        >
-                          {item.category}
-                        </span>
-                      )}
-                    </div>
+                        {item.category}
+                      </span>
+                    )}
+                  </div>
 
-                    {/* 本文（タイトル＋本文を統合表示） */}
-                    <p className="text-base text-[#4B5563] leading-relaxed mt-1 whitespace-pre-line">
-                      {item.body || item.title}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="text-center text-[#999999] py-10 text-sm">
-                現在お知らせはありません
-              </p>
-            )}
-          </div>
-
-          {/* 右: 休診カレンダー */}
-          <div>
-            <ClinicCalendar holidays={holidays.map(h => ({
-              id: h.id,
-              date: h.date,
-              type: h.type,
-              label: h.label,
-            }))} />
-          </div>
+                  {/* 本文（タイトル＋本文を統合表示） */}
+                  <p className="text-base text-[#4B5563] leading-relaxed mt-1 whitespace-pre-line">
+                    {item.body || item.title}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-center text-[#999999] py-10 text-sm">
+              現在お知らせはありません
+            </p>
+          )}
         </div>
       </div>
     </section>
