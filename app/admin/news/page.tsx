@@ -127,7 +127,7 @@ export default function AdminNewsPage() {
           <h1 className="font-bold text-xl">お知らせ管理</h1>
           <div className="flex items-center gap-5">
             <a href="/" target="_blank" className="text-sm text-white/70 hover:text-white transition">公開サイト →</a>
-            <button onClick={handleLogout} className="px-3 py-1.5 text-sm text-white/80 border border-white/30 rounded-md hover:bg-white/10 hover:text-white transition">ログアウト</button>
+            <button onClick={handleLogout} className="px-4 py-2 text-base font-medium text-white border-2 border-white/60 rounded-lg hover:bg-white/20 transition">ログアウト</button>
           </div>
         </div>
       </header>
