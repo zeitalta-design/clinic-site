@@ -26,6 +26,7 @@ export default function AdminNewsPage() {
   const [form, setForm] = useState(EMPTY_FORM);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState({ text: "", type: "" });
+  const [msgVisible, setMsgVisible] = useState(false);
   const [deleteTarget, setDeleteTarget] = useState<NewsItem | null>(null);
 
   const fetchNews = useCallback(async () => {
@@ -51,6 +52,8 @@ export default function AdminNewsPage() {
 
   function showMsg(text: string, type: "success" | "error") {
     setMessage({ text, type });
+    setMsgVisible(true);
+    setTimeout(() => setMsgVisible(false), 2500);
     setTimeout(() => setMessage({ text: "", type: "" }), 3000);
   }
 
@@ -131,7 +134,9 @@ export default function AdminNewsPage() {
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* メッセージ */}
         {message.text && (
-          <div className={`mb-5 px-5 py-3 rounded-lg text-base font-medium ${
+          <div className={`mb-5 px-5 py-3 rounded-lg text-base font-medium transition-opacity duration-500 ${
+            msgVisible ? "opacity-100" : "opacity-0"
+          } ${
             message.type === "success" ? "bg-green-50 border border-green-200 text-green-700" : "bg-red-50 border border-red-200 text-red-700"
           }`}>{message.text}</div>
         )}
