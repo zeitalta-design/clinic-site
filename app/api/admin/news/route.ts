@@ -1,12 +1,27 @@
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
+import { verifySessionToken } from "@/lib/auth";
 import { getAdminNewsList, createNewsItem } from "@/lib/admin-news";
 
+async function checkAuth() {
+  const cookieStore = await cookies();
+  const token = cookieStore.get("admin_session")?.value;
+  return token ? verifySessionToken(token) : false;
+}
+
 export async function GET() {
+  if (!(await checkAuth())) {
+    return NextResponse.json({ error: "認証が必要です" }, { status: 401 });
+  }
   const news = await getAdminNewsList();
   return NextResponse.json(news);
 }
 
 export async function POST(request: Request) {
+  if (!(await checkAuth())) {
+    return NextResponse.json({ error: "認証が必要です" }, { status: 401 });
+  }
+
   try {
     const data = await request.json();
     if (!data.title?.trim()) {
