@@ -5,7 +5,9 @@
  * revalidate: お知らせ欄がSupabase連携のため、60秒ごとに再生成（ISR）
  */
 
-export const revalidate = 60;
+// お知らせ更新時はAPI側でrevalidatePath("/")により即時再生成
+// フォールバックとして3600秒（1時間）でも定期再生成
+export const revalidate = 3600;
 
 import HeroSlider from "@/components/home/HeroSlider";
 import HoursAndMap from "@/components/home/HoursAndMap";

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
+import { revalidatePath } from "next/cache";
 import { verifySessionToken } from "@/lib/auth";
 import { getAdminNewsList, createNewsItem } from "@/lib/admin-news";
 
@@ -37,6 +38,8 @@ export async function POST(request: Request) {
       content: data.content?.trim() || "",
       is_published: data.is_published ?? true,
     });
+
+    revalidatePath("/");
 
     return NextResponse.json(item, { status: 201 });
   } catch (e) {

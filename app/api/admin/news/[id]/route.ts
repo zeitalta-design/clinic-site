@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
+import { revalidatePath } from "next/cache";
 import { verifySessionToken } from "@/lib/auth";
 import { updateNewsItem, deleteNewsItem } from "@/lib/admin-news";
 
@@ -29,6 +30,9 @@ export async function PUT(
     if (!updated) {
       return NextResponse.json({ error: "更新に失敗しました" }, { status: 404 });
     }
+
+    revalidatePath("/");
+
     return NextResponse.json(updated);
   } catch (e) {
     const msg = e instanceof Error ? e.message : "サーバーエラー";
@@ -50,6 +54,9 @@ export async function DELETE(
     if (!ok) {
       return NextResponse.json({ error: "削除に失敗しました" }, { status: 404 });
     }
+
+    revalidatePath("/");
+
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json({ error: "サーバーエラー" }, { status: 500 });
