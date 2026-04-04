@@ -1,81 +1,66 @@
 /**
- * 管理画面用お知らせデータ管理
+ * お知らせデータ管理（Supabase版）
  *
- * 将来 Supabase 等に差し替える場合は
- * このファイルの実装だけ変更すればOK。
- * 管理画面側は getAdminNews() / addAdminNews() を呼ぶだけ。
+ * Supabase の `news` テーブルを操作する。
+ * 管理画面・公開ページの両方がこの層を通してデータにアクセスする。
+ * Supabase 未設定時は空配列を返す（ビルド時クラッシュ防止）。
  */
+
+import { supabase } from "./supabase";
 
 export interface AdminNewsItem {
   id: string;
   title: string;
   date: string;
-  content: string;
-  isPublished: boolean;
+  content: string | null;
+  is_published: boolean;
+  created_at: string;
+  updated_at: string;
 }
 
-// インメモリストア（サーバーレス環境ではリクエストごとにリセットされる可能性あり）
-// 将来的には Supabase / DB に差し替え
-let newsStore: AdminNewsItem[] = [
-  {
-    id: "news-1",
-    title: "4月29日の診療について（休日当番医）",
-    date: "2026-04-04",
-    content:
-      "※4月29日は休日当番医です。\n緊急性の高い患者様の対応を優先しております。\n通常の診察をご希望の方は、別日の受診をお願いいたします。",
-    isPublished: true,
-  },
-  {
-    id: "news-2",
-    title: "発熱・かぜ症状がある方の受診について",
-    date: "2026-03-31",
-    content:
-      "発熱・咳・のどの痛みなどの症状がある方も、当院で診察を受けていただけます。インフルエンザの検査にも対応しています。症状がある場合は、受付にてお声がけください。",
-    isPublished: true,
-  },
-  {
-    id: "news-3",
-    title: "春先の体調不良にご注意ください",
-    date: "2026-03-15",
-    content:
-      "春先は気温の変動が大きく、かぜや花粉症、倦怠感など体調を崩しやすい季節です。気になる症状がある方は、お気軽にご相談ください。",
-    isPublished: true,
-  },
-];
-
-/** お知らせ一覧取得 */
-export function getAdminNews(): AdminNewsItem[] {
-  return [...newsStore].sort(
-    (a, b) => b.date.localeCompare(a.date)
-  );
+export async function getAdminNewsList(): Promise<AdminNewsItem[]> {
+  if (!supabase) return [];
+  const { data, error } = await supabase.from("news").select("*").order("date", { ascending: false });
+  if (error) { console.error("[admin-news]", error.message); return []; }
+  return data || [];
 }
 
-/** お知らせ追加 */
-export function addAdminNews(
-  item: Omit<AdminNewsItem, "id">
-): AdminNewsItem {
-  const newItem: AdminNewsItem = {
-    ...item,
-    id: `news-${Date.now()}`,
-  };
-  newsStore.unshift(newItem);
-  return newItem;
+export async function getNewsItemById(id: string): Promise<AdminNewsItem | null> {
+  if (!supabase) return null;
+  const { data, error } = await supabase.from("news").select("*").eq("id", id).single();
+  if (error) return null;
+  return data;
 }
 
-/** お知らせ削除 */
-export function deleteAdminNews(id: string): boolean {
-  const before = newsStore.length;
-  newsStore = newsStore.filter((n) => n.id !== id);
-  return newsStore.length < before;
+export async function createNewsItem(item: {
+  title: string; date: string; content?: string; is_published?: boolean;
+}): Promise<AdminNewsItem | null> {
+  if (!supabase) throw new Error("Supabase未設定");
+  const { data, error } = await supabase.from("news").insert({
+    title: item.title, date: item.date, content: item.content || null, is_published: item.is_published ?? true,
+  }).select().single();
+  if (error) throw new Error(error.message);
+  return data;
 }
 
-/** お知らせ更新 */
-export function updateAdminNews(
-  id: string,
-  data: Partial<Omit<AdminNewsItem, "id">>
-): AdminNewsItem | null {
-  const idx = newsStore.findIndex((n) => n.id === id);
-  if (idx === -1) return null;
-  newsStore[idx] = { ...newsStore[idx], ...data };
-  return newsStore[idx];
+export async function updateNewsItem(
+  id: string, updates: { title?: string; date?: string; content?: string; is_published?: boolean }
+): Promise<AdminNewsItem | null> {
+  if (!supabase) throw new Error("Supabase未設定");
+  const { data, error } = await supabase.from("news").update({ ...updates, updated_at: new Date().toISOString() }).eq("id", id).select().single();
+  if (error) throw new Error(error.message);
+  return data;
+}
+
+export async function deleteNewsItem(id: string): Promise<boolean> {
+  if (!supabase) return false;
+  const { error } = await supabase.from("news").delete().eq("id", id);
+  return !error;
+}
+
+export async function getPublishedNewsList(limit = 3): Promise<AdminNewsItem[]> {
+  if (!supabase) return [];
+  const { data, error } = await supabase.from("news").select("*").eq("is_published", true).order("date", { ascending: false }).limit(limit);
+  if (error) { console.error("[admin-news]", error.message); return []; }
+  return data || [];
 }

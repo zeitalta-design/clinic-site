@@ -1,13 +1,41 @@
 /**
  * お知らせセクション
- * データソース: lib/news-data.ts（ローカルデータ直接参照）
+ * データソース: Supabase news テーブル（公開中のみ）
+ * フォールバック: lib/news-data.ts のローカルデータ
  */
 
-import { getNews, formatNewsDate } from "@/lib/news-data";
+import { getPublishedNewsList } from "@/lib/admin-news";
+import { getNews as getLocalNews, formatNewsDate } from "@/lib/news-data";
 import SectionTitle from "@/components/common/SectionTitle";
 
-export default function NewsSection() {
-  const news = getNews(3);
+export default async function NewsSection() {
+  // Supabaseからお知らせ取得を試みる。失敗時はローカルデータにフォールバック
+  let items: { id: string; title: string; date: string; content: string | null }[] = [];
+
+  try {
+    const supabaseNews = await getPublishedNewsList(3);
+    if (supabaseNews.length > 0) {
+      items = supabaseNews.map((n) => ({
+        id: n.id,
+        title: n.title,
+        date: n.date,
+        content: n.content,
+      }));
+    }
+  } catch {
+    // Supabase未設定 or エラー時
+  }
+
+  // Supabaseが空 or エラーの場合はローカルデータを使用
+  if (items.length === 0) {
+    const local = getLocalNews(3);
+    items = local.map((n) => ({
+      id: n.id,
+      title: n.title,
+      date: n.date,
+      content: n.body || null,
+    }));
+  }
 
   return (
     <section className="py-14 md:py-16 bg-[#F8FCFE]" aria-label="お知らせ">
@@ -15,11 +43,10 @@ export default function NewsSection() {
         <SectionTitle english="News" japanese="お知らせ" id="news" />
 
         <div>
-          {news.length > 0 ? (
+          {items.length > 0 ? (
             <ul className="divide-y divide-[#E8EFF4]">
-              {news.map((item) => (
+              {items.map((item) => (
                 <li key={item.id} className="py-5 first:pt-0 last:pb-0">
-                  {/* 日付 + カテゴリ */}
                   <div className="flex items-center gap-2.5 mb-1.5">
                     <time
                       dateTime={item.date}
@@ -27,18 +54,12 @@ export default function NewsSection() {
                     >
                       {formatNewsDate(item.date)}
                     </time>
-                    {item.category && (
-                      <span
-                        className="inline-block min-w-[4rem] text-center text-[11px] leading-none px-2.5 py-1 rounded font-bold bg-[#EDF7FC] text-[#2F9FD3] border border-[#d0e8f0]"
-                      >
-                        {item.category}
-                      </span>
-                    )}
+                    <span className="inline-block min-w-[4rem] text-center text-[11px] leading-none px-2.5 py-1 rounded font-bold bg-[#EDF7FC] text-[#2F9FD3] border border-[#d0e8f0]">
+                      お知らせ
+                    </span>
                   </div>
-
-                  {/* 本文（タイトル＋本文を統合表示） */}
                   <p className="text-base text-[#4B5563] leading-relaxed mt-1 whitespace-pre-line">
-                    {item.body || item.title}
+                    {item.content || item.title}
                   </p>
                 </li>
               ))}
