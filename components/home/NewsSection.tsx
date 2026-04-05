@@ -58,9 +58,14 @@ export default async function NewsSection() {
                       お知らせ
                     </span>
                   </div>
-                  <p className="text-base text-[#4B5563] leading-relaxed mt-1 whitespace-pre-line">
-                    {item.content || item.title}
+                  <p className="text-base font-semibold text-[#333333] mt-1">
+                    {item.title}
                   </p>
+                  {item.content && (
+                    <p className="text-sm text-[#4B5563] leading-relaxed mt-1 whitespace-pre-line">
+                      {item.content}
+                    </p>
+                  )}
                 </li>
               ))}
             </ul>
