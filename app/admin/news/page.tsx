@@ -195,6 +195,7 @@ export default function AdminNewsPage() {
           ) : news.length === 0 ? (
             <p className="text-[#999999] text-center py-12 text-base">お知らせはまだありません</p>
           ) : (
+            <>
             {/* PC: テーブル表示 */}
             <div className="hidden md:block bg-white rounded-xl border border-[#DCEAF2] overflow-hidden">
               <table className="w-full text-base">
@@ -280,6 +281,7 @@ export default function AdminNewsPage() {
                 </div>
               ))}
             </div>
+            </>
           )}
         </section>
       </div>
