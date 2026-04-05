@@ -11,6 +11,7 @@ import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
+  applicationName: "内科高橋清仁クリニック",
   title: {
     default: "函館市美原の内科｜糖尿病・甲状腺なら内科高橋清仁クリニック",
     template: "%s｜内科高橋清仁クリニック",
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
     description:
       "函館市美原の内科高橋清仁クリニック。内科、糖尿病・代謝内科、内分泌内科に対応。函館バス「亀田支所前」徒歩7分、駐車場完備。",
     url: SITE.url,
-    siteName: SITE.name,
+    siteName: "内科高橋清仁クリニック",
     locale: "ja_JP",
     type: "website",
   },
@@ -50,6 +51,25 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: [
+      { url: "/favicon-v2.ico?v=2" },
+      { url: "/icon-192.png?v=2", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png?v=2", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/icon-192.png?v=2" },
+    ],
+  },
+};
+
+/** WebSite 構造化データ — 検索結果のサイト名認識用 */
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  url: SITE.url,
+  name: "内科高橋清仁クリニック",
+  alternateName: "高橋清仁クリニック",
 };
 
 /** MedicalClinic 構造化データ（JSON-LD） */
@@ -108,6 +128,10 @@ export default function RootLayout({
   return (
     <html lang="ja" className="h-full antialiased">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
