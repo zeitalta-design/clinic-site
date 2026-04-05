@@ -123,11 +123,11 @@ export default function AdminNewsPage() {
     <div className="min-h-screen bg-[#F8FCFE] text-[18px]">
       {/* ヘッダー */}
       <header className="bg-[#2F9FD3] text-white">
-        <div className="max-w-4xl mx-auto px-4 flex items-center justify-between h-16">
-          <h1 className="font-bold text-xl">お知らせ管理</h1>
-          <div className="flex items-center gap-5">
-            <a href="/" target="_blank" className="text-sm text-white/70 hover:text-white transition">公開サイト →</a>
-            <button onClick={handleLogout} className="px-4 py-2 text-base font-medium text-white border-2 border-white/60 rounded-lg hover:bg-white/20 transition">ログアウト</button>
+        <div className="max-w-4xl mx-auto px-4 flex items-center justify-between h-14 md:h-16">
+          <h1 className="font-bold text-lg md:text-xl">お知らせ管理</h1>
+          <div className="flex items-center gap-3 md:gap-5">
+            <a href="/" target="_blank" className="hidden sm:inline text-sm text-white/70 hover:text-white transition">公開サイト →</a>
+            <button onClick={handleLogout} className="px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base font-medium text-white border-2 border-white/60 rounded-lg hover:bg-white/20 transition">ログアウト</button>
           </div>
         </div>
       </header>
@@ -173,14 +173,14 @@ export default function AdminNewsPage() {
               <textarea name="content" value={form.content} onChange={handleChange} rows={5} className={inputClass}
                 placeholder="お知らせの内容を入力してください" />
             </div>
-            <div className="flex items-center justify-between pt-2">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-2">
               <label className="flex items-center gap-3 text-base text-[#333333] cursor-pointer">
                 <input type="checkbox" name="is_published" checked={form.is_published} onChange={handleChange}
                   className="w-5 h-5 rounded" />
                 公開する
               </label>
               <button type="submit" disabled={saving}
-                className="px-8 py-3 bg-[#46B7E8] text-white text-base font-bold rounded-lg hover:bg-[#3AABDC] transition disabled:opacity-50">
+                className="w-full sm:w-auto px-8 py-3 bg-[#46B7E8] text-white text-base font-bold rounded-lg hover:bg-[#3AABDC] transition disabled:opacity-50">
                 {saving ? "保存中..." : editId ? "更新する" : "追加する"}
               </button>
             </div>
@@ -195,7 +195,8 @@ export default function AdminNewsPage() {
           ) : news.length === 0 ? (
             <p className="text-[#999999] text-center py-12 text-base">お知らせはまだありません</p>
           ) : (
-            <div className="bg-white rounded-xl border border-[#DCEAF2] overflow-hidden">
+            {/* PC: テーブル表示 */}
+            <div className="hidden md:block bg-white rounded-xl border border-[#DCEAF2] overflow-hidden">
               <table className="w-full text-base">
                 <thead>
                   <tr className="bg-[#EDF7FC] border-b border-[#DCEAF2] text-left">
@@ -242,6 +243,42 @@ export default function AdminNewsPage() {
                   ))}
                 </tbody>
               </table>
+            </div>
+
+            {/* モバイル: カード表示 */}
+            <div className="md:hidden space-y-3">
+              {news.map((item) => (
+                <div key={item.id} className={`bg-white rounded-xl border border-[#DCEAF2] p-4 ${editId === item.id ? "bg-[#EDF7FC]" : ""}`}>
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <div className="min-w-0 flex-1">
+                      <p className="text-[#333333] font-medium text-base leading-snug">{item.title}</p>
+                      <p className="text-sm text-[#666666] mt-1">{item.date}</p>
+                    </div>
+                    {item.is_published ? (
+                      <span className="text-xs font-bold px-2 py-1 rounded bg-green-100 text-green-700 border border-green-200 shrink-0">
+                        公開中
+                      </span>
+                    ) : (
+                      <span className="text-xs font-bold px-2 py-1 rounded bg-gray-100 text-gray-500 border border-gray-200 shrink-0">
+                        非公開
+                      </span>
+                    )}
+                  </div>
+                  {item.content && (
+                    <p className="text-[#999999] text-sm mb-3 line-clamp-2">{item.content}</p>
+                  )}
+                  <div className="flex gap-2">
+                    <button onClick={() => startEdit(item)}
+                      className="flex-1 py-2.5 text-sm font-medium text-white bg-[#46B7E8] rounded-md hover:bg-[#3AABDC] transition">
+                      編集
+                    </button>
+                    <button onClick={() => setDeleteTarget(item)}
+                      className="flex-1 py-2.5 text-sm font-medium text-white bg-red-500 rounded-md hover:bg-red-600 transition">
+                      削除
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
           )}
         </section>
