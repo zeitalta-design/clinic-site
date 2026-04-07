@@ -31,7 +31,7 @@ const physicianJsonLd = [
     name: "高橋 清彦",
     jobTitle: "副院長",
     medicalSpecialty: ["内科", "糖尿病・代謝内科", "内分泌内科"],
-    qualifications: ["医学博士", "日本内科学会認定医", "日本内科学会総合内科専門医", "日本糖尿病学会専門医", "日本内分泌学会専門医", "日本肥満学会専門医"],
+    qualifications: ["医学博士", "日本内科学会認定内科医・総合内科専門医", "日本糖尿病学会専門医・指導医", "日本内分泌学会専門医・指導医", "日本肥満学会専門医"],
     worksFor: { "@type": "MedicalClinic", name: SITE.name, url: SITE.url },
   },
 ];
@@ -129,12 +129,11 @@ export default function DirectorPage() {
                   <h3 className="text-lg font-bold text-[#333333] mb-3">
                     資格
                   </h3>
-                  <ul className="list-disc list-inside space-y-1.5 text-[#333333] text-base leading-relaxed">
+                  <ul className="list-disc list-inside space-y-2 text-[#333333] text-base md:text-lg leading-relaxed">
                     <li>医学博士</li>
-                    <li>日本内科学会認定医</li>
-                    <li>日本内科学会総合内科専門医</li>
-                    <li>日本糖尿病学会専門医</li>
-                    <li>日本内分泌学会専門医</li>
+                    <li>日本内科学会認定内科医・総合内科専門医</li>
+                    <li>日本糖尿病学会専門医・指導医</li>
+                    <li>日本内分泌学会専門医・指導医</li>
                     <li>日本肥満学会専門医</li>
                   </ul>
                 </div>
