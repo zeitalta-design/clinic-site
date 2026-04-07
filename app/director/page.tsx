@@ -31,7 +31,7 @@ const physicianJsonLd = [
     name: "高橋 清彦",
     jobTitle: "副院長",
     medicalSpecialty: ["内科", "糖尿病・代謝内科", "内分泌内科"],
-    qualifications: ["医学博士", "日本内科学会認定内科医・総合内科専門医", "日本糖尿病学会専門医・指導医", "日本内分泌学会専門医・指導医", "日本肥満学会専門医"],
+    qualifications: ["医学博士", "日本内科学会 認定内科医・総合内科専門医", "日本糖尿病学会 専門医・指導医", "日本内分泌学会 専門医・指導医", "日本肥満学会 専門医"],
     worksFor: { "@type": "MedicalClinic", name: SITE.name, url: SITE.url },
   },
 ];
@@ -64,7 +64,7 @@ export default function DirectorPage() {
               <h2 className="text-xl md:text-2xl font-bold text-[#2F9FD3] border-b-2 border-[#46B7E8] pb-3 mb-4">
                 院長　高橋 清仁
               </h2>
-              <p className="text-sm md:text-base text-[#333333] leading-relaxed mb-8">
+              <p className="text-base md:text-lg text-[#333333] leading-relaxed mb-8">
                 1994年の開院以来、地域の皆さまの健康を支える「かかりつけ医」として診療を続けてまいりました。
                 医療を取り巻く環境は時代とともに変化しておりますが、「安心して相談できる身近な医療」を大切にし、日々の診療に取り組んでおります。
                 長年通院されている方はもちろん、初めて受診される方にも不安なくお越しいただけるよう、丁寧でわかりやすい説明と、落ち着いた医療環境づくりを心がけております。
@@ -76,7 +76,7 @@ export default function DirectorPage() {
                   <h3 className="text-lg font-bold text-[#333333] mb-3">
                     経歴
                   </h3>
-                  <ul className="list-disc list-inside space-y-1.5 text-[#333333] text-base leading-relaxed">
+                  <ul className="list-disc list-inside space-y-1.5 text-[#333333] text-base md:text-lg leading-relaxed">
                     <li>弘前大学卒業</li>
                     <li>函館市医師会病院</li>
                   </ul>
@@ -101,7 +101,7 @@ export default function DirectorPage() {
               <h2 className="text-xl md:text-2xl font-bold text-[#2F9FD3] border-b-2 border-[#46B7E8] pb-3 mb-4">
                 副院長　高橋 清彦
               </h2>
-              <p className="text-sm md:text-base text-[#333333] leading-relaxed mb-8">
+              <p className="text-base md:text-lg text-[#333333] leading-relaxed mb-8">
                 函館出身として、地域の皆さまの健康に貢献したいという思いから、この地で診療に携わっております。
                 これまで内科・糖尿病・内分泌代謝領域を中心に幅広い診療経験を重ねてまいりました。
                 糖尿病や甲状腺疾患、副腎・下垂体疾患などの内分泌疾患は、長期的な管理が必要となることが多く、患者さま一人ひとりの生活背景に寄り添った医療が重要であると考えております。
@@ -114,7 +114,7 @@ export default function DirectorPage() {
                   <h3 className="text-lg font-bold text-[#333333] mb-3">
                     経歴
                   </h3>
-                  <ul className="list-disc list-inside space-y-1.5 text-[#333333] text-base leading-relaxed">
+                  <ul className="list-disc list-inside space-y-1.5 text-[#333333] text-base md:text-lg leading-relaxed">
                     <li>金沢医科大学卒業</li>
                     <li>市立札幌病院</li>
                     <li>釧路赤十字病院</li>
@@ -131,10 +131,10 @@ export default function DirectorPage() {
                   </h3>
                   <ul className="list-disc list-inside space-y-2 text-[#333333] text-base md:text-lg leading-relaxed">
                     <li>医学博士</li>
-                    <li>日本内科学会認定内科医・総合内科専門医</li>
-                    <li>日本糖尿病学会専門医・指導医</li>
-                    <li>日本内分泌学会専門医・指導医</li>
-                    <li>日本肥満学会専門医</li>
+                    <li>日本内科学会 認定内科医・総合内科専門医</li>
+                    <li>日本糖尿病学会 専門医・指導医</li>
+                    <li>日本内分泌学会 専門医・指導医</li>
+                    <li>日本肥満学会 専門医</li>
                   </ul>
                 </div>
               </div>
