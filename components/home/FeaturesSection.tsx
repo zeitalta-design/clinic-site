@@ -7,9 +7,9 @@ import SectionTitle from "@/components/common/SectionTitle";
 
 const FEATURES = [
   {
-    title: "地域のかかりつけ医",
+    title: "函館市美原のかかりつけ内科",
     description:
-      "函館市美原で、地域の皆さまの健康をサポートしています。ちょっとした体調の変化でも、気軽にご相談ください。",
+      "糖尿病・甲状腺などの専門的な診療から、風邪や体調不良まで幅広く対応しています。函館市美原で、気軽にご相談ください。",
     icon: (
       <svg className="w-9 h-9" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
         {/* ハート＋十字（かかりつけ医） */}

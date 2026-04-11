@@ -9,9 +9,9 @@ import PageHero from "@/components/common/PageHero";
 import { SERVICES } from "@/lib/services-data";
 
 export const metadata: Metadata = {
-  title: { absolute: "函館市美原の診療内容一覧｜内科高橋清仁クリニック" },
+  title: "診療内容",
   description:
-    "函館市美原の内科高橋清仁クリニックの診療内容です。糖尿病・甲状腺・内分泌疾患・高血圧・脂質異常症・肥満症・生活習慣病・内科全般まで幅広く診療しております。",
+    "内科高橋清仁クリニックでは、糖尿病・甲状腺・内分泌疾患をはじめ、高血圧・脂質異常症・肥満症などの生活習慣病、内科全般まで幅広く診療しております。",
   alternates: { canonical: "/services" },
 };
 
