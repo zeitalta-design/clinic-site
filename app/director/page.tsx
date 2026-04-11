@@ -10,7 +10,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "院長・副院長紹介",
   description:
-    "内科高橋清仁クリニックの院長・副院長紹介ページです。地域の皆さまが安心して相談できるクリニックを目指しています。",
+    "内科高橋清仁クリニックの院長・副院長紹介です。日本糖尿病学会専門医・日本内分泌学会専門医の資格を持つ医師が、函館市美原で糖尿病・甲状腺疾患を中心に診療しています。",
   alternates: { canonical: "/director" },
 };
 
