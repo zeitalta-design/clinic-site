@@ -12,8 +12,7 @@ export default function ClinicIntro() {
           {SITE.departments.join("、")}
         </p>
         <h2 className="text-xl md:text-3xl font-bold text-[#2F9FD3] mb-5 leading-snug">
-          函館で糖尿病・甲状腺のことなら<br className="hidden md:inline" />
-          通いやすく、相談しやすいクリニックへ
+          函館の糖尿病・甲状腺診療なら、当院へ
         </h2>
         <p className="text-base md:text-lg text-[#333333] leading-relaxed mb-4 max-w-xl mx-auto">
           {SITE.name}
@@ -21,9 +20,8 @@ export default function ClinicIntro() {
           糖尿病・甲状腺疾患（内分泌内科）を中心に、生活習慣病や体調の変化について幅広くご相談いただけます。
         </p>
         <p className="text-base md:text-lg text-[#333333] leading-relaxed mb-6 max-w-xl mx-auto">
-          日本糖尿病学会専門医・日本内分泌学会専門医の資格を持つ医師が診療にあたります。
+          <a href="/director" className="text-[#2F9FD3] hover:underline font-medium">日本糖尿病学会専門医・日本内分泌学会専門医</a>の資格を持つ医師が診療にあたります。
           気になる症状があれば、まずはお気軽にご相談ください。
-          <a href="/director" className="text-[#2F9FD3] hover:underline font-medium ml-1">医師紹介はこちら →</a>
         </p>
         <a
           href={SITE.phoneHref}

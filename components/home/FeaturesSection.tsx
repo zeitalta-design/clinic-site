@@ -3,9 +3,10 @@
  * アイコンを大型化、テキストを大きく、コントラスト確保
  */
 
+import Link from "next/link";
 import SectionTitle from "@/components/common/SectionTitle";
 
-const FEATURES = [
+const FEATURES: { title: string; description: string; icon: React.ReactNode; link?: { href: string; label: string } }[] = [
   {
     title: "函館市美原のかかりつけ内科",
     description:
@@ -46,6 +47,7 @@ const FEATURES = [
     title: "相談しやすい雰囲気",
     description:
       "不安なことや気になることを、遠慮なくお話しいただける雰囲気づくりを大切にしています。",
+    link: { href: "/director", label: "医師紹介を見る →" },
     icon: (
       <svg className="w-9 h-9" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
         {/* 吹き出し（相談） */}
@@ -76,6 +78,11 @@ export default function FeaturesSection() {
               <p className="text-base text-[#4B5563] leading-relaxed">
                 {feature.description}
               </p>
+              {feature.link && (
+                <Link href={feature.link.href} className="inline-block mt-3 text-sm text-[#2F9FD3] hover:underline font-medium">
+                  {feature.link.label}
+                </Link>
+              )}
             </div>
           ))}
         </div>
