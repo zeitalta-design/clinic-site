@@ -12,14 +12,17 @@ const SLIDES = [
   {
     bg: "bg-gradient-to-br from-[#46B7E8] via-[#6cc8f0] to-[#3AABDC]",
     imagePath: "/images/hero/hero-1.jpg",
+    alt: "内科高橋清仁クリニック — 函館市美原の内科・糖尿病・甲状腺クリニック",
   },
   {
     bg: "bg-gradient-to-br from-[#6cc8f0] to-[#46B7E8]",
     imagePath: "/images/hero/hero-2.jpg?v=2",
+    alt: "内科高橋清仁クリニックの診察室 — 丁寧な診察を心がけています",
   },
   {
     bg: "bg-gradient-to-br from-[#3AABDC] to-[#46B7E8]",
     imagePath: "/images/hero/hero-3.jpg",
+    alt: "内科高橋清仁クリニックの待合室 — 明るく清潔な院内",
   },
 ];
 
@@ -54,7 +57,7 @@ export default function HeroSlider() {
             {!imageErrors.has(i) && (
               <img
                 src={slide.imagePath}
-                alt=""
+                alt={slide.alt}
                 width={1920}
                 height={1080}
                 className="absolute inset-0 w-full h-full object-cover brightness-105"
