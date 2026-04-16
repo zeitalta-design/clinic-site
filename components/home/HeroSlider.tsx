@@ -77,13 +77,23 @@ export default function HeroSlider() {
           <div className="bg-white/15 backdrop-blur-[2px] rounded-2xl px-8 py-8 md:px-14 md:py-10">
             {/* メインコピー */}
             <h1
-              className="text-white text-2xl md:text-4xl lg:text-[2.7rem] font-bold leading-relaxed md:leading-snug mb-6"
+              className="text-white text-2xl md:text-4xl lg:text-[2.7rem] font-bold leading-relaxed md:leading-snug mb-4"
               style={{ textShadow: "0 2px 10px rgba(0,0,0,0.25), 0 1px 3px rgba(0,0,0,0.15)" }}
             >
-              笑顔で過ごせるように
+              函館で糖尿病・甲状腺の診療なら
               <br />
-              寄り添った診療を大切にしています
+              内科高橋清仁クリニックへ
             </h1>
+
+            {/* サブコピー：専門医在籍と立地を明示 */}
+            <p
+              className="text-white text-sm md:text-base lg:text-lg font-medium leading-relaxed mb-6 md:mb-8"
+              style={{ textShadow: "0 1px 6px rgba(0,0,0,0.35)" }}
+            >
+              日本糖尿病学会専門医・日本内分泌学会専門医が在籍する
+              <br className="hidden md:block" />
+              函館市美原の内科クリニックです
+            </p>
 
             {/* CTA：はじめての方へ のみ */}
             <a

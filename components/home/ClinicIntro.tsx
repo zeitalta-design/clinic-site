@@ -16,12 +16,16 @@ export default function ClinicIntro() {
         </h2>
         <p className="text-base md:text-lg text-[#333333] leading-relaxed mb-4 max-w-xl mx-auto">
           {SITE.name}
-          は、函館市美原にある内科クリニックです。
-          糖尿病・甲状腺疾患（内分泌内科）を中心に、生活習慣病や体調の変化について幅広くご相談いただけます。
+          は、函館市美原にある地域のかかりつけ医です。
+          糖尿病・甲状腺疾患（内分泌内科）を中心に、生活習慣病や風邪など日常の体調の変化まで、幅広くご相談いただけます。
+        </p>
+        <p className="text-base md:text-lg text-[#333333] leading-relaxed mb-4 max-w-xl mx-auto">
+          <a href="/director" className="text-[#2F9FD3] hover:underline font-medium">日本糖尿病学会専門医・日本内分泌学会専門医</a>の資格を持つ医師が、患者さま一人ひとりの生活背景に寄り添いながら、分かりやすい説明と丁寧な診療を心がけています。
+          気になる症状があれば、まずはお気軽にご相談ください。
         </p>
         <p className="text-base md:text-lg text-[#333333] leading-relaxed mb-6 max-w-xl mx-auto">
-          <a href="/director" className="text-[#2F9FD3] hover:underline font-medium">日本糖尿病学会専門医・日本内分泌学会専門医</a>の資格を持つ医師が診療にあたります。
-          気になる症状があれば、まずはお気軽にご相談ください。
+          予約不要でお越しいただけ、敷地内に駐車場18台を完備しております。
+          火曜日は19:30まで夜間診療を行っておりますので、お仕事や学校の後でも受診しやすい環境です。
         </p>
         <div className="mb-6">
           <a
