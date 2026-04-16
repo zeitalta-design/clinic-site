@@ -8,7 +8,7 @@ import PageHero from "@/components/common/PageHero";
 import { SITE, HOURS_TABLE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "アクセス｜函館市美原の内科高橋清仁クリニック",
+  title: { absolute: "アクセス｜函館市美原の内科高橋清仁クリニック" },
   description: "内科高橋清仁クリニックのアクセス情報です。北海道函館市美原1丁目14番12号。函館バス「亀田支所前」徒歩7分、駐車場18台完備。予約不要で通いやすいクリニックです。",
   keywords: [
     "内科高橋清仁クリニック アクセス",

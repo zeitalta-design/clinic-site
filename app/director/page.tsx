@@ -8,7 +8,7 @@ import PageHero from "@/components/common/PageHero";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "院長・副院長紹介｜日本糖尿病学会専門医・日本内分泌学会専門医",
+  title: { absolute: "院長・副院長紹介｜日本糖尿病学会専門医・日本内分泌学会専門医" },
   description: "内科高橋清仁クリニックの院長 高橋清仁医師と副院長 高橋清彦医師の紹介。日本糖尿病学会専門医・日本内分泌学会専門医が糖尿病・甲状腺疾患を専門に診療しています。",
   keywords: [
     "内科高橋清仁クリニック 院長",

@@ -11,7 +11,7 @@ import ClinicGallery from "@/components/clinic/ClinicGallery";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "クリニック紹介｜函館市美原の内科高橋清仁クリニック",
+  title: { absolute: "クリニック紹介｜函館市美原の内科高橋清仁クリニック" },
   description: "函館市美原にある内科高橋清仁クリニックの紹介。日本糖尿病学会専門医・日本内分泌学会専門医が在籍する糖尿病・甲状腺専門の内科です。駐車場18台完備、予約不要で通いやすい地域のかかりつけ医として診療しています。",
   keywords: [
     "内科高橋清仁クリニック",
