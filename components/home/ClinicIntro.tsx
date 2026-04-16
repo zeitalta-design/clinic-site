@@ -23,6 +23,14 @@ export default function ClinicIntro() {
           <a href="/director" className="text-[#2F9FD3] hover:underline font-medium">日本糖尿病学会専門医・日本内分泌学会専門医</a>の資格を持つ医師が診療にあたります。
           気になる症状があれば、まずはお気軽にご相談ください。
         </p>
+        <div className="mb-6">
+          <a
+            href="/clinic"
+            className="inline-flex items-center gap-1 text-[#2F9FD3] font-bold hover:underline text-base md:text-lg"
+          >
+            クリニック紹介を詳しく見る →
+          </a>
+        </div>
         <a
           href={SITE.phoneHref}
           className="inline-flex items-center gap-2 text-[#2F9FD3] font-bold hover:underline text-base md:text-lg"
