@@ -8,9 +8,28 @@ import PageHero from "@/components/common/PageHero";
 import { SITE, HOURS_TABLE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "アクセス",
-  description: "内科高橋清仁クリニックへのアクセス情報です。北海道函館市美原1丁目14番12号、函館バス「亀田支所前」徒歩7分、駐車場完備。",
+  title: "アクセス｜函館市美原の内科高橋清仁クリニック",
+  description: "内科高橋清仁クリニックのアクセス情報です。北海道函館市美原1丁目14番12号。函館バス「亀田支所前」徒歩7分、駐車場18台完備。予約不要で通いやすいクリニックです。",
+  keywords: [
+    "内科高橋清仁クリニック アクセス",
+    "函館市美原 内科 アクセス",
+    "高橋清仁クリニック 駐車場",
+    "函館 糖尿病 クリニック アクセス",
+    "函館 甲状腺 クリニック 場所",
+    "函館 内科 駐車場",
+  ],
   alternates: { canonical: "/access" },
+  openGraph: {
+    title: "アクセス｜函館市美原の内科高橋清仁クリニック",
+    description: "北海道函館市美原1丁目14番12号。駐車場18台完備、函館バス「亀田支所前」徒歩7分。予約不要の内科クリニック。",
+    images: [{ url: "/images/clinic/exterior.jpg", alt: "内科高橋清仁クリニック外観" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "アクセス｜函館市美原の内科高橋清仁クリニック",
+    description: "北海道函館市美原1丁目14番12号。駐車場18台完備。",
+    images: ["/images/clinic/exterior.jpg"],
+  },
 };
 
 export default function AccessPage() {
@@ -161,7 +180,6 @@ export default function AccessPage() {
                 ))}
               </div>
 
-              {/* 受付時間について */}
               <div className="mt-4 bg-[#EDF7FC] rounded-xl p-5 border border-[#DCEAF2]">
                 <h3 className="text-base font-bold text-[#2F9FD3] mb-2">
                   受付時間について
@@ -179,9 +197,6 @@ export default function AccessPage() {
           <div className="mb-10">
             <h2 className="text-lg font-bold text-[#2F9FD3] mb-4">地図</h2>
             <div className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden bg-[#EDF7FC]">
-              <div className="absolute inset-0 flex items-center justify-center text-[#2F9FD3] text-base">
-                <p>{SITE.address}</p>
-              </div>
               <iframe
                 src={`https://www.google.com/maps?q=${SITE.latitude},${SITE.longitude}&hl=ja&z=17&output=embed`}
                 className="absolute inset-0 w-full h-full border-0"
@@ -201,7 +216,6 @@ export default function AccessPage() {
               </a>
             </p>
           </div>
-
         </div>
       </section>
     </>

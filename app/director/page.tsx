@@ -8,10 +8,29 @@ import PageHero from "@/components/common/PageHero";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "院長・副院長紹介",
-  description:
-    "内科高橋清仁クリニックの院長・副院長紹介です。日本糖尿病学会専門医・日本内分泌学会専門医の資格を持つ医師が、函館市美原で糖尿病・甲状腺疾患を中心に診療しています。",
+  title: "院長・副院長紹介｜日本糖尿病学会専門医・日本内分泌学会専門医",
+  description: "内科高橋清仁クリニックの院長 高橋清仁医師と副院長 高橋清彦医師の紹介。日本糖尿病学会専門医・日本内分泌学会専門医が糖尿病・甲状腺疾患を専門に診療しています。",
+  keywords: [
+    "内科高橋清仁クリニック 院長",
+    "高橋清仁 医師",
+    "高橋清彦 医師",
+    "糖尿病専門医 函館",
+    "甲状腺専門医 函館",
+    "函館 内科 医師紹介",
+    "日本糖尿病学会専門医 函館",
+  ],
   alternates: { canonical: "/director" },
+  openGraph: {
+    title: "院長・副院長紹介｜日本糖尿病学会専門医・日本内分泌学会専門医",
+    description: "日本糖尿病学会専門医・日本内分泌学会専門医が在籍する函館市美原の内科クリニック。",
+    images: [{ url: "/images/clinic/exterior.jpg", alt: "内科高橋清仁クリニック" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "院長・副院長紹介｜日本糖尿病学会専門医・日本内分泌学会専門医",
+    description: "日本糖尿病学会専門医・日本内分泌学会専門医が在籍。",
+    images: ["/images/clinic/exterior.jpg"],
+  },
 };
 
 /** Physician JSON-LD */
@@ -56,8 +75,6 @@ export default function DirectorPage() {
 
       <section className="py-14 md:py-20">
         <div className="max-w-3xl mx-auto px-4">
-          {/* 共通説明文（削除：各医師コメントに移動） */}
-
           <div className="space-y-16 md:space-y-20">
             {/* 院長 */}
             <div>
@@ -73,9 +90,7 @@ export default function DirectorPage() {
 
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-lg font-bold text-[#333333] mb-3">
-                    経歴
-                  </h3>
+                  <h3 className="text-lg font-bold text-[#333333] mb-3">経歴</h3>
                   <ul className="list-disc list-inside space-y-1.5 text-[#333333] text-base md:text-lg leading-relaxed">
                     <li>弘前大学卒業</li>
                     <li>函館市医師会病院</li>
@@ -83,9 +98,7 @@ export default function DirectorPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-bold text-[#333333] mb-3">
-                    資格
-                  </h3>
+                  <h3 className="text-lg font-bold text-[#333333] mb-3">資格</h3>
                   <ul className="list-disc list-inside space-y-2 text-[#333333] text-base md:text-lg leading-relaxed">
                     <li>医学博士</li>
                     <li>日本内科学会 認定医</li>
@@ -111,9 +124,7 @@ export default function DirectorPage() {
 
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-lg font-bold text-[#333333] mb-3">
-                    経歴
-                  </h3>
+                  <h3 className="text-lg font-bold text-[#333333] mb-3">経歴</h3>
                   <ul className="list-disc list-inside space-y-1.5 text-[#333333] text-base md:text-lg leading-relaxed">
                     <li>金沢医科大学卒業</li>
                     <li>市立札幌病院</li>
@@ -126,9 +137,7 @@ export default function DirectorPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-bold text-[#333333] mb-3">
-                    資格
-                  </h3>
+                  <h3 className="text-lg font-bold text-[#333333] mb-3">資格</h3>
                   <ul className="list-disc list-inside space-y-2 text-[#333333] text-base md:text-lg leading-relaxed">
                     <li>医学博士</li>
                     <li>日本内科学会 認定内科医・総合内科専門医</li>
@@ -141,7 +150,6 @@ export default function DirectorPage() {
             </div>
           </div>
 
-          {/* 締めの一文 */}
           <p className="text-base md:text-lg text-[#333333] leading-relaxed mt-16 md:mt-20 pt-10 border-t border-[#DCEAF2]">
             患者さま一人ひとりの状態に合わせ、分かりやすい説明と丁寧な診療を心がけています。
           </p>
