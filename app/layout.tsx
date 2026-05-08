@@ -102,9 +102,8 @@ export async function generateMetadata(): Promise<Metadata> {
 const JSONLD_WEBSITE = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "WebSite",
-  url: "https://takahashi-diabetes.com",
+  url: "https://takahashi-diabetes.com/",
   name: "内科高橋清仁クリニック",
-  alternateName: ["高橋清仁クリニック", "たかはしきよひとクリニック"],
   description: "函館市美原の内科クリニック。糖尿病・甲状腺疾患を専門に診療。",
 });
 
