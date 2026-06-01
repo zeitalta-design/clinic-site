@@ -154,6 +154,14 @@ export default function SiteFooter() {
                     アクセス
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href="/patient-information"
+                    className="text-base text-[#333333] hover:text-[#2F9FD3] transition-colors"
+                  >
+                    患者様へのご案内
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
