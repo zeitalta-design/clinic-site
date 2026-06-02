@@ -20,20 +20,20 @@ export interface AdminNewsItem {
 
 // ===== 読み取り（anon key） =====
 
-/** 管理画面用: 全件取得（新しい順） */
+/** 管理画面用: 全件取得（投稿日時の新しい順） */
 export async function getAdminNewsList(): Promise<AdminNewsItem[]> {
   // 管理一覧もservice roleで取得（RLSで読み取り許可済みならanonでも可）
   const client = supabaseAdmin || supabase;
   if (!client) return [];
-  const { data, error } = await client.from("news").select("*").order("date", { ascending: false });
+  const { data, error } = await client.from("news").select("*").order("created_at", { ascending: false });
   if (error) { console.error("[admin-news]", error.message); return []; }
   return data || [];
 }
 
-/** 公開ページ用: 公開中のお知らせのみ取得（anon key） */
+/** 公開ページ用: 公開中のお知らせのみ取得（投稿日時の新しい順、anon key） */
 export async function getPublishedNewsList(limit = 3): Promise<AdminNewsItem[]> {
   if (!supabase) return [];
-  const { data, error } = await supabase.from("news").select("*").eq("is_published", true).order("date", { ascending: false }).limit(limit);
+  const { data, error } = await supabase.from("news").select("*").eq("is_published", true).order("created_at", { ascending: false }).limit(limit);
   if (error) { console.error("[admin-news]", error.message); return []; }
   return data || [];
 }
