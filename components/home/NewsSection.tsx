@@ -13,7 +13,7 @@ export default async function NewsSection() {
   let items: { id: string; title: string; date: string; content: string | null }[] = [];
 
   try {
-    const supabaseNews = await getPublishedNewsList(3);
+    const supabaseNews = await getPublishedNewsList(10);
     if (supabaseNews.length > 0) {
       items = supabaseNews.map((n) => ({
         id: n.id,
@@ -28,7 +28,7 @@ export default async function NewsSection() {
 
   // Supabaseが空 or エラーの場合はローカルデータを使用
   if (items.length === 0) {
-    const local = getLocalNews(3);
+    const local = getLocalNews(10);
     items = local.map((n) => ({
       id: n.id,
       title: n.title,
