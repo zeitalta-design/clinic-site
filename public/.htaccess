@@ -1,6 +1,11 @@
 # ロリポップ用の設定（静的書き出し版のクリニックHP）
 RewriteEngine On
 
+# http で来たアクセスは https へ転送する（Vercel 時代と同じ。無料SSL設定済み・2026-10-03）
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
 # 管理画面API: /api/admin/xxx → /api/admin/xxx.php（Vercel 時代と同じURLのまま使えるように）
 RewriteRule ^api/admin/news/([0-9a-fA-F-]{36})/?$ api/admin/news.php?id=$1 [L,QSA]
 RewriteRule ^api/admin/(login|logout|news)/?$ api/admin/$1.php [L,QSA]
