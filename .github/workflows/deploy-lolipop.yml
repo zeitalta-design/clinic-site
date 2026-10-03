@@ -10,7 +10,7 @@ name: Deploy to Lolipop
 
 on:
   push:
-    branches: [lolipop]
+    branches: [main]
   workflow_dispatch:
 
 concurrency:
