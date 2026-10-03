@@ -1,0 +1,5 @@
+# 共通処理と設定ファイル（_lib.php / _config.php）は直接アクセスさせない
+<FilesMatch "^_">
+  Order allow,deny
+  Deny from all
+</FilesMatch>

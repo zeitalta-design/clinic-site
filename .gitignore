@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ロリポップの管理API設定（Secrets から生成・コミットしない）
+/public/api/admin/_config.php

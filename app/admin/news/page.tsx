@@ -32,10 +32,12 @@ export default function AdminNewsPage() {
   const fetchNews = useCallback(async () => {
     try {
       const res = await fetch("/api/admin/news");
+      // 未ログイン・ログイン期限切れはログイン画面へ（静的配信のため、入口での振り分けをここで行う）
+      if (res.status === 401) { router.replace("/admin/login"); return; }
       if (res.ok) setNews(await res.json());
     } catch { /* ignore */ }
     finally { setLoading(false); }
-  }, []);
+  }, [router]);
 
   useEffect(() => { fetchNews(); }, [fetchNews]);
 

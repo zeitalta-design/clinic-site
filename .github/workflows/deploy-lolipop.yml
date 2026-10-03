@@ -1,0 +1,89 @@
+# クリニックHPをロリポップ（レンタルサーバー）へ配信する。
+#   静的書き出し（out/）＋管理画面API（out/api/admin/*.php）を FTPS でアップロードする。
+#
+# 必要な GitHub Secrets（Settings → Secrets and variables → Actions）:
+#   LOLIPOP_FTP_HOST / LOLIPOP_FTP_USERNAME / LOLIPOP_FTP_PASSWORD / LOLIPOP_FTP_TARGET_DIR
+#   ADMIN_USER / ADMIN_PASSWORD / ADMIN_SESSION_SECRET   … 管理画面のログイン（旧 Vercel の環境変数と同じ値）
+#   SUPABASE_SERVICE_ROLE_KEY                            … お知らせの書き込み用（Supabase の Secret key）
+# 公開してよい値（Supabase の URL と公開キー）は下の env に直接書いている。
+name: Deploy to Lolipop
+
+on:
+  push:
+    branches: [lolipop]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-lolipop
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NEXT_PUBLIC_SUPABASE_URL: https://iyauwhjymeyrrzecssum.supabase.co
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: sb_publishable_xk8KpEJiHUHH9HsOYGx8_g_46y2C2K_
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (static export → out/)
+        run: npm run build
+
+      - name: Check secrets
+        env:
+          ADMIN_USER: ${{ secrets.ADMIN_USER }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+          ADMIN_SESSION_SECRET: ${{ secrets.ADMIN_SESSION_SECRET }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          missing=0
+          for k in ADMIN_USER ADMIN_PASSWORD ADMIN_SESSION_SECRET SUPABASE_SERVICE_ROLE_KEY; do
+            if [ -z "${!k}" ]; then echo "::error::Secret $k が未設定です"; missing=1; fi
+          done
+          [ "$missing" = "0" ]
+          # 秘密キーで非公開を含む全件が読めること（＝管理画面の書き込みに使えるキーであること）を確認する
+          code=$(curl -s -o /tmp/rows.json -w "%{http_code}" \
+            "$NEXT_PUBLIC_SUPABASE_URL/rest/v1/clinic_news?select=id" \
+            -H "apikey: $SUPABASE_SERVICE_ROLE_KEY" -H "Authorization: Bearer $SUPABASE_SERVICE_ROLE_KEY")
+          echo "Supabase 秘密キーの確認: HTTP $code"
+          [ "$code" = "200" ]
+
+      - name: Write PHP config (out/api/admin/_config.php)
+        env:
+          ADMIN_USER: ${{ secrets.ADMIN_USER }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+          ADMIN_SESSION_SECRET: ${{ secrets.ADMIN_SESSION_SECRET }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          php -r '
+            $cfg = [
+              "ADMIN_USER" => getenv("ADMIN_USER"),
+              "ADMIN_PASSWORD" => getenv("ADMIN_PASSWORD"),
+              "ADMIN_SESSION_SECRET" => getenv("ADMIN_SESSION_SECRET"),
+              "SUPABASE_URL" => getenv("NEXT_PUBLIC_SUPABASE_URL"),
+              "SUPABASE_SERVICE_ROLE_KEY" => getenv("SUPABASE_SERVICE_ROLE_KEY"),
+            ];
+            file_put_contents("out/api/admin/_config.php", "<?php\n// デプロイ時に GitHub Actions が生成（コミットしない）\nreturn " . var_export($cfg, true) . ";\n");
+          '
+          php -l out/api/admin/_config.php
+          for f in out/api/admin/*.php; do php -l "$f"; done
+
+      - name: Deploy to Lolipop via FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.LOLIPOP_FTP_HOST }}
+          username: ${{ secrets.LOLIPOP_FTP_USERNAME }}
+          password: ${{ secrets.LOLIPOP_FTP_PASSWORD }}
+          local-dir: out/
+          server-dir: ${{ secrets.LOLIPOP_FTP_TARGET_DIR }}
+          protocol: ftps
+          dangerous-clean-slate: false

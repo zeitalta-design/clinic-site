@@ -2,12 +2,8 @@
  * トップページ
  * 各セクションを仕様の順番で配置
  *
- * revalidate: お知らせ欄がSupabase連携のため、60秒ごとに再生成（ISR）
+ * お知らせ欄はビルド時の内容で表示したうえで、ブラウザで最新を読み直す（NewsSection 参照）
  */
-
-// お知らせ更新時はAPI側でrevalidatePath("/")により即時再生成
-// フォールバックとして3600秒（1時間）でも定期再生成
-export const revalidate = 3600;
 
 import HeroSlider from "@/components/home/HeroSlider";
 import HoursAndMap from "@/components/home/HoursAndMap";

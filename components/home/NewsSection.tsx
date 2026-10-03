@@ -1,16 +1,21 @@
 /**
  * お知らせセクション
- * データソース: Supabase news テーブル（公開中のみ）
+ * データソース: Supabase clinic_news テーブル（公開中のみ）
  * フォールバック: lib/news-data.ts のローカルデータ
+ *
+ * 静的書き出し（ロリポップ配信）のため、2段構えで表示する:
+ *   1. ビルド時に Supabase から取得した内容を HTML に埋め込む（初期表示・検索エンジン向け）
+ *   2. ブラウザで開いた時に Supabase から最新を読み直して差し替える（NewsList）
+ *      → 管理画面で追加・編集したお知らせは、再ビルドなしで即座に反映される
  */
 
 import { getPublishedNewsList } from "@/lib/admin-news";
-import { getNews as getLocalNews, formatNewsDate } from "@/lib/news-data";
 import SectionTitle from "@/components/common/SectionTitle";
+import NewsList, { localNewsItems, type NewsListItem } from "./NewsList";
 
 export default async function NewsSection() {
   // Supabaseからお知らせ取得を試みる。失敗時はローカルデータにフォールバック
-  let items: { id: string; title: string; date: string; content: string | null }[] = [];
+  let items: NewsListItem[] = [];
 
   try {
     const supabaseNews = await getPublishedNewsList(10);
@@ -27,54 +32,13 @@ export default async function NewsSection() {
   }
 
   // Supabaseが空 or エラーの場合はローカルデータを使用
-  if (items.length === 0) {
-    const local = getLocalNews(10);
-    items = local.map((n) => ({
-      id: n.id,
-      title: n.title,
-      date: n.date,
-      content: n.body || null,
-    }));
-  }
+  if (items.length === 0) items = localNewsItems();
 
   return (
     <section className="py-14 md:py-16 bg-[#F8FCFE]" aria-label="お知らせ">
       <div className="max-w-5xl mx-auto px-4">
         <SectionTitle english="News" japanese="お知らせ" id="news" />
-
-        <div>
-          {items.length > 0 ? (
-            <ul className="divide-y divide-[#E8EFF4]">
-              {items.map((item) => (
-                <li key={item.id} className="py-5 first:pt-0 last:pb-0">
-                  <div className="flex items-center gap-2.5 mb-1.5">
-                    <time
-                      dateTime={item.date}
-                      className="text-xs text-[#888888] tabular-nums tracking-wide"
-                    >
-                      {formatNewsDate(item.date)}
-                    </time>
-                    <span className="inline-block min-w-[4rem] text-center text-[11px] leading-none px-2.5 py-1 rounded font-bold bg-[#EDF7FC] text-[#2F9FD3] border border-[#d0e8f0]">
-                      お知らせ
-                    </span>
-                  </div>
-                  <p className="text-base font-semibold text-[#333333] mt-1">
-                    {item.title}
-                  </p>
-                  {item.content && (
-                    <p className="text-sm text-[#4B5563] leading-relaxed mt-1 whitespace-pre-line">
-                      {item.content}
-                    </p>
-                  )}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-center text-[#999999] py-10 text-sm">
-              現在お知らせはありません
-            </p>
-          )}
-        </div>
+        <NewsList initialItems={items} />
       </div>
     </section>
   );
