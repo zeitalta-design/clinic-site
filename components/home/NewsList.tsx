@@ -9,14 +9,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { mapRow, type NewsRow } from "@/lib/admin-news";
-import { formatNewsDate, getNews as getLocalNews } from "@/lib/news-data";
-
-export type NewsListItem = { id: string; title: string; date: string; content: string | null };
-
-/** 公開中のお知らせが0件の時に出すローカルデータ（従来どおりのフォールバック） */
-export function localNewsItems(): NewsListItem[] {
-  return getLocalNews(10).map((n) => ({ id: n.id, title: n.title, date: n.date, content: n.body || null }));
-}
+import { formatNewsDate, localNewsItems, type NewsListItem } from "@/lib/news-data";
 
 export default function NewsList({ initialItems }: { initialItems: NewsListItem[] }) {
   const [items, setItems] = useState(initialItems);

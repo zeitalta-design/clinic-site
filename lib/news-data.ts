@@ -87,6 +87,17 @@ export function getNews(limit = 3): NewsItem[] {
   return NEWS.slice(0, limit);
 }
 
+/** トップページのお知らせ欄が表示に使う形（Supabase・ローカル共通） */
+export type NewsListItem = { id: string; title: string; date: string; content: string | null };
+
+/**
+ * 公開中のお知らせが0件、または Supabase から取得できない時に出すローカルデータ。
+ * ビルド時（NewsSection）とブラウザ（NewsList）の両方から呼ぶため、"use client" のファイルには置かない。
+ */
+export function localNewsItems(limit = 10): NewsListItem[] {
+  return getNews(limit).map((n) => ({ id: n.id, title: n.title, date: n.date, content: n.body || null }));
+}
+
 /** 休診日データ（現在は定休日をカレンダー側で自動生成しているため空配列） */
 export function getHolidays(): HolidayItem[] {
   return [];

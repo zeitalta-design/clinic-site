@@ -11,7 +11,8 @@
 
 import { getPublishedNewsList } from "@/lib/admin-news";
 import SectionTitle from "@/components/common/SectionTitle";
-import NewsList, { localNewsItems, type NewsListItem } from "./NewsList";
+import { localNewsItems, type NewsListItem } from "@/lib/news-data";
+import NewsList from "./NewsList";
 
 export default async function NewsSection() {
   // Supabaseからお知らせ取得を試みる。失敗時はローカルデータにフォールバック
